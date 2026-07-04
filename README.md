@@ -1,46 +1,53 @@
-# Pratima Chandra Foundation Scraper
+# Pratima Chandra Foundation — React Web App
 
-This project scrapes public data from `https://pratimachandrafoundation.org/` and writes it in usable formats:
+Modern React website for [Pratima Chandra Foundation](https://pratimachandrafoundation.org/).
 
-- `site_data.json`: complete structured data
-- `website_data.md`: human-readable website content
-- `pages.csv`: page-level summary
-- `images.csv`: discovered image URLs
-- `assets_manifest.csv`: downloaded asset index
-- `assets_manifest.json`: downloaded asset index
-- `assets/`: downloaded images, CSS, JS, icons, PDFs, fonts, and other same-site assets
+> **Status:** Under active development. This branch contains the initial project setup only.
+
+## Branch
+
+| Branch | Purpose |
+|--------|---------|
+| `master` | Python scraper and scraped site data |
+| `react-app-master` | React web application (this branch) |
+
+Scraped content and assets live in the separate **`pcc-foundation`** repository. This app will consume that data as the UI is built out.
+
+## Stack
+
+- **Runtime:** React 19, TypeScript, Vite 8
+- **Routing & state:** React Router, Zustand, Immer
+- **Styling:** Tailwind CSS v4
+- **Tooling:** Bun, ESLint (flat config), Prettier, Fallow
+- **Compiler:** React Compiler (via Babel)
+
+## Path aliases
+
+| Alias | Resolves to |
+|-------|-------------|
+| `@src` | `./src` |
+| `@public` | `./public` |
+| `@` | project root |
+
+Configured in both `vite.config.ts` and `tsconfig.app.json`.
 
 ## Setup
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+bun install
 ```
 
-## Run
+## Scripts
 
 ```bash
-python scrape_pratima_chandra_foundation.py
+bun dev       # start dev server
+bun run build # typecheck + production build
+bun run lint  # ESLint
+bun run format
+bun run tsc   # typecheck only
+bun run preview
 ```
 
-The files are written to:
+## License
 
-```text
-data/pratima_chandra_foundation/
-```
-
-Downloaded files are grouped under:
-
-```text
-data/pratima_chandra_foundation/assets/images/
-data/pratima_chandra_foundation/assets/site-assets/
-data/pratima_chandra_foundation/assets/documents/
-data/pratima_chandra_foundation/assets/other/
-```
-
-For a quick test run:
-
-```bash
-python scrape_pratima_chandra_foundation.py --limit 3
-```
+Proprietary. All rights reserved.
