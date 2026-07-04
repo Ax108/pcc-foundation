@@ -9,26 +9,61 @@ export interface SEOData {
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   canonicalUrl?: string;
 }
 
 const SITE_URL = 'https://pratimachandrafoundation.org';
 
-/** Placeholder defaults — fill when pages are built */
+const DEFAULT_DESCRIPTION =
+  'Pratima Chandra Foundation is an independent research, training and support institution for the promotion and development of performing arts and traditional Indian music.';
+
+const DEFAULT_KEYWORDS =
+  'Pratima Chandra Foundation, Indian music, performing arts, Kolkata, memorial award, Rabindra Sangeet, Pratima Chandra Memorial Award';
+
+const OG_IMAGE = `${SITE_URL}${IMAGES.LOGO_FULL}`;
+const OG_IMAGE_ALT = 'Pratima Chandra Foundation logo';
+
+/** Defaults — mirrored in index.html; useSEO overrides per route */
 const defaultSEO: SEOData = {
   title: 'Pratima Chandra Foundation',
-  description: '',
-  keywords: '',
-  ogImage: IMAGES.LOGO_FULL,
+  description: DEFAULT_DESCRIPTION,
+  keywords: DEFAULT_KEYWORDS,
+  ogImage: OG_IMAGE,
+  ogImageAlt: OG_IMAGE_ALT,
 };
 
-/** Per-route SEO — blank placeholders for now */
+/** Per-route SEO */
 const seoPages: Record<string, SEOData> = {
   '/': {
     title: 'Pratima Chandra Foundation',
+    description: DEFAULT_DESCRIPTION,
+    keywords: DEFAULT_KEYWORDS,
+    canonicalUrl: `${SITE_URL}/`,
+  },
+  '/our-inspiration': {
+    title: 'Our Inspiration — Pratima Chandra Foundation',
     description: '',
     keywords: '',
-    canonicalUrl: `${SITE_URL}/`,
+    canonicalUrl: `${SITE_URL}/our-inspiration`,
+  },
+  '/gallery': {
+    title: 'Gallery — Pratima Chandra Foundation',
+    description: '',
+    keywords: '',
+    canonicalUrl: `${SITE_URL}/gallery`,
+  },
+  '/events': {
+    title: 'Events — Pratima Chandra Foundation',
+    description: '',
+    keywords: '',
+    canonicalUrl: `${SITE_URL}/events`,
+  },
+  '/contact-us': {
+    title: 'Contact Us — Pratima Chandra Foundation',
+    description: '',
+    keywords: '',
+    canonicalUrl: `${SITE_URL}/contact-us`,
   },
 };
 
@@ -38,42 +73,35 @@ export const useSEO = (customSEO?: Partial<SEOData>) => {
   useEffect(() => {
     const pageSEO = seoPages[location.pathname] ?? defaultSEO;
     const finalSEO = {...pageSEO, ...customSEO};
+    const canonical =
+      finalSEO.canonicalUrl ?? `${SITE_URL}${location.pathname}`;
+    const ogTitle = finalSEO.ogTitle ?? finalSEO.title;
+    const ogDescription = finalSEO.ogDescription ?? finalSEO.description;
+    const ogImage = finalSEO.ogImage ?? OG_IMAGE;
+    const ogImageAlt = finalSEO.ogImageAlt ?? OG_IMAGE_ALT;
 
     document.title = finalSEO.title;
 
+    updateMetaTag('title', finalSEO.title);
     updateMetaTag('description', finalSEO.description);
     updateMetaTag('keywords', finalSEO.keywords);
-    updateMetaTag('og:title', finalSEO.ogTitle ?? finalSEO.title, 'property');
-    updateMetaTag(
-      'og:description',
-      finalSEO.ogDescription ?? finalSEO.description,
-      'property',
-    );
-    updateMetaTag('og:image', finalSEO.ogImage ?? IMAGES.LOGO_FULL, 'property');
-    updateMetaTag(
-      'og:url',
-      finalSEO.canonicalUrl ?? `${SITE_URL}${location.pathname}`,
-      'property',
-    );
+    updateMetaTag('og:title', ogTitle, 'property');
+    updateMetaTag('og:description', ogDescription, 'property');
+    updateMetaTag('og:image', ogImage, 'property');
+    updateMetaTag('og:image:alt', ogImageAlt, 'property');
+    updateMetaTag('og:url', canonical, 'property');
     updateMetaTag('og:type', 'website', 'property');
     updateMetaTag('og:site_name', 'Pratima Chandra Foundation', 'property');
+    updateMetaTag('og:locale', 'en_IN', 'property');
     updateMetaTag('twitter:card', 'summary_large_image', 'name');
-    updateMetaTag('twitter:title', finalSEO.ogTitle ?? finalSEO.title, 'name');
-    updateMetaTag(
-      'twitter:description',
-      finalSEO.ogDescription ?? finalSEO.description,
-      'name',
-    );
-    updateMetaTag(
-      'twitter:image',
-      finalSEO.ogImage ?? IMAGES.LOGO_FULL,
-      'name',
-    );
+    updateMetaTag('twitter:url', canonical, 'name');
+    updateMetaTag('twitter:title', ogTitle, 'name');
+    updateMetaTag('twitter:description', ogDescription, 'name');
+    updateMetaTag('twitter:image', ogImage, 'name');
+    updateMetaTag('twitter:image:alt', ogImageAlt, 'name');
     updateMetaTag('robots', 'index, follow', 'name');
 
-    updateCanonicalLink(
-      finalSEO.canonicalUrl ?? `${SITE_URL}${location.pathname}`,
-    );
+    updateCanonicalLink(canonical);
   }, [location.pathname, customSEO]);
 };
 

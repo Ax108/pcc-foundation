@@ -28,7 +28,8 @@ Next to `src/` at the repo root: tooling and config only (e.g. `package.json`, `
 | Path | Role |
 | ---- | ---- |
 | **`public/`** | Static files served as-is (favicons, images, `robots.txt`, `site.webmanifest`) |
-| **`docs/`** | Markdown documentation (this file and future guides) |
+| **`docs/`** | [MigrationPlan.md](./MigrationPlan.md), [Tasks.md](./Tasks.md), [WebPerformanceSEO.md](./WebPerformanceSEO.md), [HTMLSemantics.md](./HTMLSemantics.md), [DesignGuidelines.md](./DesignGuidelines.md), this file |
+| **`.cursor/rules/`** | [performance-seo.mdc](../.cursor/rules/performance-seo.mdc) — agent reminder to follow Core Web Vitals doc |
 
 **Rule:** product UI and domain logic live under **`src/`**. Keep the repo root thin — standard Vite/React layout.
 
@@ -44,6 +45,7 @@ src/
 ├── index.css            ← global styles entry
 ├── theme.css            ← design tokens
 ├── app/                 ← app shell module (SEO, icons, startup helpers)
+├── navigationBars/    ← universal chrome: TopNavBar, footer, SiteLayout
 ├── constants/           ← app-wide constants (paths, config literals)
 ├── pages/               ← one folder per route / page module
 ├── shared/              ← cross-page UI, hooks, helpers, utils, types
@@ -60,7 +62,7 @@ Avoid top-level folders such as:
 - `src/utils/`
 - `src/screens/`
 
-New domain code belongs under **`src/pages/<pageName>/`**, **`src/app/`** (shell-only), or **`src/shared/`**.
+New domain code belongs under **`src/pages/<pageName>/`**, **`src/app/`**, **`src/navigationBars/`**, or **`src/shared/`**.
 
 **Exceptions (fixed entry points only):**
 
@@ -80,7 +82,25 @@ src/app/
 └── utils/          ← e.g. icons.ts (loadFontAwesome)
 ```
 
-**Rule:** if logic belongs to one page only, keep it under `pages/<pageName>/`. If reused broadly but is not generic UI, prefer `app/` before `shared/`.
+**Rule:** if logic belongs to one page only, keep it under `pages/<pageName>/`. If reused broadly but is not generic UI, prefer `app/` before `shared/`. Navbar/footer belong in **`nav/`**, not here.
+
+---
+
+## Navigation module (`src/navigationBars/`)
+
+Universal UI on **every route** — header, footer, layout wrapper.
+
+```
+src/navigationBars/
+├── TopNavBar.tsx
+├── Footer.tsx
+├── SiteLayout.tsx
+├── constants/           ← navLinks, siteContact
+├── hooks/               ← e.g. useMobileNav
+└── components/        ← modular nav + footer parts
+```
+
+**Rule:** do not duplicate nav/footer inside `pages/*`. Import via `@navigationBars/…`.
 
 ---
 
@@ -134,7 +154,7 @@ Cross-page code that is **reused** and should not live inside a single page modu
 
 ```
 src/shared/
-├── components/     ← layout, buttons, modals, nav chrome, etc.
+├── components/     ← generic UI (buttons, cards) — not navbar/footer
 ├── hooks/          ← e.g. useSEO, useMediaQuery
 ├── helpers/        ← cross-page API/UX glue
 ├── utils/          ← pure primitives (icons loader, formatters)
@@ -162,7 +182,7 @@ Same rule as the React Native project:
 
 ## Routing
 
-- **`Routing.tsx`** (at `src/` root) defines routes and lazy-loads page entry files from `pages/<pageName>/<PageName>.tsx`.
+- **`Routing.tsx`** (at `src/` root) defines routes, wraps pages in **`SiteLayout`** from `navigationBars/`, and lazy-loads page entry files.
 - **`App.tsx`** wraps providers, layout shell, or global UI — keep it thin.
 - Route paths and page folders should stay **easy to map** (e.g. `/` → `pages/home/Home.tsx`, `/contact` → `pages/contact/Contact.tsx`).
 
@@ -176,6 +196,7 @@ Keep `tsconfig.app.json` and `vite.config.ts` in sync.
 | ----- | ------- |
 | `@src/*` | `src/*` |
 | `@app/*` | `src/app/*` |
+| `@navigationBars/*` | `src/navigationBars/*` |
 | `@home/*` | `src/pages/home/*` |
 | `@public/*` | `public/*` |
 
@@ -230,10 +251,10 @@ Do not relocate without an intentional refactor:
 
 ---
 
-## Relation to `Sample-temp-web-site`
+## Conventions in this repo
 
-The sample clinic app was built with full freedom on layout. **This repo follows the rules above** going forward. When porting patterns from the sample (SEO hook, icons subset, performance rules), place files according to this structure — e.g. `useSEO` → `app/hooks/`, icon loader → `app/utils/`.
+Cross-cutting patterns (SEO hook, icon subset, performance rules) are documented in **`docs/`** and implemented under **`src/app/`** and **`src/navigationBars/`** — e.g. `useSEO` → `app/hooks/`, icon loader → `app/utils/`. See [WebPerformanceSEO.md](./WebPerformanceSEO.md).
 
 ---
 
-_Last aligned with workspace: `app/hooks/useSEO`, `app/utils/icons`, `pages/home/Home.tsx`, aliases `@app` / `@home`._
+_Last aligned with workspace: `app/hooks/useSEO`, `app/utils/icons`, `pages/home/Home.tsx`, aliases `@app` / `@home` / `@nav` (planned Phase 1). See `docs/MigrationPlan.md`._
