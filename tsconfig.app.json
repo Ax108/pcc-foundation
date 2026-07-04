@@ -35,7 +35,12 @@
     "paths": {
       "@src/*": ["./src/*"],
       "@app/*": ["./src/app/*"],
+      "@navigationBars/*": ["./src/navigationBars/*"],
       "@home/*": ["./src/pages/home/*"],
+      "@inspiration/*": ["./src/pages/our-inspiration/*"],
+      "@gallery/*": ["./src/pages/gallery/*"],
+      "@events/*": ["./src/pages/events/*"],
+      "@contact/*": ["./src/pages/contact-us/*"],
       "@public/*": ["./public/*"],
       "@/*": ["./*"]
     }

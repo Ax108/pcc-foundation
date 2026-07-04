@@ -11,7 +11,12 @@ export default defineConfig({
     alias: {
       '@src': path.resolve(__dirname, './src'),
       '@app': path.resolve(__dirname, './src/app'),
+      '@navigationBars': path.resolve(__dirname, './src/navigationBars'),
       '@home': path.resolve(__dirname, './src/pages/home'),
+      '@inspiration': path.resolve(__dirname, './src/pages/our-inspiration'),
+      '@gallery': path.resolve(__dirname, './src/pages/gallery'),
+      '@events': path.resolve(__dirname, './src/pages/events'),
+      '@contact': path.resolve(__dirname, './src/pages/contact-us'),
       '@public': path.resolve(__dirname, './public'),
       '@': path.resolve(__dirname, '.'),
     },

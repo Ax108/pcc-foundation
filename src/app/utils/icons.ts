@@ -1,5 +1,4 @@
 // Custom Font Awesome subset — only icons used on this site (no npm FA package).
-// Pattern from Sample-temp-web-site/src/utils/icons.ts
 
 export const loadFontAwesome = () => {
   if (document.getElementById('pcc-fa-subset')) return;
@@ -52,6 +51,8 @@ export const loadFontAwesome = () => {
     .fa-xmark:before { content: "\\f00d"; }
     .fa-chevron-up:before { content: "\\f077"; }
     .fa-chevron-down:before { content: "\\f078"; }
+    .fa-chevron-left:before { content: "\\f053"; }
+    .fa-chevron-right:before { content: "\\f054"; }
     .fa-arrow-right:before { content: "\\f061"; }
 
     .fa-facebook:before { content: "\\f09a"; }
