@@ -1,42 +1,11 @@
 @import 'tailwindcss';
-
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  background-color: #f3f4f6;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Dark mode root variables */
-:root.dark {
-  background-color: #1a1a1a;
-  color-scheme: dark;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  /* Remove overflow-x: hidden from here */
-  cursor: default;
-  background-image: linear-gradient(120deg, rgb(253, 251, 251) 0%, rgb(235, 237, 238) 100%);
-  max-width: 100vw; /* Prevent horizontal scroll without breaking sticky */
-}
-
-/* Dark mode body styles */
-.dark body {
-  background-image: linear-gradient(120deg, rgb(40, 39, 38) 0%, rgb(24, 25, 26) 100%);
-}
+@import './theme.css';
 
 html {
-  /* Remove overflow-x: hidden from here */
-  max-width: 100vw; /* Prevent horizontal scroll without breaking sticky */
+  max-width: 100vw;
 }
 
-/* Screen Reader Only - Accessibility Utility */
+/* Screen Reader Only — accessibility utility */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -60,7 +29,6 @@ html {
   white-space: normal;
 }
 
-/* Modal Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -76,13 +44,12 @@ html {
   animation: fadeIn 0.2s ease-out;
 }
 
-/* Keyboard focus fallback where components omit focus:ring utilities */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 summary:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }

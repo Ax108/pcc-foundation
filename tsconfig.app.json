@@ -34,6 +34,8 @@
     /* Path aliases — mirror vite.config.ts resolve.alias */
     "paths": {
       "@src/*": ["./src/*"],
+      "@app/*": ["./src/app/*"],
+      "@home/*": ["./src/pages/home/*"],
       "@public/*": ["./public/*"],
       "@/*": ["./*"]
     }

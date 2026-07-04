@@ -1,0 +1,45 @@
+---
+description: Web performance and Core Web Vitals standards (LCP, CLS, INP)
+alwaysApply: true
+---
+
+# Web Performance & SEO
+
+Follow patterns from `Sample-temp-web-site`. Optimize for Google Core Web Vitals on every UI change.
+
+## LCP (Largest Contentful Paint)
+
+- Preload the LCP image in `index.html` (`rel="preload" as="image" fetchpriority="high"`).
+- Above-the-fold images: explicit `width` + `height`, `fetchPriority="high"`, avoid lazy-load.
+- Prefer local `/public` assets or optimized CDN URLs — not unoptimized multi-MB originals.
+- Hero/logo URLs in `index.html` preload must match `IMAGES` constants exactly.
+
+## CLS (Cumulative Layout Shift)
+
+- Always set `width` and `height` on `<img>` (or CSS aspect-ratio) before load.
+- Reserve space for fonts (`font-display: swap` on Kodchasan and FA subset).
+- No layout-shifting embeds without fixed aspect-ratio containers.
+- Avoid injecting content above existing UI after paint.
+
+## Fonts & icons
+
+- **No** `@fortawesome/*` or `react-icons` packages.
+- Kodchasan via Google Fonts with `preconnect` + `display=swap`.
+- Icons: custom FA subset in `src/app/utils/icons.ts` via `loadFontAwesome()` — only icons we use.
+- Preload FA woff2 files in `index.html` (solid + brands).
+
+## JS & routing
+
+- Lazy-load route pages with `React.lazy` + `Suspense`.
+- Keep initial bundle small; defer non-critical scripts.
+
+## Images
+
+- Centralize paths in `src/constants/images.ts`.
+- Below-the-fold: `loading="lazy"` + `decoding="async"`.
+- Use appropriately sized files (header logo ≠ full OG image).
+
+## SEO
+
+- Use `useSEO()` on every page; keep meta/canonical/OG in sync with `index.html` defaults.
+- JSON-LD when page content is ready — stub until then.

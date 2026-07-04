@@ -1,9 +1,7 @@
+import Routing from '@src/Routing';
+
 const App = () => {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <Routing />;
 };
 
 export default App;
