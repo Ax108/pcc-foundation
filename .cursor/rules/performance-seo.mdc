@@ -1,0 +1,22 @@
+---
+description: Core Web Vitals, LCP/CLS/INP, and SEO rules for all UI work in this app
+globs:
+  - src/**/*
+  - index.html
+  - public/**/*
+alwaysApply: false
+---
+
+# Performance & SEO
+
+Before changing layout, images, fonts, routing, or page content, read and follow **[docs/WebPerformanceSEO.md](../docs/WebPerformanceSEO.md)**.
+
+## Non-negotiables
+
+- **LCP** ≤ 2.5 s — preload only the true LCP candidate (logo or hero slide 1); never lazy-load above-the-fold heroes.
+- **CLS** ≤ 0.1 — every `<img>` needs `width` + `height` (or `aspect-ratio`); reserve space for fonts and embeds.
+- **INP** ≤ 200 ms — lazy routes, no heavy sync work on click handlers.
+- Register image paths in **`src/constants/images.ts`**; copy text to page **`constants/`** modules.
+- Pair with **[docs/HTMLSemantics.md](../docs/HTMLSemantics.md)** and **[docs/DesignGuidelines.md](../docs/DesignGuidelines.md)**.
+
+Do not copy WordPress/Elementor patterns that hurt vitals (multi-MB images, blocking scripts, duplicate nav DOM).

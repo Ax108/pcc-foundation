@@ -1,0 +1,167 @@
+@import 'tailwindcss';
+@import './theme.css';
+
+html {
+  max-width: 100vw;
+}
+
+/* Screen Reader Only — accessibility utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Content site cursors — I-beam on text; pointer on controls */
+a[href],
+button:not(:disabled),
+[role='button']:not([aria-disabled='true']),
+label[for],
+select,
+summary {
+  cursor: pointer;
+}
+
+/* Footer — override global accent link/heading colors on dark bar */
+.footer-site h1,
+.footer-site h2,
+.footer-site h3,
+.footer-site h4,
+.footer-site h5,
+.footer-site h6 {
+  color: #ffffff;
+}
+
+.footer-site a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-site a:hover {
+  color: var(--color-gold);
+}
+
+/* Home hero — white headings over imagery (overrides global h1 color) */
+.hero-slider h1 {
+  color: #ffffff;
+}
+
+/* Scroll reveal — home sections (respects reduced motion via hook) */
+.scroll-reveal .scroll-reveal-item {
+  opacity: 0;
+  transform: translateY(1.75rem);
+  transition:
+    opacity 0.65s ease-out,
+    transform 0.65s ease-out;
+}
+
+.scroll-reveal.is-visible .scroll-reveal-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal .scroll-reveal-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Site buttons — override global `a { color: accent }` from theme.css */
+.site-btn {
+  border-radius: 9999px;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.site-btn-primary {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(99, 19, 24, 0.25);
+}
+
+.site-btn-primary:hover {
+  background-color: #4a0e12;
+  color: #ffffff;
+}
+
+.site-btn-outline {
+  background-color: #ffffff;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+}
+
+.site-btn-outline:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #ffffff;
+}
+
+.about-section .site-btn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* Home partners strip — maroon band below About */
+.partners-strip {
+  background: linear-gradient(
+    105deg,
+    var(--color-accent) 0%,
+    #521016 55%,
+    #3d0c10 100%
+  );
+}
+
+.partners-strip-text {
+  color: #ffffff;
+}
+
+.gallery-teaser-link:focus-visible {
+  outline-color: var(--color-gold);
+}

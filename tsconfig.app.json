@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
+    "types": ["vite/client"],
+    "allowArbitraryExtensions": true,
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Strictness */
+    "strict": true,
+    "allowJs": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "noImplicitOverride": true,
+    "noErrorTruncation": true,
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+
+    /* Path aliases — mirror vite.config.ts resolve.alias */
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@app/*": ["./src/app/*"],
+      "@navigationBars/*": ["./src/navigationBars/*"],
+      "@home/*": ["./src/pages/home/*"],
+      "@inspiration/*": ["./src/pages/our-inspiration/*"],
+      "@gallery/*": ["./src/pages/gallery/*"],
+      "@events/*": ["./src/pages/events/*"],
+      "@contact/*": ["./src/pages/contact-us/*"],
+      "@public/*": ["./public/*"],
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["src"]
+}
