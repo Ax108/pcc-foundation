@@ -48,6 +48,7 @@ export const HeroSlider = () => {
         className="relative w-full overflow-hidden"
         style={{
           aspectRatio: `${IMAGE_DIMENSIONS.HERO_SLIDE.width} / ${IMAGE_DIMENSIONS.HERO_SLIDE.height}`,
+          minHeight: '400px'
         }}>
         {HERO_SLIDES.map((slide, index) => (
           <HeroSlide

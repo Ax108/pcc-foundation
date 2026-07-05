@@ -1,0 +1,336 @@
+export type GalleryItem = {
+  id: string;
+  imageSrc: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+const TEASER_SIZE = { width: 768, height: 512 } as const;
+
+export const GALLERY_IMAGES: GalleryItem[] = [
+  {
+    id: "PCMA-2018-2nd-Rakhi-Chatterjee-1",
+    imageSrc: "/assets/gallery/PCMA-2018-2nd-Rakhi-Chatterjee-1.jpg",
+    alt: "PCMA-2018-2nd-Rakhi-Chatterjee-1",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "PCMA-2018-1st-Angira-Kotal-1",
+    imageSrc: "/assets/gallery/PCMA-2018-1st-Angira-Kotal-1.jpg",
+    alt: "PCMA-2018-1st-Angira-Kotal-1",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "PCMA-2018-Event-2",
+    imageSrc: "/assets/gallery/PCMA-2018-Event-2.jpg",
+    alt: "PCMA-2018-Event-2",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "PCMA-2018-Judges-2",
+    imageSrc: "/assets/gallery/PCMA-2018-Judges-2.jpg",
+    alt: "PCMA-2018-Judges-2",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "PCMA-2018-3rd-Laxmipriya-Nayak-2",
+    imageSrc: "/assets/gallery/PCMA-2018-3rd-Laxmipriya-Nayak-2.jpg",
+    alt: "PCMA-2018-3rd-Laxmipriya-Nayak-2",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "PCMA-2018-2nd-Rakhi-Chatterjee-2",
+    imageSrc: "/assets/gallery/PCMA-2018-2nd-Rakhi-Chatterjee-2.jpg",
+    alt: "PCMA-2018-2nd-Rakhi-Chatterjee-2",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "PCMA-2018-1st-Angira-Kotal-2",
+    imageSrc: "/assets/gallery/PCMA-2018-1st-Angira-Kotal-2.jpg",
+    alt: "PCMA-2018-1st-Angira-Kotal-2",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS-2018-1st-Bhumika-Ganguly-3",
+    imageSrc: "/assets/gallery/ARS-2018-1st-Bhumika-Ganguly-3.jpg",
+    alt: "ARS-2018-1st-Bhumika-Ganguly-3",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS-2018-2nd-Koyali-Sarkar-3",
+    imageSrc: "/assets/gallery/ARS-2018-2nd-Koyali-Sarkar-3.jpg",
+    alt: "ARS-2018-2nd-Koyali-Sarkar-3",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS-2018-3rd-Supriyo-Koley-3",
+    imageSrc: "/assets/gallery/ARS-2018-3rd-Supriyo-Koley-3.jpg",
+    alt: "ARS-2018-3rd-Supriyo-Koley-3",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS-2018-Judges-1-1",
+    imageSrc: "/assets/gallery/ARS-2018-Judges-1-1.jpg",
+    alt: "ARS-2018-Judges-1-1",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS-2018-Event-6-1",
+    imageSrc: "/assets/gallery/ARS-2018-Event-6-1.jpg",
+    alt: "ARS-2018-Event-6-1",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS-2018-Event-3",
+    imageSrc: "/assets/gallery/ARS-2018-Event-3.jpg",
+    alt: "ARS-2018-Event-3",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4415",
+    imageSrc: "/assets/gallery/DSC_4415-scaled.jpg",
+    alt: "DSC_4415",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4412",
+    imageSrc: "/assets/gallery/DSC_4412-scaled.jpg",
+    alt: "DSC_4412",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4444",
+    imageSrc: "/assets/gallery/DSC_4444-scaled.jpg",
+    alt: "DSC_4444",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_1335",
+    imageSrc: "/assets/gallery/DSC_1335-scaled.jpg",
+    alt: "DSC_1335",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_1332",
+    imageSrc: "/assets/gallery/DSC_1332-scaled.jpg",
+    alt: "DSC_1332",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_1100",
+    imageSrc: "/assets/gallery/DSC_1100-scaled.jpg",
+    alt: "DSC_1100",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS 2019 Judges 2",
+    imageSrc: "/assets/gallery/ARS-2019-Judges-2-scaled.jpg",
+    alt: "ARS 2019 Judges 2",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_1236",
+    imageSrc: "/assets/gallery/DSC_1236-scaled.jpg",
+    alt: "DSC_1236",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_1235",
+    imageSrc: "/assets/gallery/DSC_1235-scaled.jpg",
+    alt: "DSC_1235",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS 2019 1st - Sumeli Chakraborty 3",
+    imageSrc: "/assets/gallery/ARS-2019-1st-Sumeli-Chakraborty-3-scaled.jpg",
+    alt: "ARS 2019 1st - Sumeli Chakraborty 3",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS 2019 3rd - Rodosee Ghosh 3",
+    imageSrc: "/assets/gallery/ARS-2019-3rd-Rodosee-Ghosh-3-scaled.jpg",
+    alt: "ARS 2019 3rd - Rodosee Ghosh 3",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS 2019 2nd - Reema Dasgupta 3",
+    imageSrc: "/assets/gallery/ARS-2019-2nd-Reema-Dasgupta-3-scaled.jpg",
+    alt: "ARS 2019 2nd - Reema Dasgupta 3",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS 2018 Judges 4",
+    imageSrc: "/assets/gallery/ARS-2018-Judges-4-1-scaled.jpg",
+    alt: "ARS 2018 Judges 4",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS 2018 Judges 2",
+    imageSrc: "/assets/gallery/ARS-2018-Judges-2-1-scaled.jpg",
+    alt: "ARS 2018 Judges 2",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "PCMA 2016 Event",
+    imageSrc: "/assets/gallery/PCMA-2016-Event-scaled.jpg",
+    alt: "PCMA 2016 Event",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4556",
+    imageSrc: "/assets/gallery/DSC_4556.jpg",
+    alt: "DSC_4556",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4548",
+    imageSrc: "/assets/gallery/DSC_4548.jpg",
+    alt: "DSC_4548",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4566",
+    imageSrc: "/assets/gallery/DSC_4566.jpg",
+    alt: "DSC_4566",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4530",
+    imageSrc: "/assets/gallery/DSC_4530.jpg",
+    alt: "DSC_4530",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4394",
+    imageSrc: "/assets/gallery/DSC_4394.jpg",
+    alt: "DSC_4394",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4439",
+    imageSrc: "/assets/gallery/DSC_4439.jpg",
+    alt: "DSC_4439",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4501",
+    imageSrc: "/assets/gallery/DSC_4501.jpg",
+    alt: "DSC_4501",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS 2019 Winners 1",
+    imageSrc: "/assets/gallery/ARS-2019-Winners-1-scaled.jpg",
+    alt: "ARS 2019 Winners 1",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS 2017 3rd - Iman Haldar 3",
+    imageSrc: "/assets/gallery/ARS-2017-3rd-Iman-Haldar-3-scaled.jpg",
+    alt: "ARS 2017 3rd - Iman Haldar 3",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS 2017 1st - Arjun Roy 3",
+    imageSrc: "/assets/gallery/ARS-2017-1st-Arjun-Roy-3-scaled.jpg",
+    alt: "ARS 2017 1st - Arjun Roy 3",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "ARS 2017 2nd - Anurag Datta 3",
+    imageSrc: "/assets/gallery/ARS-2017-2nd-Anurag-Datta-3-scaled.jpg",
+    alt: "ARS 2017 2nd - Anurag Datta 3",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4439a",
+    imageSrc: "/assets/gallery/DSC_4439a.jpg",
+    alt: "DSC_4439a",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4439abc",
+    imageSrc: "/assets/gallery/DSC_4439abc.jpg",
+    alt: "DSC_4439abc",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_4439cv",
+    imageSrc: "/assets/gallery/DSC_4439cv.jpg",
+    alt: "DSC_4439cv",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_9783",
+    imageSrc: "/assets/gallery/DSC_9783-scaled.jpg",
+    alt: "DSC_9783",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_3160",
+    imageSrc: "/assets/gallery/DSC_3160-scaled.jpg",
+    alt: "DSC_3160",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_3158",
+    imageSrc: "/assets/gallery/DSC_3158-scaled.jpg",
+    alt: "DSC_3158",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_3131",
+    imageSrc: "/assets/gallery/DSC_3131-scaled.jpg",
+    alt: "DSC_3131",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_3120",
+    imageSrc: "/assets/gallery/DSC_3120-scaled.jpg",
+    alt: "DSC_3120",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_3113",
+    imageSrc: "/assets/gallery/DSC_3113-scaled.jpg",
+    alt: "DSC_3113",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_3064",
+    imageSrc: "/assets/gallery/DSC_3064-scaled.jpg",
+    alt: "DSC_3064",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_2998",
+    imageSrc: "/assets/gallery/DSC_2998-scaled.jpg",
+    alt: "DSC_2998",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_2981",
+    imageSrc: "/assets/gallery/DSC_2981-scaled.jpg",
+    alt: "DSC_2981",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_2977",
+    imageSrc: "/assets/gallery/DSC_2977-scaled.jpg",
+    alt: "DSC_2977",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_2916",
+    imageSrc: "/assets/gallery/DSC_2916-scaled.jpg",
+    alt: "DSC_2916",
+    ...TEASER_SIZE,
+  },
+  {
+    id: "DSC_9784",
+    imageSrc: "/assets/gallery/DSC_9784-scaled.jpg",
+    alt: "DSC_9784",
+    ...TEASER_SIZE,
+  },
+];

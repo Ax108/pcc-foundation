@@ -23,3 +23,25 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# User specific ignores
+graphify
+.cursor
+.github
+
+# Environments
+.env
+.env.*
+!.env.example
+
+# Build & Testing
+build/
+coverage/
+
+# Secrets
+*.pem
+*.key
+*.cert
+
+package-lock.json
+graphify-out

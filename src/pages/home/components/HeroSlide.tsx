@@ -25,7 +25,7 @@ export const HeroSlide = ({slide, isActive, isFirst}: HeroSlideProps) => (
       className="h-full w-full object-cover"
     />
     <div
-      className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent"
+      className="absolute inset-0 bg-black/40 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
       aria-hidden
     />
     <div className="container-site absolute inset-x-0 bottom-0 pb-10 md:pb-14">
