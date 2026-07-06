@@ -63,14 +63,12 @@ export const AboutSection = () => {
               {ABOUT_READ_MORE.label}
               <span aria-hidden="true">→</span>
             </Link>
-            <a
-              href={IMAGES.APPLICATION_FORM_2025_PDF}
-              download
-              className="site-btn site-btn-outline inline-flex min-h-11 items-center justify-center gap-2 px-7 py-3 text-sm font-semibold md:text-base"
-              rel="noopener">
+            <Link
+              to="/application-form"
+              className="site-btn site-btn-outline inline-flex min-h-11 items-center justify-center gap-2 px-7 py-3 text-sm font-semibold md:text-base">
               {APPLICATION_POSTER.downloadLabel}
-              <span aria-hidden="true">↓</span>
-            </a>
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
       </div>
