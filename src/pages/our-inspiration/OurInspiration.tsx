@@ -1,7 +1,7 @@
 import {useSEO} from '@app/hooks/useSEO';
 import {IMAGES} from '@src/constants/images';
 import {OUR_INSPIRATION_CONTENT} from './constants/textConstants';
-import {motion} from 'framer-motion';
+import {motion, type Variants} from 'framer-motion';
 
 const InspirationImage = ({name, imageSrc, className, imageClassName = "aspect-[3/4]"}: {name: string; imageSrc?: string; className?: string; imageClassName?: string}) => (
   <motion.div 
@@ -37,7 +37,7 @@ export const OurInspiration = () => {
 
   const {about, programs, life} = OUR_INSPIRATION_CONTENT;
 
-  const fadeUpVariant = {
+  const fadeUpVariant: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };

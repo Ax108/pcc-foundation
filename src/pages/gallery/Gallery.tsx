@@ -3,7 +3,7 @@ import {useSEO} from '@app/hooks/useSEO';
 import {GALLERY_IMAGES} from '@gallery/constants/galleryImages';
 import {IMAGES} from '@src/constants/images';
 import {Lightbox} from '@app/components/Lightbox';
-import {motion} from 'framer-motion';
+import {motion, type Variants} from 'framer-motion';
 
 export const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -20,7 +20,7 @@ export const Gallery = () => {
       'Explore the gallery of events, awards, and performances hosted by the Pratima Chandra Foundation.',
   });
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -28,7 +28,7 @@ export const Gallery = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } }
   };

@@ -1,11 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { HERO_SLIDES } from '@home/constants/heroSlides';
 import { IMAGES } from '@src/constants/images';
 
-const sentence = "Pratima Chandra Foundation";
-const letters = sentence.split("");
 
-const letterVariants = {
+
+const letterVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { 
     opacity: 1, 
@@ -14,7 +13,7 @@ const letterVariants = {
   },
 };
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,

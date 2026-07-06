@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {motion} from 'framer-motion';
+import {motion, type Variants} from 'framer-motion';
 import {Lightbox} from '@app/components/Lightbox';
 import {
   GALLERY_TEASER_HEADING,
@@ -17,7 +17,7 @@ export const GalleryTeaser = () => {
     setLightboxOpen(true);
   };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -25,7 +25,7 @@ export const GalleryTeaser = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
