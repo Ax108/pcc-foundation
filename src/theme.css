@@ -2,34 +2,36 @@
 
 @theme {
   /* Colors */
-  --color-primary: #050505;
-  --color-secondary: #050505;
-  --color-text: #7a7a7a;
-  --color-accent: #631318;
-  --color-gold: #bc9d42;
-  --color-surface: #ffffff;
+  --color-primary: #731F29;
+  --color-secondary: #B53040;
+  --color-text: #2C2C2C;
+  --color-accent: #731F29;
+  --color-gold: #B53040;
+  --color-surface: #FAF8F5;
   --color-footer: #1a1a1a;
-  --color-muted: #f5f5f5;
-  --color-border: #dddddd;
+  --color-muted: #F7EFEF;
+  --color-border: rgba(181, 48, 64, 0.3);
 
   /* Typography */
-  --font-sans: 'Kodchasan', sans-serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
 
   /* Layout */
   --container-max: 1140px;
 }
 
 :root {
-  --color-primary: #050505;
-  --color-secondary: #050505;
-  --color-text: #7a7a7a;
-  --color-accent: #631318;
-  --color-gold: #bc9d42;
-  --color-surface: #ffffff;
+  --color-primary: #731F29;
+  --color-secondary: #B53040;
+  --color-text: #2C2C2C;
+  --color-accent: #731F29;
+  --color-gold: #B53040;
+  --color-surface: #FAF8F5;
   --color-footer: #1a1a1a;
-  --color-muted: #f5f5f5;
-  --color-border: #dddddd;
-  --font-sans: 'Kodchasan', sans-serif;
+  --color-muted: #F7EFEF;
+  --color-border: rgba(181, 48, 64, 0.3);
+  --font-sans: 'Montserrat', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
   --container-max: 1140px;
 
   font-family: var(--font-sans);

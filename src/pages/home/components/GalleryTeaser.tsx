@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {useScrollReveal} from '@app/hooks/useScrollReveal';
+import {motion} from 'framer-motion';
 import {Lightbox} from '@app/components/Lightbox';
 import {
   GALLERY_TEASER_HEADING,
@@ -9,7 +9,6 @@ import {
 } from '@home/constants/homeGalleryTeaser';
 
 export const GalleryTeaser = () => {
-  const {ref, isVisible} = useScrollReveal({threshold: 0.08});
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -18,63 +17,96 @@ export const GalleryTeaser = () => {
     setLightboxOpen(true);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
   return (
     <section
-      className="gallery-teaser bg-surface py-14 md:py-20"
+      className="gallery-teaser bg-surface py-20 md:py-32"
       aria-labelledby="home-gallery-heading">
-      <div
-        ref={ref}
-        className={`scroll-reveal ${isVisible ? 'is-visible' : ''}`}>
-        <div className="container-site scroll-reveal-item mb-10 text-center md:mb-12">
+      <div className="container-site">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="mb-16 md:mb-24 text-center">
           <h2
             id="home-gallery-heading"
-            className="text-primary text-3xl font-semibold md:text-4xl lg:text-[2.5rem]">
-            <span>{GALLERY_TEASER_HEADING.line1}</span>{' '}
-            <span className="text-gold">{GALLERY_TEASER_HEADING.line2}</span>
+            className="text-primary text-5xl leading-[1.1] font-serif font-bold md:text-6xl lg:text-7xl">
+            <span className="block mb-2">{GALLERY_TEASER_HEADING.line1}</span>
+            <span className="text-gold italic font-medium">{GALLERY_TEASER_HEADING.line2}</span>
           </h2>
           <span
-            className="bg-gold mx-auto mt-4 block h-1 w-14 rounded-full"
+            className="bg-gold mx-auto mt-6 block h-[2px] w-20"
             aria-hidden="true"
           />
-        </div>
+        </motion.div>
 
-        <div className="container-site max-w-5xl mx-auto">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-6xl mx-auto">
           <ul
-            className="scroll-reveal-item grid grid-cols-2 gap-2 [transition-delay:80ms] md:grid-cols-4 md:gap-3 lg:gap-4"
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
             aria-label="Foundation event photo highlights">
             {HOME_GALLERY_TEASER.map((item, idx) => (
-              <li key={item.id} className="group">
+              <motion.li 
+                variants={itemVariants}
+                key={item.id} 
+                className={`group ${idx === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}>
                 <button
                   onClick={() => openLightbox(idx)}
-                  className="gallery-teaser-link relative block w-full h-full overflow-hidden rounded-lg bg-black shadow-sm ring-1 ring-black/5 focus-visible:outline-2 focus-visible:outline-offset-2 md:rounded-xl cursor-pointer"
+                  className="gallery-teaser-link relative block w-full h-full overflow-hidden bg-surface shadow-[0_10px_40px_rgba(0,0,0,0.05)] cursor-pointer"
                   aria-label={`${item.alt} — view image`}>
-                  <img
-                    src={item.imageSrc}
-                    alt={item.alt}
-                    width={item.width}
-                    height={item.height}
-                    loading="lazy"
-                    decoding="async"
-                    className="aspect-[3/2] h-full w-full object-cover transition duration-500 group-hover:scale-105 group-focus-visible:scale-105"
-                  />
+                  <div className="w-full h-full aspect-[4/3] md:aspect-auto md:min-h-[250px]">
+                    <img
+                      src={item.imageSrc}
+                      alt={item.alt}
+                      width={item.width}
+                      height={item.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                    />
+                  </div>
                   <span
-                    className="bg-accent/0 group-hover:bg-accent/20 group-focus-visible:bg-accent/20 pointer-events-none absolute inset-0 transition duration-300"
+                    className="bg-primary/0 group-hover:bg-primary/20 pointer-events-none absolute inset-0 transition-colors duration-500"
                     aria-hidden="true"
                   />
+                  {/* Subtle Gold Frame on Hover */}
+                  <div className="absolute inset-4 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500 pointer-events-none" />
                 </button>
-              </li>
+              </motion.li>
             ))}
           </ul>
-        </div>
+        </motion.div>
 
-        <div className="scroll-reveal-item container-site mt-10 flex justify-center [transition-delay:160ms] md:mt-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="mt-16 flex justify-center md:mt-24">
           <Link
             to={GALLERY_TEASER_VIEW_MORE.path}
-            className="site-btn bg-accent hover:bg-accent/90 !text-white inline-flex min-h-11 items-center justify-center gap-2 px-8 py-3 rounded text-sm font-semibold md:text-base transition-colors">
+            className="site-btn site-btn-primary inline-flex min-h-12 items-center justify-center gap-3 px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] md:text-sm">
             {GALLERY_TEASER_VIEW_MORE.label}
-            <span aria-hidden="true">→</span>
+            <span aria-hidden="true" className="text-lg leading-none transition-transform group-hover:translate-x-1">→</span>
           </Link>
-        </div>
+        </motion.div>
       </div>
 
       <Lightbox

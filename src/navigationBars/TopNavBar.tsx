@@ -18,7 +18,7 @@ export const TopNavBar = () => {
 
   return (
     <header
-      className="border-border sticky top-0 z-50 border-b bg-white shadow-sm"
+      className="sticky top-0 z-50 border-b border-border/50 bg-surface shadow-sm transition-all duration-300"
       style={{'--topnav-height': '4.5rem'} as CSSProperties}>
       <SkipToContentLink />
       <div className="container-site flex min-h-[4.5rem] items-center justify-between gap-4">

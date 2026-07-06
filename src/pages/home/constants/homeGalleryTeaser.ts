@@ -70,4 +70,10 @@ export const HOME_GALLERY_TEASER: HomeGalleryTeaserItem[] = [
     alt: 'ARS 2018 — third prize recipient Supriyo Koley',
     ...TEASER_SIZE,
   },
+  {
+    id: 'ars-2018-event-3',
+    imageSrc: '/assets/gallery/ARS-2018-Event-3.jpg',
+    alt: 'Foundation event performance',
+    ...TEASER_SIZE,
+  },
 ];

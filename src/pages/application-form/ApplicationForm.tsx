@@ -1,11 +1,14 @@
 import {useSEO} from '@app/hooks/useSEO';
 import {IMAGES} from '@src/constants/images';
+import {useState} from 'react';
 
 export const ApplicationForm = () => {
   useSEO({
     title: 'Application Form - Pratima Chandra Foundation',
     description: 'Submit your application form for the Pratima Chandra Foundation competition.',
   });
+
+  const [language, setLanguage] = useState<'bn' | 'en'>('bn');
 
   return (
     <article aria-label="Application Form" className="animate-page">
@@ -17,18 +20,54 @@ export const ApplicationForm = () => {
         />
         <div className="absolute inset-0 flex items-center justify-center bg-black/60">
           <h1 className="!text-white text-3xl md:text-5xl lg:text-6xl font-semibold drop-shadow-md text-center px-4">
-            আবেদনপত্র / Application Form
+            {language === 'bn' ? 'আবেদনপত্র' : 'Application Form'}
           </h1>
         </div>
       </header>
 
       <section className="bg-[#f5f5f5] py-16 md:py-24">
         <div className="container-site">
-          <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-sm overflow-hidden p-8 md:p-12 mb-12">
+          <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-sm overflow-hidden p-8 md:p-12 mb-12 relative">
+            
+            {/* Language Toggle Switch */}
+            <div className="flex justify-center mb-8">
+              <div className="bg-gray-100 rounded-full p-1.5 flex relative w-56 shadow-inner border border-gray-200">
+                <div
+                  className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-full shadow transition-transform duration-300 ease-in-out ${
+                    language === 'en' ? 'translate-x-full' : 'translate-x-0'
+                  }`}
+                />
+                <button
+                  type="button"
+                  onClick={() => setLanguage('bn')}
+                  className={`flex-1 relative z-10 py-2 text-sm font-bold transition-colors duration-300 ${
+                    language === 'bn' ? 'text-accent' : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  বাংলা
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLanguage('en')}
+                  className={`flex-1 relative z-10 py-2 text-sm font-bold transition-colors duration-300 ${
+                    language === 'en' ? 'text-accent' : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  English
+                </button>
+              </div>
+            </div>
+
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-primary mb-4">অরূপরতনের সন্ধানে ২০২৫ / Aruprataner Sandhane 2025</h2>
-              <p className="text-primary/80 text-lg mb-2">রবীন্দ্রগানে প্রতিমা চন্দ পুরস্কার / Rabindra Gaane Pratima Chandra Puroshkar</p>
-              <p className="text-accent font-semibold text-sm">Please fill out all the fields below / অনুগ্রহ করে নিচের সমস্ত ঘর পূরণ করুন</p>
+              <h2 className="text-3xl font-bold text-primary mb-4">
+                {language === 'bn' ? 'অরূপরতনের সন্ধানে ২০২৫' : 'Aruprataner Sandhane 2025'}
+              </h2>
+              <p className="text-primary/80 text-lg mb-2">
+                {language === 'bn' ? 'রবীন্দ্রগানে প্রতিমা চন্দ পুরস্কার' : 'Rabindra Gaane Pratima Chandra Puroshkar'}
+              </p>
+              <p className="text-accent font-semibold text-sm">
+                {language === 'bn' ? 'অনুগ্রহ করে নিচের সমস্ত ঘর পূরণ করুন' : 'Please fill out all the fields below'}
+              </p>
             </div>
             
             <form 
@@ -53,65 +92,83 @@ export const ApplicationForm = () => {
                 };
 
                 console.log('Application Form Payload:', JSON.stringify(payload, null, 2));
-                alert('Thank you for submitting your application. We will get back to you soon!');
+                alert(language === 'bn' ? 'আপনার আবেদন জমা দেওয়ার জন্য ধন্যবাদ। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব!' : 'Thank you for submitting your application. We will get back to you soon!');
                 formElement.reset();
               }}
             >
               <div className="flex flex-col gap-2">
-                <label htmlFor="photo" className="text-sm font-medium text-text">ছবি / Photo *</label>
+                <label htmlFor="photo" className="text-sm font-medium text-text">
+                  {language === 'bn' ? 'ছবি *' : 'Photo *'}
+                </label>
                 <input required type="file" id="photo" name="photo" accept="image/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="fullName" className="text-sm font-medium text-text">নাম / Name *</label>
-                <input required type="text" id="fullName" name="fullName" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder="Enter your full name" />
+                <label htmlFor="fullName" className="text-sm font-medium text-text">
+                  {language === 'bn' ? 'নাম *' : 'Name *'}
+                </label>
+                <input required type="text" id="fullName" name="fullName" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder={language === 'bn' ? 'আপনার সম্পূর্ণ নাম লিখুন' : 'Enter your full name'} />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="dob" className="text-sm font-medium text-text">জন্ম তারিখ / Date of Birth *</label>
+                  <label htmlFor="dob" className="text-sm font-medium text-text">
+                    {language === 'bn' ? 'জন্ম তারিখ *' : 'Date of Birth *'}
+                  </label>
                   <input required type="date" id="dob" name="dob" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary" />
                 </div>
                 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="phone" className="text-sm font-medium text-text">ফোন / Phone *</label>
-                  <input required type="tel" id="phone" name="phone" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder="Enter your phone number" />
+                  <label htmlFor="phone" className="text-sm font-medium text-text">
+                    {language === 'bn' ? 'ফোন *' : 'Phone *'}
+                  </label>
+                  <input required type="tel" id="phone" name="phone" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder={language === 'bn' ? 'আপনার ফোন নম্বর লিখুন' : 'Enter your phone number'} />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="text-sm font-medium text-text">ই-মেল / E-mail *</label>
-                <input required type="email" id="email" name="email" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder="Enter your email address" />
+                <label htmlFor="email" className="text-sm font-medium text-text">
+                  {language === 'bn' ? 'ই-মেল *' : 'E-mail *'}
+                </label>
+                <input required type="email" id="email" name="email" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder={language === 'bn' ? 'আপনার ইমেল ঠিকানা লিখুন' : 'Enter your email address'} />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="address" className="text-sm font-medium text-text">ঠিকানা / Address *</label>
-                <textarea required id="address" name="address" rows={3} className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400 resize-none" placeholder="Enter your full address"></textarea>
+                <label htmlFor="address" className="text-sm font-medium text-text">
+                  {language === 'bn' ? 'ঠিকানা *' : 'Address *'}
+                </label>
+                <textarea required id="address" name="address" rows={3} className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400 resize-none" placeholder={language === 'bn' ? 'আপনার সম্পূর্ণ ঠিকানা লিখুন' : 'Enter your full address'}></textarea>
               </div>
 
               <div className="flex flex-col gap-3 pt-2">
-                <label className="text-sm font-medium text-text">অডিশন স্থান নির্ণয় করুন / Select Audition Location *</label>
+                <label className="text-sm font-medium text-text">
+                  {language === 'bn' ? 'অডিশন স্থান নির্ণয় করুন *' : 'Select Audition Location *'}
+                </label>
                 <div className="flex flex-col sm:flex-row gap-6 mt-1">
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <div className="relative flex items-center justify-center">
                       <input required type="radio" name="auditionLocation" value="Kolkata" className="peer appearance-none w-5 h-5 border-2 border-border rounded-full checked:border-accent transition-colors" />
                       <div className="w-2.5 h-2.5 rounded-full bg-accent absolute opacity-0 peer-checked:opacity-100 transition-opacity"></div>
                     </div>
-                    <span className="text-primary group-hover:text-accent transition-colors">কলকাতা / Kolkata</span>
+                    <span className="text-primary group-hover:text-accent transition-colors">
+                      {language === 'bn' ? 'কলকাতা' : 'Kolkata'}
+                    </span>
                   </label>
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <div className="relative flex items-center justify-center">
                       <input required type="radio" name="auditionLocation" value="Santiniketan" className="peer appearance-none w-5 h-5 border-2 border-border rounded-full checked:border-accent transition-colors" />
                       <div className="w-2.5 h-2.5 rounded-full bg-accent absolute opacity-0 peer-checked:opacity-100 transition-opacity"></div>
                     </div>
-                    <span className="text-primary group-hover:text-accent transition-colors">শান্তিনিকেতন / Santiniketan</span>
+                    <span className="text-primary group-hover:text-accent transition-colors">
+                      {language === 'bn' ? 'শান্তিনিকেতন' : 'Santiniketan'}
+                    </span>
                   </label>
                 </div>
               </div>
 
               <div className="pt-8 border-t border-border mt-4">
                 <button type="submit" className="bg-accent hover:bg-accent/90 !text-white font-medium py-3.5 px-8 rounded transition-colors w-full text-lg shadow-md">
-                  জমা দিন / Submit
+                  {language === 'bn' ? 'জমা দিন' : 'Submit'}
                 </button>
               </div>
             </form>
