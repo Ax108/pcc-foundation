@@ -280,8 +280,8 @@ export const OurInspiration = () => {
             variants={fadeUpVariant}
             className="mb-16 md:mb-24 text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
-              {programs.heading.normal} <span className="text-gold italic font-medium">{programs.heading.gold}</span>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+              <span className="!text-white">{programs.heading.normal}</span> <br className="hidden md:block" /> <span className="!text-white/70 italic font-medium">{programs.heading.gold}</span>
             </h2>
             <div className="w-20 h-[1px] bg-gold mx-auto" />
           </motion.div>
