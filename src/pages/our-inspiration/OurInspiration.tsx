@@ -29,6 +29,23 @@ const InspirationImage = ({name, imageSrc, className, imageClassName = "aspect-[
   </motion.div>
 );
 
+const MentorCard = ({name, imageSrc}: {name: string; imageSrc: string}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="flex flex-col bg-white border border-secondary/40 shadow-sm hover:shadow-md transition-shadow duration-500 w-full"
+  >
+    <div className="w-full aspect-[4/5] relative bg-muted/20">
+      {imageSrc && <img src={imageSrc} alt={name} className="w-full h-full object-cover" />}
+    </div>
+    <div className="py-4 px-2 flex-grow flex items-center justify-center bg-white">
+      <span className="text-center text-[10px] md:text-xs font-bold tracking-widest uppercase text-secondary">{name}</span>
+    </div>
+  </motion.div>
+);
+
 export const OurInspiration = () => {
   useSEO({
     title: 'Our Inspiration - Pratima Chandra Foundation',
@@ -163,14 +180,16 @@ export const OurInspiration = () => {
             {/* Background Accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-[120%] bg-surface/30 -z-10 skew-y-3" />
 
-            <div className="flex items-center gap-6 mb-16 relative z-10">
-              <div className="h-[1px] flex-1 bg-gold/30" />
-              <h3 className="text-3xl font-serif font-bold text-primary italic">Her Mentors</h3>
-              <div className="h-[1px] flex-1 bg-gold/30" />
+            <div className="flex justify-center mb-12 md:mb-16 relative z-10">
+              <div className="flex items-center gap-4 md:gap-8 w-full max-w-4xl">
+                <div className="h-[1px] flex-1 bg-secondary/30" />
+                <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary italic whitespace-nowrap">Her Mentors</h3>
+                <div className="h-[1px] flex-1 bg-secondary/30" />
+              </div>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 relative z-10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 relative z-10">
               {life.gurus.map((guru, idx) => (
-                <InspirationImage key={idx} name={guru.name} imageSrc={guru.imageSrc} imageClassName="aspect-[3/4]" />
+                <MentorCard key={idx} name={guru.name} imageSrc={guru.imageSrc!} />
               ))}
             </div>
           </motion.div>
