@@ -4,14 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "bunx vite",
-    "build": "bunx tsc -b && bun x vite build",
-    "lint": "bunx eslint . --ext .js,.jsx,.ts,.tsx",
-    "format": "bunx prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss}\"",
-    "fallow": "bunx fallow",
-    "preview": "bunx vite preview",
-    "tsc": "bunx tsc --noEmit",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss}\"",
+    "fallow": "fallow",
+    "preview": "vite preview",
+    "tsc": "tsc --noEmit",
     "allow-scripts": "allow-scripts auto"
+  },
+  "engines": {
+    "node": ">=22 <25",
+    "npm": ">=10"
   },
   "license": "PROPRIETARY",
   "dependencies": {

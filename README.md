@@ -72,8 +72,8 @@ Home section order (locked): Hero → About → Partners → Gallery teaser → 
 
 ```bash
 git checkout react-app-master
-bun install
-bun run dev
+npm install
+npm run dev
 ```
 
 Dev server: [http://localhost:5173](http://localhost:5173)
@@ -84,18 +84,30 @@ Dev server: [http://localhost:5173](http://localhost:5173)
 
 | Command | Purpose |
 | ------- | ------- |
-| `bun run dev` | Start Vite dev server |
-| `bun run build` | Typecheck + production build → `dist/` |
-| `bun run preview` | Serve production build locally |
-| `bun run lint` | ESLint |
-| `bun run format` | Prettier (src) |
-| `bun run tsc` | Typecheck only |
+| `npm run dev` | Start Vite dev server |
+| `npm run build` | Typecheck + production build → `dist/` |
+| `npm run preview` | Serve production build locally |
+| `npm run lint` | ESLint |
+| `npm run format` | Prettier (src) |
+| `npm run tsc` | Typecheck only |
 
 **Quality gate** (run after UI changes):
 
 ```bash
-bun run lint && bun run build
+npm run lint && npm run build
 ```
+
+## Netlify deployment
+
+This branch is ready for Netlify using the checked-in `netlify.toml`.
+
+| Setting | Value |
+| ------- | ----- |
+| Build command | `npm run build` |
+| Publish directory | `dist` |
+| Node version | `22` |
+
+`netlify.toml` also includes the SPA fallback redirect from `/*` to `/index.html`, so direct visits to React Router routes such as `/gallery` and `/events` work after deployment.
 
 ---
 
