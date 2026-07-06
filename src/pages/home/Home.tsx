@@ -3,6 +3,7 @@ import {AboutSection} from '@home/components/AboutSection';
 import {GalleryTeaser} from '@home/components/GalleryTeaser';
 import {HeroSlider} from '@home/components/HeroSlider';
 import {PartnersStrip} from '@home/components/PartnersStrip';
+import {RecentEvents} from '@home/components/RecentEvents';
 
 const HOME_DESCRIPTION =
   'Pratima Chandra Foundation is an independent research, training and support institution for the promotion and development of performing arts and traditional Indian music.';
@@ -16,12 +17,12 @@ export const Home = () => {
   });
 
   return (
-    <article aria-label="Home">
+    <article aria-label="Home" className="animate-page">
       <HeroSlider />
       <AboutSection />
       <PartnersStrip />
       <GalleryTeaser />
-      {/* Phase 2: RecentEvents */}
+      <RecentEvents />
     </article>
   );
 };

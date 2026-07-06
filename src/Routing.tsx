@@ -20,6 +20,12 @@ const ContactUs = lazy(() =>
   import('@contact/ContactUs').then(module => ({default: module.ContactUs})),
 );
 
+const ApplicationForm = lazy(() =>
+  import('@src/pages/application-form/ApplicationForm').then(module => ({
+    default: module.ApplicationForm,
+  })),
+);
+
 const pageFallback = (
   <div className="container-site flex min-h-[40vh] items-center justify-center py-16">
     <p className="text-text">Loading…</p>
@@ -36,6 +42,7 @@ const Routing = () => (
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/events" element={<Events />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/application-form" element={<ApplicationForm />} />
         </Routes>
       </Suspense>
     </SiteLayout>
