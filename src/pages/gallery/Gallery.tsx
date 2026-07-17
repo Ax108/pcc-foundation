@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {useSEO} from '@app/hooks/useSEO';
 import {GALLERY_IMAGES} from '@gallery/constants/galleryImages';
-import {IMAGES} from '@src/constants/images';
+
 import {Lightbox} from '@app/components/Lightbox';
 import {ScrollReveal} from '@app/components/ScrollReveal';
 

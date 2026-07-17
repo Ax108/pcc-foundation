@@ -1,5 +1,5 @@
 import {useSEO} from '@app/hooks/useSEO';
-import {IMAGES} from '@src/constants/images';
+
 import {useState, useEffect} from 'react';
 import {ScrollReveal} from '@app/components/ScrollReveal';
 

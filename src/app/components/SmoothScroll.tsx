@@ -28,7 +28,7 @@ export const SmoothScroll = ({ children }: { children: ReactNode }) => {
           const element = document.querySelector(href);
           if (element) {
             e.preventDefault();
-            lenis.scrollTo(element, { offset: -50 });
+            lenis.scrollTo(element as HTMLElement, { offset: -50 });
           }
         }
       }
