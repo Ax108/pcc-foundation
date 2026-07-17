@@ -1,6 +1,7 @@
 import {useSEO} from '@app/hooks/useSEO';
 import {IMAGES} from '@src/constants/images';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {ScrollReveal} from '@app/components/ScrollReveal';
 
 export const ApplicationForm = () => {
   useSEO({
@@ -9,19 +10,95 @@ export const ApplicationForm = () => {
   });
 
   const [language, setLanguage] = useState<'bn' | 'en'>('bn');
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    // Small delay so it feels deliberate
+    const timer = setTimeout(() => setShowModal(true), 600);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <article aria-label="Application Form" className="animate-page">
-      <header className="relative w-full h-40 md:h-56 lg:h-72 overflow-hidden bg-surface">
-        <img
-          src={IMAGES.HERO_HEADER}
-          alt="Foundation application banner"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 flex items-center justify-center bg-black/60">
-          <h1 className="!text-white text-3xl md:text-5xl lg:text-6xl font-semibold drop-shadow-md text-center px-4">
-            {language === 'bn' ? 'আবেদনপত্র' : 'Application Form'}
-          </h1>
+    <>
+      {/* Download Form Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-md shadow-2xl p-8 max-w-md w-full relative animate-fadeIn">
+            <button 
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-primary transition-colors cursor-pointer"
+              aria-label="Close modal"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <h3 className="text-2xl font-bold text-primary mb-4">
+              Download Application Form
+            </h3>
+            <p className="text-gray-600 mb-8">
+              Would you like to download the application form for offline submission?
+            </p>
+            <div className="flex flex-row-reverse gap-4 justify-start">
+              <a 
+                href="/assets/documents/aruprataner-sandhane-2025-form.pdf"
+                download="aruprataner-sandhane-2025-form.pdf"
+                onClick={() => setShowModal(false)}
+                className="bg-accent hover:bg-accent/90 !text-white px-6 py-2.5 rounded font-medium transition-colors shadow-md"
+              >
+                Download Form
+              </a>
+              <button 
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2.5 rounded border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition-colors cursor-pointer"
+              >
+                No, thanks
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <article aria-label="Application Form" className="animate-page relative">
+      <header className="relative w-full h-[400px] md:h-[500px] overflow-hidden bg-surface flex items-center pt-16 md:pt-24 border-b border-gold/10">
+        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-gold/10 rounded-full blur-3xl translate-y-1/4 -translate-x-1/4 pointer-events-none" />
+        
+        <div className="container-site relative z-10 h-full flex flex-col md:flex-row items-center justify-between gap-8 py-8 md:py-12">
+          
+          <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left order-2 md:order-1">
+            <ScrollReveal animation="fade-in" delay={0.1}>
+              <div className="inline-flex items-center justify-center md:justify-start gap-3 mb-4">
+                <span className="w-8 md:w-12 h-[2px] bg-gold"></span>
+                <p className="text-primary tracking-[0.2em] uppercase text-xs md:text-sm font-bold">Join the Competition</p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-up" delay={0.2}>
+              <h1 className="text-primary text-5xl md:text-6xl lg:text-7xl font-serif font-bold drop-shadow-sm tracking-wide leading-[1.1] mb-6">
+                {language === 'bn' ? 'আবেদনপত্র' : 'Application'} <br className="hidden md:block" />
+                <span className="text-gold italic font-medium">{language === 'bn' ? '' : 'Form'}</span>
+              </h1>
+            </ScrollReveal>
+          </div>
+
+          <div className="hidden md:flex w-full md:w-1/2 h-full items-center justify-center md:justify-end order-1 md:order-2">
+            <ScrollReveal animation="scale-up" delay={0.2}>
+              <div className="relative w-48 sm:w-56 md:w-80 lg:w-[450px] aspect-[16/9]">
+                <div className="absolute inset-0 bg-gold/30 -translate-x-3 -translate-y-3 md:-translate-x-5 md:-translate-y-5 rounded-[3rem] -z-10" />
+                <img
+                  src="/assets/gallery/ARS-2018-Judges-2-1-scaled.jpg"
+                  alt="Foundation Application"
+                  className="w-full h-full object-cover object-center rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-4 md:border-8 border-white"
+                />
+                <div className="absolute -bottom-4 -right-4 md:-bottom-8 md:-right-8 bg-white/95 backdrop-blur-sm p-3 md:p-5 shadow-xl border-r-4 border-primary rounded-l-sm z-20">
+                  <p className="text-primary font-serif font-bold text-sm md:text-lg leading-tight text-right">
+                    Register <br/> Now
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </header>
 
@@ -30,44 +107,50 @@ export const ApplicationForm = () => {
           <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-sm overflow-hidden p-8 md:p-12 mb-12 relative">
             
             {/* Language Toggle Switch */}
-            <div className="flex justify-center mb-8">
-              <div className="bg-gray-100 rounded-full p-1.5 flex relative w-56 shadow-inner border border-gray-200">
-                <div
-                  className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-full shadow transition-transform duration-300 ease-in-out ${
-                    language === 'en' ? 'translate-x-full' : 'translate-x-0'
-                  }`}
-                />
-                <button
-                  type="button"
-                  onClick={() => setLanguage('bn')}
-                  className={`flex-1 relative z-10 py-2 text-sm font-bold transition-colors duration-300 ${
-                    language === 'bn' ? 'text-accent' : 'text-gray-500 hover:text-gray-700'
-                  }`}
-                >
-                  বাংলা
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setLanguage('en')}
-                  className={`flex-1 relative z-10 py-2 text-sm font-bold transition-colors duration-300 ${
-                    language === 'en' ? 'text-accent' : 'text-gray-500 hover:text-gray-700'
-                  }`}
-                >
-                  English
-                </button>
+            <ScrollReveal animation="fade-in" delay={0.1}>
+              <div className="flex justify-center mb-8">
+                <div className="bg-gray-100 rounded-full p-1.5 flex relative w-56 shadow-inner border border-gray-200">
+                  <div
+                    className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-full shadow transition-transform duration-300 ease-in-out ${
+                      language === 'en' ? 'translate-x-full' : 'translate-x-0'
+                    }`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setLanguage('bn')}
+                    className={`flex-1 relative z-10 py-2 text-sm font-bold transition-colors duration-300 ${
+                      language === 'bn' ? 'text-accent' : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    বাংলা
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLanguage('en')}
+                    className={`flex-1 relative z-10 py-2 text-sm font-bold transition-colors duration-300 ${
+                      language === 'en' ? 'text-accent' : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    English
+                  </button>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-primary mb-4">
-                {language === 'bn' ? 'অরূপরতনের সন্ধানে ২০২৫' : 'Aruprataner Sandhane 2025'}
-              </h2>
-              <p className="text-primary/80 text-lg mb-2">
-                {language === 'bn' ? 'রবীন্দ্রগানে প্রতিমা চন্দ পুরস্কার' : 'Rabindra Gaane Pratima Chandra Puroshkar'}
-              </p>
-              <p className="text-accent font-semibold text-sm">
-                {language === 'bn' ? 'অনুগ্রহ করে নিচের সমস্ত ঘর পূরণ করুন' : 'Please fill out all the fields below'}
-              </p>
+              <ScrollReveal animation="fade-up" delay={0.2}>
+                <h2 className="text-3xl font-bold text-primary mb-4">
+                  {language === 'bn' ? 'অরূপরতনের সন্ধানে ২০২৫' : 'Aruprataner Sandhane 2025'}
+                </h2>
+              </ScrollReveal>
+              <ScrollReveal animation="fade-up" delay={0.3}>
+                <p className="text-primary/80 text-lg mb-2">
+                  {language === 'bn' ? 'রবীন্দ্রগানে প্রতিমা চন্দ পুরস্কার' : 'Rabindra Gaane Pratima Chandra Puroshkar'}
+                </p>
+                <p className="text-accent font-semibold text-sm">
+                  {language === 'bn' ? 'অনুগ্রহ করে নিচের সমস্ত ঘর পূরণ করুন' : 'Please fill out all the fields below'}
+                </p>
+              </ScrollReveal>
             </div>
             
             <form 
@@ -319,5 +402,6 @@ export const ApplicationForm = () => {
         </div>
       </section>
     </article>
+    </>
   );
 };

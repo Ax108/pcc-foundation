@@ -1,12 +1,11 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {motion, type Variants} from 'framer-motion';
 import {Lightbox} from '@app/components/Lightbox';
 import {
-  GALLERY_TEASER_HEADING,
   GALLERY_TEASER_VIEW_MORE,
   HOME_GALLERY_TEASER,
 } from '@home/constants/homeGalleryTeaser';
+import {ScrollReveal} from '@app/components/ScrollReveal';
 
 export const GalleryTeaser = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -17,61 +16,63 @@ export const GalleryTeaser = () => {
     setLightboxOpen(true);
   };
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
-
   return (
     <section
-      className="gallery-teaser bg-surface py-20 md:py-32"
+      className="bg-white py-20 md:py-32"
       aria-labelledby="home-gallery-heading">
       <div className="container-site">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="mb-16 md:mb-24 text-center">
-          <h2
-            id="home-gallery-heading"
-            className="text-primary text-5xl leading-[1.1] font-serif font-bold md:text-6xl lg:text-7xl">
-            <span className="block mb-2">{GALLERY_TEASER_HEADING.line1}</span>
-            <span className="text-gold italic font-medium">{GALLERY_TEASER_HEADING.line2}</span>
-          </h2>
-          <span
-            className="bg-gold mx-auto mt-6 block h-[2px] w-20"
-            aria-hidden="true"
-          />
-        </motion.div>
+        <div className="mb-16 md:mb-24 text-center">
+          <ScrollReveal animation="fade-up" delay={0.1}>
+            <p className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-4">
+              A Glimpse of the Foundation
+            </p>
+          </ScrollReveal>
+          <ScrollReveal animation="fade-up" delay={0.2}>
+            <h2
+              id="home-gallery-heading"
+              className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary">
+              Perfect for Every Occasion
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal animation="fade-up" delay={0.3}>
+            <p className="mt-4 text-text/70 max-w-2xl mx-auto">
+              Witness the beauty of our events and the joyous moments shared by our community.
+            </p>
+          </ScrollReveal>
+        </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <ul
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 grid-flow-dense auto-rows-[250px]"
             aria-label="Foundation event photo highlights">
-            {HOME_GALLERY_TEASER.map((item, idx) => (
-              <motion.li 
-                variants={itemVariants}
+            {HOME_GALLERY_TEASER.map((item, idx) => {
+              const getGridSpan = (index: number) => {
+                switch (index % 9) {
+                  case 0: return 'md:col-span-2 md:row-span-2';
+                  case 1: return 'md:col-span-1 md:row-span-1';
+                  case 2: return 'md:col-span-1 md:row-span-2';
+                  case 3: return 'md:col-span-1 md:row-span-1';
+                  case 4: return 'md:col-span-2 md:row-span-1';
+                  case 5: return 'md:col-span-1 md:row-span-1';
+                  case 6: return 'md:col-span-1 md:row-span-1';
+                  case 7: return 'md:col-span-2 md:row-span-2';
+                  case 8: return 'md:col-span-2 md:row-span-1';
+                  default: return 'md:col-span-1 md:row-span-1';
+                }
+              };
+
+              // Map stagger delay to rows roughly by index
+              const staggerDelay = (idx % 9) * 0.05;
+
+              return (
+              <li 
                 key={item.id} 
-                className={`group ${idx === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}>
-                <button
-                  onClick={() => openLightbox(idx)}
-                  className="gallery-teaser-link relative block w-full h-full overflow-hidden bg-surface shadow-[0_10px_40px_rgba(0,0,0,0.05)] cursor-pointer"
-                  aria-label={`${item.alt} — view image`}>
-                  <div className="w-full h-full aspect-[4/3] md:aspect-auto md:min-h-[250px]">
+                className={`group relative ${getGridSpan(idx)} h-full w-full`}>
+                <ScrollReveal animation="fade-in" delay={staggerDelay} className="h-full w-full">
+                  <button
+                    onClick={() => openLightbox(idx)}
+                    className="relative block w-full h-full overflow-hidden bg-black cursor-pointer rounded-sm"
+                    aria-label={`${item.alt} — view image`}>
                     <img
                       src={item.imageSrc}
                       alt={item.alt}
@@ -79,34 +80,32 @@ export const GalleryTeaser = () => {
                       height={item.height}
                       loading="lazy"
                       decoding="async"
-                      className="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-80 group-hover:opacity-100"
                     />
-                  </div>
-                  <span
-                    className="bg-primary/0 group-hover:bg-primary/20 pointer-events-none absolute inset-0 transition-colors duration-500"
-                    aria-hidden="true"
-                  />
-                  {/* Subtle Gold Frame on Hover */}
-                  <div className="absolute inset-4 border border-gold/0 group-hover:border-gold/50 transition-colors duration-500 pointer-events-none" />
-                </button>
-              </motion.li>
-            ))}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
+                    
+                    <div className="absolute bottom-6 left-6 right-6 text-left">
+                      <h3 className="text-white text-lg font-serif font-semibold tracking-wide line-clamp-2">
+                        {item.alt}
+                      </h3>
+                    </div>
+                  </button>
+                </ScrollReveal>
+              </li>
+              );
+            })}
           </ul>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="mt-16 flex justify-center md:mt-24">
-          <Link
-            to={GALLERY_TEASER_VIEW_MORE.path}
-            className="site-btn site-btn-primary inline-flex min-h-12 items-center justify-center gap-3 px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] md:text-sm">
-            {GALLERY_TEASER_VIEW_MORE.label}
-            <span aria-hidden="true" className="text-lg leading-none transition-transform group-hover:translate-x-1">→</span>
-          </Link>
-        </motion.div>
+        <ScrollReveal animation="fade-up" delay={0.2}>
+          <div className="mt-16 flex justify-center">
+            <Link
+              to={GALLERY_TEASER_VIEW_MORE.path}
+              className="inline-flex items-center px-10 py-4 bg-primary text-white font-medium hover:bg-secondary transition-colors duration-300 rounded-sm uppercase tracking-wider text-sm shadow-md">
+              {GALLERY_TEASER_VIEW_MORE.label}
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
 
       <Lightbox

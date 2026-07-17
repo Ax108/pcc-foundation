@@ -18,10 +18,10 @@ export const TopNavBar = () => {
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-border/50 bg-surface shadow-sm transition-all duration-300"
+      className="sticky top-0 z-50 border-b border-border/50 bg-white/80 backdrop-blur-md shadow-sm transition-all duration-300"
       style={{'--topnav-height': '4.5rem'} as CSSProperties}>
       <SkipToContentLink />
-      <div className="container-site flex min-h-[4.5rem] items-center justify-between gap-4">
+      <div className="w-full px-6 md:px-12 lg:px-16 flex min-h-[4.5rem] items-center justify-between gap-4">
         <LogoSection />
         <NavLinks />
         <MobileMenuToggle isOpen={isOpen} onToggle={toggle} />

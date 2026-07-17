@@ -13,7 +13,7 @@ export const LogoSection = () => (
       height={IMAGE_DIMENSIONS.LOGO_HEADER.height}
       fetchPriority="high"
       decoding="async"
-      className="h-auto w-full max-w-[240px] md:max-w-[300px] lg:max-w-[320px]"
+      className="h-auto w-full max-w-[160px] md:max-w-[200px] lg:max-w-[220px]"
     />
   </Link>
 );
