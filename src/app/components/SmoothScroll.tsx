@@ -1,10 +1,9 @@
 import { useEffect, type ReactNode } from 'react';
-import Lenis from 'lenis';
+// import Lenis from 'lenis';
 
 export const SmoothScroll = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
-    return; // Disabled for now
-    
+    /* Disabled for now
     // Standard lenis setup - reduced intensity
     const lenis = new Lenis({
       lerp: 0.1, // standard smoothing, less floaty
@@ -42,6 +41,7 @@ export const SmoothScroll = ({ children }: { children: ReactNode }) => {
       document.documentElement.removeEventListener('click', handleAnchorClick);
       lenis.destroy();
     };
+    */
   }, []);
 
   return <>{children}</>;
