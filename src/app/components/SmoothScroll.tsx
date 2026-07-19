@@ -3,6 +3,8 @@ import Lenis from 'lenis';
 
 export const SmoothScroll = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
+    return; // Disabled for now
+    
     // Standard lenis setup - reduced intensity
     const lenis = new Lenis({
       lerp: 0.1, // standard smoothing, less floaty
