@@ -161,6 +161,7 @@ export const OurInspiration = () => {
                 <ScrollReveal animation="fade-up" delay={0.1}>
                   <h3 className="text-2xl font-serif font-bold text-primary mb-4 relative z-10">The Early Years</h3>
                   <p className="text-text/70 leading-relaxed font-light relative z-10"><strong className="text-primary font-bold">{life.section1.paragraphs[0].bold}</strong>{life.section1.paragraphs[0].text}</p>
+                  <p className="text-text/70 leading-relaxed font-light mt-4 relative z-10"><strong className="text-primary font-bold">{life.section1.paragraphs[1].bold}</strong>{life.section1.paragraphs[1].text}</p>
                   <p className="text-text/70 leading-relaxed font-light mt-4 relative z-10"><strong className="text-primary font-bold">{life.section1.paragraphs[2].bold}</strong>{life.section1.paragraphs[2].text}</p>
                 </ScrollReveal>
               </div>
@@ -202,7 +203,8 @@ export const OurInspiration = () => {
                 <div className="absolute -right-4 -top-8 text-[6rem] font-serif font-bold text-surface -z-10">03</div>
                 <ScrollReveal animation="fade-up" delay={0.1}>
                   <h3 className="text-2xl font-serif font-bold text-primary mb-4 relative z-10">A Lasting Legacy</h3>
-                  <p className="text-text/70 leading-relaxed font-light relative z-10"><strong className="text-primary font-bold">{life.section3.paragraphs[1].bold}</strong>{life.section3.paragraphs[1].text}</p>
+                  <p className="text-text/70 leading-relaxed font-light relative z-10"><strong className="text-primary font-bold">{life.section3.paragraphs[0].bold}</strong>{life.section3.paragraphs[0].text}</p>
+                  <p className="text-text/70 leading-relaxed font-light mt-4 relative z-10"><strong className="text-primary font-bold">{life.section3.paragraphs[1].bold}</strong>{life.section3.paragraphs[1].text}</p>
                 </ScrollReveal>
               </div>
               <div className="w-full md:w-[45%] md:pl-10">

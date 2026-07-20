@@ -37,7 +37,7 @@ export const ContactUs = () => {
               <div className="relative w-48 sm:w-56 md:w-72 lg:w-96 aspect-square">
                 <div className="absolute inset-0 bg-primary/20 translate-x-4 translate-y-4 md:translate-x-6 md:translate-y-6 rounded-tl-[6rem] rounded-br-[6rem] -z-10" />
                 <img
-                  src="/assets/gallery/DSC_2981-scaled.jpg"
+                  src="/assets/gallery/ARS-2017-2nd-Anurag-Datta-3-scaled.jpg"
                   alt="Foundation Contact"
                   className="w-full h-full object-cover object-center rounded-tl-[6rem] rounded-br-[6rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-4 md:border-8 border-white"
                 />

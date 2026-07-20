@@ -2,6 +2,7 @@ import {useSEO} from '@app/hooks/useSEO';
 
 import {useState, useEffect} from 'react';
 import {ScrollReveal} from '@app/components/ScrollReveal';
+import {IMAGES, IMAGE_DIMENSIONS} from '@src/constants/images';
 
 export const ApplicationForm = () => {
   useSEO({
@@ -11,6 +12,7 @@ export const ApplicationForm = () => {
 
   const [language, setLanguage] = useState<'bn' | 'en'>('bn');
   const [showModal, setShowModal] = useState(false);
+  const [formStage, setFormStage] = useState<1 | 2>(1);
 
   useEffect(() => {
     // Small delay so it feels deliberate
@@ -23,7 +25,7 @@ export const ApplicationForm = () => {
       {/* Download Form Modal */}
       {showModal && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-md shadow-2xl p-8 max-w-md w-full relative animate-fadeIn">
+          <div className="bg-white rounded-md shadow-2xl p-6 md:p-8 max-w-lg w-full relative animate-fadeIn flex flex-col items-center text-center">
             <button 
               onClick={() => setShowModal(false)}
               className="absolute top-4 right-4 text-gray-500 hover:text-primary transition-colors cursor-pointer"
@@ -34,24 +36,37 @@ export const ApplicationForm = () => {
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
             </button>
-            <h3 className="text-2xl font-bold text-primary mb-4">
-              Download Application Form
+
+            <div className="overflow-hidden rounded-xl mb-6 w-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-black/5">
+              <img
+                src={IMAGES.HOME_APPLICATION_POSTER}
+                alt="Download Application Form"
+                width={IMAGE_DIMENSIONS.HOME_APPLICATION_POSTER.width}
+                height={IMAGE_DIMENSIONS.HOME_APPLICATION_POSTER.height}
+                loading="lazy"
+                decoding="async"
+                className="h-auto w-full object-cover"
+              />
+            </div>
+            
+            <h3 className="text-2xl font-serif font-bold text-primary mb-2">
+              Join the Foundation
             </h3>
-            <p className="text-gray-600 mb-8">
+            <p className="text-gray-600 mb-6">
               Would you like to download the application form for offline submission?
             </p>
-            <div className="flex flex-row-reverse gap-4 justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
               <a 
                 href="/assets/documents/aruprataner-sandhane-2025-form.pdf"
                 download="aruprataner-sandhane-2025-form.pdf"
                 onClick={() => setShowModal(false)}
-                className="bg-accent hover:bg-accent/90 !text-white px-6 py-2.5 rounded font-medium transition-colors shadow-md"
+                className="bg-accent hover:bg-accent/90 !text-white px-8 py-3.5 rounded-lg font-medium transition-colors shadow-md w-full sm:w-auto text-center"
               >
                 Download Form
               </a>
               <button 
                 onClick={() => setShowModal(false)}
-                className="px-4 py-2.5 rounded border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition-colors cursor-pointer"
+                className="px-8 py-3.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition-colors cursor-pointer w-full sm:w-auto"
               >
                 No, thanks
               </button>
@@ -154,37 +169,47 @@ export const ApplicationForm = () => {
             </div>
             
             <form 
-              className="flex flex-col gap-6"
+              className="flex flex-col gap-6 relative"
               onSubmit={(e) => {
                 e.preventDefault();
+                
+                if (formStage === 1) {
+                  setFormStage(2);
+                  return;
+                }
                 
                 const formElement = e.target as HTMLFormElement;
                 const formData = new FormData(formElement);
                 
-                const photoFile = formData.get('photo');
-                const photoName = photoFile instanceof File ? photoFile.name : '';
+                const idProofFile = formData.get('idProof');
+                const passportPhotoFile = formData.get('passportPhoto');
+                const songFile = formData.get('songFile');
+                const idProofName = idProofFile instanceof File ? idProofFile.name : '';
+                const passportPhotoName = passportPhotoFile instanceof File ? passportPhotoFile.name : '';
+                const songFileName = songFile instanceof File ? songFile.name : '';
                 
                 const payload = {
-                  photo: photoName,
                   fullName: formData.get('fullName'),
                   dob: formData.get('dob'),
                   phone: formData.get('phone'),
                   email: formData.get('email'),
                   address: formData.get('address'),
+                  pincode: formData.get('pincode'),
                   auditionLocation: formData.get('auditionLocation'),
+                  idProof: idProofName,
+                  passportPhoto: passportPhotoName,
+                  songFile: songFileName,
                 };
 
                 console.log('Application Form Payload:', JSON.stringify(payload, null, 2));
                 alert(language === 'bn' ? 'আপনার আবেদন জমা দেওয়ার জন্য ধন্যবাদ। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব!' : 'Thank you for submitting your application. We will get back to you soon!');
                 formElement.reset();
+                setFormStage(1);
               }}
             >
-              <div className="flex flex-col gap-2">
-                <label htmlFor="photo" className="text-sm font-medium text-text">
-                  {language === 'bn' ? 'ছবি *' : 'Photo *'}
-                </label>
-                <input required type="file" id="photo" name="photo" accept="image/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
-              </div>
+              {/* Stage 1 */}
+              <div className={formStage === 1 ? 'flex flex-col gap-6 animate-fadeIn' : 'hidden'}>
+
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="fullName" className="text-sm font-medium text-text">
@@ -223,6 +248,13 @@ export const ApplicationForm = () => {
                 <textarea required id="address" name="address" rows={3} className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400 resize-none" placeholder={language === 'bn' ? 'আপনার সম্পূর্ণ ঠিকানা লিখুন' : 'Enter your full address'}></textarea>
               </div>
 
+              <div className="flex flex-col gap-2">
+                <label htmlFor="pincode" className="text-sm font-medium text-text">
+                  {language === 'bn' ? 'পিনকোড *' : 'Pincode *'}
+                </label>
+                <input required type="text" id="pincode" name="pincode" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder={language === 'bn' ? 'আপনার পিনকোড লিখুন' : 'Enter your pincode'} />
+              </div>
+
               <div className="flex flex-col gap-3 pt-2">
                 <label className="text-sm font-medium text-text">
                   {language === 'bn' ? 'অডিশন স্থান নির্ণয় করুন *' : 'Select Audition Location *'}
@@ -251,9 +283,43 @@ export const ApplicationForm = () => {
 
               <div className="pt-8 border-t border-border mt-4">
                 <button type="submit" className="bg-accent hover:bg-accent/90 !text-white font-medium py-3.5 px-8 rounded transition-colors w-full text-lg shadow-md">
+                  {language === 'bn' ? 'পরবর্তী' : 'Next'}
+                </button>
+              </div>
+            </div>
+
+            {/* Stage 2 */}
+            <div className={formStage === 2 ? 'flex flex-col gap-6 animate-fadeIn' : 'hidden'}>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="idProof" className="text-sm font-medium text-text">
+                  {language === 'bn' ? 'পরিচয় পত্র *' : 'ID Proof *'}
+                </label>
+                <input required={formStage === 2} type="file" id="idProof" name="idProof" accept="image/*,.pdf" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="passportPhoto" className="text-sm font-medium text-text">
+                  {language === 'bn' ? 'পাসপোর্ট সাইজ ছবি *' : 'Passport Size Photo *'}
+                </label>
+                <input required={formStage === 2} type="file" id="passportPhoto" name="passportPhoto" accept="image/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="songFile" className="text-sm font-medium text-text">
+                  {language === 'bn' ? 'গানের রেকর্ডিং আপলোড করুন (MP3) *' : 'Upload Song Recording (MP3) *'}
+                </label>
+                <input required={formStage === 2} type="file" id="songFile" name="songFile" accept="audio/mpeg,.mp3,audio/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
+              </div>
+
+              <div className="pt-8 border-t border-border mt-4 flex gap-4">
+                <button type="button" onClick={() => setFormStage(1)} className="px-8 py-3.5 rounded border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition-colors cursor-pointer text-lg">
+                  {language === 'bn' ? 'পিছনে' : 'Back'}
+                </button>
+                <button type="submit" className="flex-1 bg-accent hover:bg-accent/90 !text-white font-medium py-3.5 px-8 rounded transition-colors text-lg shadow-md">
                   {language === 'bn' ? 'জমা দিন' : 'Submit'}
                 </button>
               </div>
+            </div>
             </form>
           </div>
 
@@ -384,16 +450,16 @@ export const ApplicationForm = () => {
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
+                    <li>The winners – 1st, 2nd and 3rd will be selected by the Finale Judges based on their knowledge and experience at the end of the Grand Finale.</li>
+                    <li>The Winner will be awarded a prize money of Rs.40,000/- (Rupees Forty Thousand only), the First Runner-up shall be awarded a prize money of Rs.20,000/- (Rupees Twenty Thousand only) and the Second Runner-up shall be awarded Rs.10,000/- (Rupees Ten Thousand Only). All such prize money shall be awarded by Cheque only.</li>
+                    <li>The Winner, First Runner-up and Second Runner-up shall also be awarded Mementoes and Certificates.</li>
+                    <li>The Winner, First Runner-up and Second Runner-up shall also be given an opportunity for recording of 1 (One) Rabindra Sangeet song, sung by them.</li>
                     <li>The Grand Finale shall be held at Kolkata in the month of December 2025. The date, time and venue of the Grand Finale shall be communicated to the Finalists.</li>
                     <li>The Grand Finale shall consist of 2 (Two) rounds.</li>
                     <li>The First Round of the Grand Finale, shall require the Finalist to sing 1 (One) Rabindra Sangeet song from any Genre (Parjaay) of the Finalist's Choice.</li>
                     <li>The Second Round of the Grand Finale shall require the finalist to sing 1 (One) Rabindra Sangeet song from any Genre (Parjaay) of the Finale Judges' Choice.</li>
                     <li>In addition to the above, the Finale Judges reserves the right to ask questions and/or test the Finalist's knowledge and understanding of Rabindra Sangeet further, at their sole discretion and at any stage of the Grand Finale.</li>
                     <li>A team of Musicians, appointed by the Organizers, shall accompany the Finalist in the Grand Finale. No Musicians and/or musical instruments apart from those provided shall be permitted.</li>
-                    <li>The winners – 1st, 2nd and 3rd will be selected by the Finale Judges based on their knowledge and experience at the end of the Grand Finale.</li>
-                    <li>The Winner will be awarded a prize money of Rs.40,000/- (Rupees Forty Thousand only), the First Runner-up shall be awarded a prize money of Rs.20,000/- (Rupees Twenty Thousand only) and the Second Runner-up shall be awarded Rs.10,000/- (Rupees Ten Thousand Only). All such prize money shall be awarded by Cheque only.</li>
-                    <li>The Winner, First Runner-up and Second Runner-up shall also be awarded Mementoes and Certificates.</li>
-                    <li>The Winner, First Runner-up and Second Runner-up shall also be given an opportunity for recording of 1 (One) Rabindra Sangeet song, sung by them.</li>
                   </ol>
                 </div>
               </details>
