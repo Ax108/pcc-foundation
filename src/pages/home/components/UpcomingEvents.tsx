@@ -15,10 +15,10 @@ export const UpcomingEvents = () => {
             <div className="bg-primary text-white p-10 flex flex-col justify-center items-center md:w-1/3 min-w-[250px] z-10">
               <ScrollReveal animation="fade-up" delay={0.2}>
                 <div className="flex flex-col items-center">
-                  <span className="text-sm tracking-[0.2em] uppercase font-semibold text-gold mb-2">Upcoming Event</span>
+                  <span className="text-sm tracking-[0.2em] uppercase font-semibold text-white/80 mb-2">Upcoming Event</span>
                   <span className="text-6xl font-serif font-bold leading-none mb-1">24</span>
                   <span className="text-2xl font-light tracking-wide mb-4">August 2026</span>
-                  <span className="w-12 h-[1px] bg-gold/50" />
+                  <span className="w-12 h-[1px] bg-white/30" />
                   <span className="mt-4 text-sm font-medium opacity-90">Kolkata, India</span>
                 </div>
               </ScrollReveal>
