@@ -10,9 +10,8 @@ export const ApplicationForm = () => {
     description: 'Submit your application form for the Pratima Chandra Foundation competition.',
   });
 
-  const [language, setLanguage] = useState<'bn' | 'en'>('bn');
   const [showModal, setShowModal] = useState(false);
-  const [formStage, setFormStage] = useState<1 | 2>(1);
+  const [openAccordion, setOpenAccordion] = useState<number>(0);
 
   useEffect(() => {
     // Small delay so it feels deliberate
@@ -91,8 +90,7 @@ export const ApplicationForm = () => {
             </ScrollReveal>
             <ScrollReveal animation="fade-up" delay={0.2}>
               <h1 className="text-primary text-5xl md:text-6xl lg:text-7xl font-serif font-bold drop-shadow-sm tracking-wide leading-[1.1] mb-6">
-                {language === 'bn' ? 'আবেদনপত্র' : 'Application'} <br className="hidden md:block" />
-                <span className="text-gold italic font-medium">{language === 'bn' ? '' : 'Form'}</span>
+                আবেদনপত্র
               </h1>
             </ScrollReveal>
           </div>
@@ -121,49 +119,18 @@ export const ApplicationForm = () => {
         <div className="container-site">
           <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-sm overflow-hidden p-8 md:p-12 mb-12 relative">
             
-            {/* Language Toggle Switch */}
-            <ScrollReveal animation="fade-in" delay={0.1}>
-              <div className="flex justify-center mb-8">
-                <div className="bg-gray-100 rounded-full p-1.5 flex relative w-56 shadow-inner border border-gray-200">
-                  <div
-                    className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-full shadow transition-transform duration-300 ease-in-out ${
-                      language === 'en' ? 'translate-x-full' : 'translate-x-0'
-                    }`}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setLanguage('bn')}
-                    className={`flex-1 relative z-10 py-2 text-sm font-bold transition-colors duration-300 ${
-                      language === 'bn' ? 'text-accent' : 'text-gray-500 hover:text-gray-700'
-                    }`}
-                  >
-                    বাংলা
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setLanguage('en')}
-                    className={`flex-1 relative z-10 py-2 text-sm font-bold transition-colors duration-300 ${
-                      language === 'en' ? 'text-accent' : 'text-gray-500 hover:text-gray-700'
-                    }`}
-                  >
-                    English
-                  </button>
-                </div>
-              </div>
-            </ScrollReveal>
-
             <div className="text-center mb-10">
               <ScrollReveal animation="fade-up" delay={0.2}>
                 <h2 className="text-3xl font-bold text-primary mb-4">
-                  {language === 'bn' ? 'অরূপরতনের সন্ধানে ২০২৫' : 'Aruprataner Sandhane 2025'}
+                  অরূপরতনের সন্ধানে ২০২৫
                 </h2>
               </ScrollReveal>
               <ScrollReveal animation="fade-up" delay={0.3}>
                 <p className="text-primary/80 text-lg mb-2">
-                  {language === 'bn' ? 'রবীন্দ্রগানে প্রতিমা চন্দ পুরস্কার' : 'Rabindra Gaane Pratima Chandra Puroshkar'}
+                  রবীন্দ্রগানে প্রতিমা চন্দ পুরস্কার
                 </p>
                 <p className="text-accent font-semibold text-sm">
-                  {language === 'bn' ? 'অনুগ্রহ করে নিচের সমস্ত ঘর পূরণ করুন' : 'Please fill out all the fields below'}
+                  Please fill out all the fields below
                 </p>
               </ScrollReveal>
             </div>
@@ -172,11 +139,6 @@ export const ApplicationForm = () => {
               className="flex flex-col gap-6 relative"
               onSubmit={(e) => {
                 e.preventDefault();
-                
-                if (formStage === 1) {
-                  setFormStage(2);
-                  return;
-                }
                 
                 const formElement = e.target as HTMLFormElement;
                 const formData = new FormData(formElement);
@@ -202,62 +164,60 @@ export const ApplicationForm = () => {
                 };
 
                 console.log('Application Form Payload:', JSON.stringify(payload, null, 2));
-                alert(language === 'bn' ? 'আপনার আবেদন জমা দেওয়ার জন্য ধন্যবাদ। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব!' : 'Thank you for submitting your application. We will get back to you soon!');
+                alert('Thank you for submitting your application. We will get back to you soon!');
                 formElement.reset();
-                setFormStage(1);
               }}
             >
-              {/* Stage 1 */}
-              <div className={formStage === 1 ? 'flex flex-col gap-6 animate-fadeIn' : 'hidden'}>
+              <div className="flex flex-col gap-6 animate-fadeIn">
 
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="fullName" className="text-sm font-medium text-text">
-                  {language === 'bn' ? 'নাম *' : 'Name *'}
+                  Name *
                 </label>
-                <input required type="text" id="fullName" name="fullName" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder={language === 'bn' ? 'আপনার সম্পূর্ণ নাম লিখুন' : 'Enter your full name'} />
+                <input required type="text" id="fullName" name="fullName" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder="Enter your full name" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="dob" className="text-sm font-medium text-text">
-                    {language === 'bn' ? 'জন্ম তারিখ *' : 'Date of Birth *'}
+                    Date of Birth *
                   </label>
                   <input required type="date" id="dob" name="dob" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary" />
                 </div>
                 
                 <div className="flex flex-col gap-2">
                   <label htmlFor="phone" className="text-sm font-medium text-text">
-                    {language === 'bn' ? 'ফোন *' : 'Phone *'}
+                    Phone *
                   </label>
-                  <input required type="tel" id="phone" name="phone" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder={language === 'bn' ? 'আপনার ফোন নম্বর লিখুন' : 'Enter your phone number'} />
+                  <input required type="tel" id="phone" name="phone" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder="Enter your phone number" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="email" className="text-sm font-medium text-text">
-                  {language === 'bn' ? 'ই-মেল *' : 'E-mail *'}
+                  E-mail *
                 </label>
-                <input required type="email" id="email" name="email" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder={language === 'bn' ? 'আপনার ইমেল ঠিকানা লিখুন' : 'Enter your email address'} />
+                <input required type="email" id="email" name="email" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder="Enter your email address" />
               </div>
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="address" className="text-sm font-medium text-text">
-                  {language === 'bn' ? 'ঠিকানা *' : 'Address *'}
+                  Address *
                 </label>
-                <textarea required id="address" name="address" rows={3} className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400 resize-none" placeholder={language === 'bn' ? 'আপনার সম্পূর্ণ ঠিকানা লিখুন' : 'Enter your full address'}></textarea>
+                <textarea required id="address" name="address" rows={3} className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400 resize-none" placeholder="Enter your full address"></textarea>
               </div>
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="pincode" className="text-sm font-medium text-text">
-                  {language === 'bn' ? 'পিনকোড *' : 'Pincode *'}
+                  Pincode *
                 </label>
-                <input required type="text" id="pincode" name="pincode" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder={language === 'bn' ? 'আপনার পিনকোড লিখুন' : 'Enter your pincode'} />
+                <input required type="text" id="pincode" name="pincode" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder="Enter your pincode" />
               </div>
 
               <div className="flex flex-col gap-3 pt-2">
                 <label className="text-sm font-medium text-text">
-                  {language === 'bn' ? 'অডিশন স্থান নির্ণয় করুন *' : 'Select Audition Location *'}
+                  Select Audition Location *
                 </label>
                 <div className="flex flex-col sm:flex-row gap-6 mt-1">
                   <label className="flex items-center gap-3 cursor-pointer group">
@@ -266,7 +226,7 @@ export const ApplicationForm = () => {
                       <div className="w-2.5 h-2.5 rounded-full bg-accent absolute opacity-0 peer-checked:opacity-100 transition-opacity"></div>
                     </div>
                     <span className="text-primary group-hover:text-accent transition-colors">
-                      {language === 'bn' ? 'কলকাতা' : 'Kolkata'}
+                      Kolkata
                     </span>
                   </label>
                   <label className="flex items-center gap-3 cursor-pointer group">
@@ -275,49 +235,57 @@ export const ApplicationForm = () => {
                       <div className="w-2.5 h-2.5 rounded-full bg-accent absolute opacity-0 peer-checked:opacity-100 transition-opacity"></div>
                     </div>
                     <span className="text-primary group-hover:text-accent transition-colors">
-                      {language === 'bn' ? 'শান্তিনিকেতন' : 'Santiniketan'}
+                      Santiniketan
                     </span>
                   </label>
                 </div>
               </div>
 
-              <div className="pt-8 border-t border-border mt-4">
-                <button type="submit" className="bg-accent hover:bg-accent/90 !text-white font-medium py-3.5 px-8 rounded transition-colors w-full text-lg shadow-md">
-                  {language === 'bn' ? 'পরবর্তী' : 'Next'}
-                </button>
+              <div className="pt-6 mt-2">
+                <p className="text-accent font-semibold text-sm mb-4">
+                  Upload Documents
+                </p>
               </div>
-            </div>
 
-            {/* Stage 2 */}
-            <div className={formStage === 2 ? 'flex flex-col gap-6 animate-fadeIn' : 'hidden'}>
               <div className="flex flex-col gap-2">
                 <label htmlFor="idProof" className="text-sm font-medium text-text">
-                  {language === 'bn' ? 'পরিচয় পত্র *' : 'ID Proof *'}
+                  ID Proof *
                 </label>
-                <input required={formStage === 2} type="file" id="idProof" name="idProof" accept="image/*,.pdf" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
+                <input required type="file" id="idProof" name="idProof" accept="image/*,.pdf" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
               </div>
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="passportPhoto" className="text-sm font-medium text-text">
-                  {language === 'bn' ? 'পাসপোর্ট সাইজ ছবি *' : 'Passport Size Photo *'}
+                  Passport Size Photo *
                 </label>
-                <input required={formStage === 2} type="file" id="passportPhoto" name="passportPhoto" accept="image/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
+                <input required type="file" id="passportPhoto" name="passportPhoto" accept="image/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
               </div>
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="songFile" className="text-sm font-medium text-text">
-                  {language === 'bn' ? 'গানের রেকর্ডিং আপলোড করুন (MP3) *' : 'Upload Song Recording (MP3) *'}
+                  Upload Song Recording (MP3) *
                 </label>
-                <input required={formStage === 2} type="file" id="songFile" name="songFile" accept="audio/mpeg,.mp3,audio/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
+                <input required type="file" id="songFile" name="songFile" accept="audio/mpeg,.mp3,audio/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
               </div>
 
-              <div className="pt-8 border-t border-border mt-4 flex gap-4">
-                <button type="button" onClick={() => setFormStage(1)} className="px-8 py-3.5 rounded border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition-colors cursor-pointer text-lg">
-                  {language === 'bn' ? 'পিছনে' : 'Back'}
-                </button>
-                <button type="submit" className="flex-1 bg-accent hover:bg-accent/90 !text-white font-medium py-3.5 px-8 rounded transition-colors text-lg shadow-md">
-                  {language === 'bn' ? 'জমা দিন' : 'Submit'}
-                </button>
+              <div className="pt-8 border-t border-border mt-4 flex flex-col gap-6">
+                <label className="flex items-start gap-3 cursor-pointer group">
+                  <div className="relative flex items-center justify-center mt-0.5">
+                    <input required type="checkbox" name="tnc" className="peer appearance-none w-5 h-5 border-2 border-border rounded checked:border-accent transition-colors" />
+                    <svg className="w-3.5 h-3.5 text-accent absolute opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <span className="text-text/80 text-sm group-hover:text-primary transition-colors leading-relaxed">
+                    I have read and agree to all the Guidelines & Rules mentioned below.
+                  </span>
+                </label>
+
+                <div className="flex gap-4">
+                  <button type="submit" className="flex-1 bg-accent hover:bg-accent/90 !text-white font-medium py-3.5 px-8 rounded transition-colors text-lg shadow-md">
+                    Submit
+                  </button>
+                </div>
               </div>
             </div>
             </form>
@@ -327,8 +295,8 @@ export const ApplicationForm = () => {
             <h2 className="text-2xl font-bold text-primary mb-8 border-b border-border pb-4">Guidelines & Rules</h2>
             
             <div className="flex flex-col gap-4">
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={openAccordion === 0} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 0 ? -1 : 0); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Introduction
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -341,8 +309,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={openAccordion === 1} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 1 ? -1 : 1); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   General Rules
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -363,8 +331,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={openAccordion === 2} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 2 ? -1 : 2); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Application
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -392,8 +360,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={openAccordion === 3} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 3 ? -1 : 3); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Preliminary Selection
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -408,8 +376,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={openAccordion === 4} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 4 ? -1 : 4); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Audition Round
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -426,8 +394,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={openAccordion === 5} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 5 ? -1 : 5); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Briefing Session
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -441,8 +409,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={openAccordion === 6} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 6 ? -1 : 6); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Grand Finale
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>

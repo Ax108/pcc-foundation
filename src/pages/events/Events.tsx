@@ -79,7 +79,10 @@ export const Events = () => {
             <ScrollReveal animation="fade-up" delay={0.2}>
               <div className="bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-gold/10 relative">
                 {/* Image side */}
-                <div className="w-full lg:w-1/2 aspect-[4/3] lg:aspect-auto">
+                <div className="w-full lg:w-1/2 aspect-[4/3] lg:aspect-auto relative">
+                  <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm text-primary font-bold px-5 py-2 shadow-xl border-l-4 border-gold rounded-sm z-10 text-sm md:text-base tracking-widest">
+                    {featuredEvent.year}
+                  </div>
                   <img
                     src={featuredEvent.imageSrc}
                     alt={featuredEvent.title}
@@ -124,24 +127,27 @@ export const Events = () => {
               <div className="h-[1px] flex-1 bg-gold/20" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
               {pastEvents.map((event, idx) => (
                 <ScrollReveal key={event.id} animation="fade-up" delay={0.1 * idx}>
                   <div 
-                    className="flex flex-col bg-surface shadow-sm hover:shadow-xl transition-shadow duration-500 group rounded-md overflow-hidden border border-black/5 h-full"
+                    className="flex flex-col bg-surface shadow-md hover:shadow-2xl transition-shadow duration-500 group rounded-xl overflow-hidden border border-black/5 h-full relative"
                   >
-                    <div className="w-full overflow-hidden aspect-[4/3]">
+                    <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm text-primary font-bold px-5 py-2 shadow-xl border-l-4 border-gold rounded-sm z-10 text-sm md:text-base tracking-widest">
+                      {event.year}
+                    </div>
+                    <div className="w-full overflow-hidden aspect-[16/10]">
                       <img
                         src={event.imageSrc}
                         alt={event.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
                     </div>
-                    <div className="p-8 flex flex-col flex-1 bg-white relative">
-                      <h4 className="text-xl font-serif font-bold text-primary mb-4 leading-snug line-clamp-2">
+                    <div className="p-10 flex flex-col flex-1 bg-white relative">
+                      <h4 className="text-2xl font-serif font-bold text-primary mb-5 leading-snug line-clamp-2">
                         {event.title}
                       </h4>
-                      <div className="text-sm text-text/70 mb-8 flex-1 flex flex-col gap-2 font-light leading-relaxed line-clamp-3">
+                      <div className="text-base text-text/80 mb-8 flex-1 flex flex-col gap-3 font-light leading-relaxed line-clamp-4">
                         {event.description.split('\n').map((line, i) => (
                           <p key={i}>{line}</p>
                         ))}
@@ -150,10 +156,10 @@ export const Events = () => {
                         href={event.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-primary font-bold tracking-[0.15em] uppercase text-xs hover:text-gold transition-colors mt-auto group/btn"
+                        className="inline-flex items-center gap-2 text-primary font-bold tracking-[0.15em] uppercase text-sm hover:text-gold transition-colors mt-auto group/btn"
                       >
                         Read More
-                        <span className="text-base leading-none transform transition-transform group-hover/btn:translate-x-1" aria-hidden="true">→</span>
+                        <span className="text-lg leading-none transform transition-transform group-hover/btn:translate-x-2" aria-hidden="true">→</span>
                       </a>
                     </div>
                   </div>

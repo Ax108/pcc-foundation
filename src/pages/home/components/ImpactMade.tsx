@@ -4,7 +4,7 @@ const IMPACT_STATS = [
   { id: 1, number: '100+', label: 'Artists Supported' },
   { id: 2, number: '50+', label: 'Events Hosted' },
   { id: 3, number: '200+', label: 'Scholarships Awarded' },
-  { id: 4, number: '10+', label: 'Years of Legacy' },
+  { id: 4, number: '9+', label: 'Years of Legacy' },
 ];
 
 export const ImpactMade = () => {
