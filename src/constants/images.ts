@@ -3,10 +3,10 @@
 
 export const IMAGES = {
   /** Header / navbar — 1024×173 source; rendered up to 320×54 on lg */
-  LOGO_HEADER: '/assets/logo/logo-header.jpg',
+  LOGO_HEADER: '/assets/logo/logo-header.png',
 
   /** OG / Twitter / schema — full logo, no resize yet */
-  LOGO_FULL: '/assets/logo/logo-full.jpg',
+  LOGO_FULL: '/assets/logo/logo-full.png',
 
   /** Narrow header strip (not home carousel) */
   HERO_HEADER: '/assets/hero/header6.jpg',
@@ -34,13 +34,13 @@ export const IMAGES = {
 
 /** Display dimensions for CLS — match rendered CSS size × retina where noted */
 export const IMAGE_DIMENSIONS = {
-  LOGO_HEADER: {width: 320, height: 54},
+  LOGO_HEADER: { width: 320, height: 54 },
   /** Home carousel — WP `header-*` large size 1024×337 */
-  HERO_SLIDE: {width: 1024, height: 337},
+  HERO_SLIDE: { width: 1024, height: 337 },
   /** 2025 application poster — WP 768×612 variant */
-  HOME_APPLICATION_POSTER: {width: 768, height: 612},
+  HOME_APPLICATION_POSTER: { width: 768, height: 612 },
   /** Associates emblem — source PNG (square) */
-  ASSOCIATES_LOGO: {width: 150, height: 150},
-  SITE_ICON: {width: 192, height: 192},
-  APPLE_TOUCH_ICON: {width: 180, height: 180},
+  ASSOCIATES_LOGO: { width: 150, height: 150 },
+  SITE_ICON: { width: 192, height: 192 },
+  APPLE_TOUCH_ICON: { width: 180, height: 180 },
 } as const;

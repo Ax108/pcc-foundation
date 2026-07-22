@@ -1,15 +1,13 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {useScrollReveal} from '@app/hooks/useScrollReveal';
 import {Lightbox} from '@app/components/Lightbox';
 import {
-  GALLERY_TEASER_HEADING,
   GALLERY_TEASER_VIEW_MORE,
   HOME_GALLERY_TEASER,
 } from '@home/constants/homeGalleryTeaser';
+import {ScrollReveal} from '@app/components/ScrollReveal';
 
 export const GalleryTeaser = () => {
-  const {ref, isVisible} = useScrollReveal({threshold: 0.08});
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -20,61 +18,94 @@ export const GalleryTeaser = () => {
 
   return (
     <section
-      className="gallery-teaser bg-surface py-14 md:py-20"
+      className="bg-white py-20 md:py-32"
       aria-labelledby="home-gallery-heading">
-      <div
-        ref={ref}
-        className={`scroll-reveal ${isVisible ? 'is-visible' : ''}`}>
-        <div className="container-site scroll-reveal-item mb-10 text-center md:mb-12">
-          <h2
-            id="home-gallery-heading"
-            className="text-primary text-3xl font-semibold md:text-4xl lg:text-[2.5rem]">
-            <span>{GALLERY_TEASER_HEADING.line1}</span>{' '}
-            <span className="text-gold">{GALLERY_TEASER_HEADING.line2}</span>
-          </h2>
-          <span
-            className="bg-gold mx-auto mt-4 block h-1 w-14 rounded-full"
-            aria-hidden="true"
-          />
+      <div className="container-site">
+        <div className="mb-16 md:mb-24 text-center">
+          <ScrollReveal animation="fade-up" delay={0.1}>
+            <p className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-4">
+              A Glimpse of the Foundation
+            </p>
+          </ScrollReveal>
+          <ScrollReveal animation="fade-up" delay={0.2}>
+            <h2
+              id="home-gallery-heading"
+              className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary">
+              Perfect for Every Occasion
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal animation="fade-up" delay={0.3}>
+            <p className="mt-4 text-text/70 max-w-2xl mx-auto">
+              Witness the beauty of our events and the joyous moments shared by our community.
+            </p>
+          </ScrollReveal>
         </div>
 
-        <div className="container-site max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <ul
-            className="scroll-reveal-item grid grid-cols-2 gap-2 [transition-delay:80ms] md:grid-cols-4 md:gap-3 lg:gap-4"
+            className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 grid-flow-dense auto-rows-[250px]"
             aria-label="Foundation event photo highlights">
-            {HOME_GALLERY_TEASER.map((item, idx) => (
-              <li key={item.id} className="group">
-                <button
-                  onClick={() => openLightbox(idx)}
-                  className="gallery-teaser-link relative block w-full h-full overflow-hidden rounded-lg bg-black shadow-sm ring-1 ring-black/5 focus-visible:outline-2 focus-visible:outline-offset-2 md:rounded-xl cursor-pointer"
-                  aria-label={`${item.alt} — view image`}>
-                  <img
-                    src={item.imageSrc}
-                    alt={item.alt}
-                    width={item.width}
-                    height={item.height}
-                    loading="lazy"
-                    decoding="async"
-                    className="aspect-[3/2] h-full w-full object-cover transition duration-500 group-hover:scale-105 group-focus-visible:scale-105"
-                  />
-                  <span
-                    className="bg-accent/0 group-hover:bg-accent/20 group-focus-visible:bg-accent/20 pointer-events-none absolute inset-0 transition duration-300"
-                    aria-hidden="true"
-                  />
-                </button>
+            {HOME_GALLERY_TEASER.map((item, idx) => {
+              const getGridSpan = (index: number) => {
+                switch (index % 9) {
+                  case 0: return 'md:col-span-2 md:row-span-2';
+                  case 1: return 'md:col-span-1 md:row-span-1';
+                  case 2: return 'md:col-span-1 md:row-span-2';
+                  case 3: return 'md:col-span-1 md:row-span-1';
+                  case 4: return 'md:col-span-2 md:row-span-1';
+                  case 5: return 'md:col-span-1 md:row-span-1';
+                  case 6: return 'md:col-span-1 md:row-span-1';
+                  case 7: return 'md:col-span-2 md:row-span-2';
+                  case 8: return 'md:col-span-2 md:row-span-1';
+                  default: return 'md:col-span-1 md:row-span-1';
+                }
+              };
+
+              // Map stagger delay to rows roughly by index
+              const staggerDelay = (idx % 9) * 0.05;
+
+              return (
+              <li 
+                key={item.id} 
+                className={`group relative ${getGridSpan(idx)} h-full w-full`}>
+                <ScrollReveal animation="fade-in" delay={staggerDelay} className="h-full w-full">
+                  <button
+                    onClick={() => openLightbox(idx)}
+                    className="relative block w-full h-full overflow-hidden bg-black cursor-pointer rounded-sm"
+                    aria-label={`${item.alt} — view image`}>
+                    <img
+                      src={item.imageSrc}
+                      alt={item.alt}
+                      width={item.width}
+                      height={item.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
+                    
+                    <div className="absolute bottom-6 left-6 right-6 text-left">
+                      <h3 className="text-white text-lg font-serif font-semibold tracking-wide line-clamp-2">
+                        {item.alt}
+                      </h3>
+                    </div>
+                  </button>
+                </ScrollReveal>
               </li>
-            ))}
+              );
+            })}
           </ul>
         </div>
 
-        <div className="scroll-reveal-item container-site mt-10 flex justify-center [transition-delay:160ms] md:mt-12">
-          <Link
-            to={GALLERY_TEASER_VIEW_MORE.path}
-            className="site-btn bg-accent hover:bg-accent/90 !text-white inline-flex min-h-11 items-center justify-center gap-2 px-8 py-3 rounded text-sm font-semibold md:text-base transition-colors">
-            {GALLERY_TEASER_VIEW_MORE.label}
-            <span aria-hidden="true">→</span>
-          </Link>
-        </div>
+        <ScrollReveal animation="fade-up" delay={0.2}>
+          <div className="mt-16 flex justify-center">
+            <Link
+              to={GALLERY_TEASER_VIEW_MORE.path}
+              className="inline-flex items-center px-10 py-4 bg-primary text-white font-medium hover:bg-secondary transition-colors duration-300 rounded-sm uppercase tracking-wider text-sm shadow-md">
+              {GALLERY_TEASER_VIEW_MORE.label}
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
 
       <Lightbox
