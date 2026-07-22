@@ -1,8 +1,9 @@
 import {useSEO} from '@app/hooks/useSEO';
 
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import {ScrollReveal} from '@app/components/ScrollReveal';
 import {IMAGES, IMAGE_DIMENSIONS} from '@src/constants/images';
+import {AudioUploadField} from './components/AudioUploadField';
 
 export const ApplicationForm = () => {
   useSEO({
@@ -12,6 +13,8 @@ export const ApplicationForm = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<number>(0);
+  const [convertedMp3, setConvertedMp3] = useState<File | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     // Small delay so it feels deliberate
@@ -136,19 +139,26 @@ export const ApplicationForm = () => {
             </div>
             
             <form 
+              ref={formRef}
               className="flex flex-col gap-6 relative"
               onSubmit={(e) => {
                 e.preventDefault();
                 
+                if (!convertedMp3) {
+                  alert('Please upload and convert your song recording before submitting.');
+                  return;
+                }
+
                 const formElement = e.target as HTMLFormElement;
                 const formData = new FormData(formElement);
                 
+                // Inject the converted MP3 blob
+                formData.set('songFile', convertedMp3, convertedMp3.name);
+
                 const idProofFile = formData.get('idProof');
                 const passportPhotoFile = formData.get('passportPhoto');
-                const songFile = formData.get('songFile');
                 const idProofName = idProofFile instanceof File ? idProofFile.name : '';
                 const passportPhotoName = passportPhotoFile instanceof File ? passportPhotoFile.name : '';
-                const songFileName = songFile instanceof File ? songFile.name : '';
                 
                 const payload = {
                   fullName: formData.get('fullName'),
@@ -160,12 +170,13 @@ export const ApplicationForm = () => {
                   auditionLocation: formData.get('auditionLocation'),
                   idProof: idProofName,
                   passportPhoto: passportPhotoName,
-                  songFile: songFileName,
+                  songFile: convertedMp3.name,
                 };
 
                 console.log('Application Form Payload:', JSON.stringify(payload, null, 2));
                 alert('Thank you for submitting your application. We will get back to you soon!');
                 formElement.reset();
+                setConvertedMp3(null);
               }}
             >
               <div className="flex flex-col gap-6 animate-fadeIn">
@@ -262,10 +273,10 @@ export const ApplicationForm = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="songFile" className="text-sm font-medium text-text">
-                  Upload Song Recording (MP3) *
-                </label>
-                <input required type="file" id="songFile" name="songFile" accept="audio/mpeg,.mp3,audio/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
+                <AudioUploadField
+                  required
+                  onChange={(file) => setConvertedMp3(file)}
+                />
               </div>
 
               <div className="pt-8 border-t border-border mt-4 flex flex-col gap-6">
