@@ -3,7 +3,7 @@ import {SITE_CONTACT} from '@navigationBars/constants/siteContact';
 import {FooterColumnHeading} from '@navigationBars/components/FooterColumnHeading';
 
 const contactRowClass =
-  'inline-flex min-h-11 items-center gap-3 text-sm text-white/75 transition-colors hover:text-gold md:text-base';
+  'inline-flex min-h-11 items-center gap-3 text-sm text-white/75 transition-colors hover:text-gray-300 md:text-base';
 
 export const FooterContactInfo = () => (
   <section aria-labelledby="footer-contact-heading">

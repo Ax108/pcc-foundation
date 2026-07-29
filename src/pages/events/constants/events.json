@@ -1,0 +1,122 @@
+[
+  {
+    "year": 2023,
+    "events": [
+      {
+        "title": "Rabindra Gaane Pratima Chandra Puraskar – 2023 (Aruprataner Sandhane)",
+        "type": "Rabindra Sangeet Competition",
+        "organizer": "Pratima Chandra Foundation",
+        "advisor": "Shri Pratip Roy",
+        "venue": "ICCR Auditorium, Ho Chi Minh Sarani, Kolkata",
+        "awardVenue": "ICCR Auditorium, Kolkata",
+        "date": "3 December 2023",
+        "time": "5:30 PM onwards"
+      }
+    ]
+  },
+  {
+    "year": 2022,
+    "events": [
+      {
+        "title": "Rabindra Gaane Pratima Chandra Puraskar – 2022 (Aruprataner Sandhane)",
+        "type": "Rabindra Sangeet Competition",
+        "organizer": "Pratima Chandra Foundation",
+        "collaboration": "Shri Chandan Raychaudhuri (Music Director)",
+        "venue": "ICCR Auditorium, Ho Chi Minh Sarani, Kolkata",
+        "awardVenue": "ICCR Auditorium, Kolkata",
+        "date": "17 April 2022",
+        "time": "5:30 PM onwards"
+      }
+    ]
+  },
+  {
+    "year": 2019,
+    "events": [
+      {
+        "title": "Rabindra Gaane Pratima Chandra Puraskar – 2019 (Aruprataner Sandhane)",
+        "type": "Rabindra Sangeet Competition",
+        "organizer": "Pratima Chandra Foundation",
+        "collaboration": "Dakghar",
+        "venue": "ICCR Auditorium, Ho Chi Minh Sarani, Kolkata",
+        "awardVenue": "ICCR Auditorium, Kolkata",
+        "date": "7 December 2019",
+        "time": "5:30 PM onwards"
+      }
+    ]
+  },
+  {
+    "year": 2018,
+    "events": [
+      {
+        "title": "Pratima Chandra Memorial Award – 2018",
+        "type": "Memorial Award",
+        "organizer": "Pratima Chandra Foundation",
+        "collaboration": "Dakghar",
+        "venue": "ICCR Auditorium, Ho Chi Minh Sarani, Kolkata",
+        "awardVenue": "Nazrul Mancha, Rabindra Sarobar, Kolkata",
+        "date": "11–12 November 2018",
+        "time": "11:00 AM – 5:00 PM"
+      },
+      {
+        "title": "Rabindra Gaane Pratima Chandra Puraskar – 2018 (Aruprataner Sandhane)",
+        "type": "Rabindra Sangeet Competition",
+        "organizer": "Pratima Chandra Foundation",
+        "collaboration": "Dakghar",
+        "venue": "ICCR Auditorium, Ho Chi Minh Sarani, Kolkata",
+        "awardVenue": "ICCR Auditorium, Kolkata",
+        "date": "3 December 2018",
+        "time": "5:30 PM onwards"
+      }
+    ]
+  },
+  {
+    "year": 2017,
+    "events": [
+      {
+        "title": "Pratima Chandra Memorial Award – 2017",
+        "type": "Memorial Award",
+        "organizer": "Pratima Chandra Foundation",
+        "collaboration": "Dover Lane Music Conference & The Dover Lane Music Academy",
+        "venue": "Seminar Hall, Science City, Kolkata",
+        "awardVenue": "Nazrul Mancha, Rabindra Sarobar, Kolkata",
+        "date": "3–5 November 2017",
+        "time": "11:00 AM – 6:00 PM"
+      },
+      {
+        "title": "Rabindra Gaane Pratima Chandra Puraskar – 2017 (Aruprataner Sandhane)",
+        "type": "Rabindra Sangeet Competition",
+        "organizer": "Pratima Chandra Foundation",
+        "collaboration": "Dakghar",
+        "venue": "G.D. Birla Sabhaghar, Kolkata",
+        "awardVenue": "G.D. Birla Sabhaghar, Kolkata",
+        "date": "3 December 2017",
+        "time": "5:00 PM – 9:00 PM"
+      }
+    ]
+  },
+  {
+    "year": 2016,
+    "events": [
+      {
+        "title": "Pratima Chandra Memorial Award – 2016",
+        "type": "Memorial Award",
+        "organizer": "Pratima Chandra Foundation",
+        "collaboration": "Dover Lane Music Conference & The Dover Lane Music Academy",
+        "venue": "Seminar Hall, Science City, Kolkata",
+        "awardVenue": "Seminar Hall, Science City, Kolkata",
+        "date": "3–5 November 2016",
+        "time": "12:00 PM – 8:00 PM"
+      },
+      {
+        "title": "Rabindra Gaane Pratima Chandra Puraskar – 2016 (Aruprataner Sandhane)",
+        "type": "Rabindra Sangeet Competition",
+        "organizer": "Pratima Chandra Foundation",
+        "collaboration": "Dakghar",
+        "venue": "ICCR Auditorium, Ho Chi Minh Sarani, Kolkata",
+        "awardVenue": "ICCR Auditorium, Kolkata",
+        "date": "11 January 2017",
+        "time": "5:30 PM – 9:00 PM"
+      }
+    ]
+  }
+]

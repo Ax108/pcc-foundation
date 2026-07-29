@@ -3,7 +3,7 @@ import {NAV_LINKS} from '@navigationBars/constants/navLinks';
 import {FooterColumnHeading} from '@navigationBars/components/FooterColumnHeading';
 
 const footerLinkClass =
-  'inline-flex min-h-11 items-center text-sm text-white/75 transition-colors hover:text-gold md:text-base';
+  'inline-flex min-h-11 items-center text-sm text-white/75 transition-colors hover:text-gray-300 md:text-base';
 
 export const FooterQuickLinks = () => (
   <nav aria-labelledby="footer-quick-links-heading">

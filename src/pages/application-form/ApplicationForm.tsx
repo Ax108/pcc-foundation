@@ -1,119 +1,282 @@
 import {useSEO} from '@app/hooks/useSEO';
-import {IMAGES} from '@src/constants/images';
+
+import {useState, useRef} from 'react';
+import {ScrollReveal} from '@app/components/ScrollReveal';
+import {IMAGES, IMAGE_DIMENSIONS} from '@src/constants/images';
+import {AudioUploadField} from './components/AudioUploadField';
 
 export const ApplicationForm = () => {
   useSEO({
-    title: 'Application Form - Pratima Chandra Foundation',
-    description: 'Submit your application form for the Pratima Chandra Foundation competition.',
+    title: 'Apply Form - Pratima Chandra Foundation',
+    description: 'Submit your application form for the Pratima Chandra Foundation Rabindra Gaane Pratima Chandra Puroshkar competition.',
   });
 
+  const [openAccordions, setOpenAccordions] = useState<Record<number, boolean>>({
+    0: true,
+    1: true,
+    2: true,
+    3: true,
+    4: true,
+    5: true,
+    6: true,
+  });
+
+  const toggleAccordion = (index: number) => {
+    setOpenAccordions((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
+  const [convertedMp3, setConvertedMp3] = useState<File | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
   return (
-    <article aria-label="Application Form" className="animate-page">
-      <header className="relative w-full h-40 md:h-56 lg:h-72 overflow-hidden bg-surface">
-        <img
-          src={IMAGES.HERO_HEADER}
-          alt="Foundation application banner"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 flex items-center justify-center bg-black/60">
-          <h1 className="!text-white text-3xl md:text-5xl lg:text-6xl font-semibold drop-shadow-md text-center px-4">
-            আবেদনপত্র / Application Form
-          </h1>
-        </div>
-      </header>
+    <>
+      <article aria-label="Apply Form" className="animate-page relative">
+        <header className="relative w-full overflow-hidden bg-surface py-12 md:py-20 border-b border-gold/10 pt-20 md:pt-28">
+          <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-gold/10 rounded-full blur-3xl translate-y-1/4 -translate-x-1/4 pointer-events-none" />
+          
+          <div className="container-site relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+            
+            <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left order-2 md:order-1">
+              <ScrollReveal animation="fade-in" delay={0.1}>
+                <div className="inline-flex items-center justify-center md:justify-start gap-3 mb-4">
+                  <span className="w-8 md:w-12 h-[2px] bg-gold"></span>
+                  <p className="text-primary tracking-[0.2em] uppercase text-xs md:text-sm font-bold">
+                    Pratima Chandra Foundation
+                  </p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal animation="fade-up" delay={0.2}>
+                <h1 className="text-primary text-4xl sm:text-5xl md:text-6xl font-serif font-bold drop-shadow-sm tracking-wide leading-[1.1] mb-3">
+                  Apply Form
+                </h1>
+                <p className="text-accent text-xl font-bold font-serif mb-4">
+                  আবেদনপত্র
+                </p>
+              </ScrollReveal>
+              <ScrollReveal animation="fade-up" delay={0.3}>
+                <p className="text-gray-600 text-base md:text-lg mb-6 leading-relaxed">
+                  Would you like to download the application form for offline submission or apply online below?
+                </p>
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                  <a 
+                    href="/assets/documents/aruprataner-sandhane-2026-form.pdf"
+                    download="aruprataner-sandhane-2026-form.pdf"
+                    className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 !text-white px-7 py-3.5 rounded-lg font-medium transition-all shadow-md text-base hover:shadow-lg"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Form (PDF)
+                  </a>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <div className="w-full md:w-1/2 flex items-center justify-center md:justify-end order-1 md:order-2">
+              <ScrollReveal animation="scale-up" delay={0.2}>
+                <div className="relative max-w-sm sm:max-w-md w-full overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-4 border-white bg-white">
+                  <img
+                    src={IMAGES.HOME_APPLICATION_POSTER}
+                    alt="Aruprataner Sandhane 2026 Application Poster"
+                    width={IMAGE_DIMENSIONS.HOME_APPLICATION_POSTER.width}
+                    height={IMAGE_DIMENSIONS.HOME_APPLICATION_POSTER.height}
+                    loading="eager"
+                    decoding="async"
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </header>
 
       <section className="bg-[#f5f5f5] py-16 md:py-24">
         <div className="container-site">
-          <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-sm overflow-hidden p-8 md:p-12 mb-12">
+          <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-sm overflow-hidden p-8 md:p-12 mb-12 relative">
+            
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-primary mb-4">অরূপরতনের সন্ধানে ২০২৫ / Aruprataner Sandhane 2025</h2>
-              <p className="text-primary/80 text-lg mb-2">রবীন্দ্রগানে প্রতিমা চন্দ পুরস্কার / Rabindra Gaane Pratima Chandra Puroshkar</p>
-              <p className="text-accent font-semibold text-sm">Please fill out all the fields below / অনুগ্রহ করে নিচের সমস্ত ঘর পূরণ করুন</p>
+              <ScrollReveal animation="fade-up" delay={0.2}>
+                <h2 className="text-3xl font-bold text-primary mb-4">
+                  অরূপরতনের সন্ধানে ২০২৬
+                </h2>
+              </ScrollReveal>
+              <ScrollReveal animation="fade-up" delay={0.3}>
+                <p className="text-primary/80 text-lg mb-2">
+                  রবীন্দ্রগানে প্রতিমা চন্দ পুরস্কার
+                </p>
+                <p className="text-accent font-semibold text-sm">
+                  Please fill out all the fields below
+                </p>
+              </ScrollReveal>
             </div>
             
             <form 
-              className="flex flex-col gap-6"
+              ref={formRef}
+              className="flex flex-col gap-6 relative"
               onSubmit={(e) => {
                 e.preventDefault();
                 
+                if (!convertedMp3) {
+                  alert('Please upload and convert your song recording before submitting.');
+                  return;
+                }
+
                 const formElement = e.target as HTMLFormElement;
                 const formData = new FormData(formElement);
                 
-                const photoFile = formData.get('photo');
-                const photoName = photoFile instanceof File ? photoFile.name : '';
+                // Inject the converted MP3 blob
+                formData.set('songFile', convertedMp3, convertedMp3.name);
+
+                const idProofFile = formData.get('idProof');
+                const passportPhotoFile = formData.get('passportPhoto');
+                const idProofName = idProofFile instanceof File ? idProofFile.name : '';
+                const passportPhotoName = passportPhotoFile instanceof File ? passportPhotoFile.name : '';
                 
                 const payload = {
-                  photo: photoName,
                   fullName: formData.get('fullName'),
                   dob: formData.get('dob'),
                   phone: formData.get('phone'),
                   email: formData.get('email'),
                   address: formData.get('address'),
+                  pincode: formData.get('pincode'),
                   auditionLocation: formData.get('auditionLocation'),
+                  idProof: idProofName,
+                  passportPhoto: passportPhotoName,
+                  songFile: convertedMp3.name,
                 };
 
                 console.log('Application Form Payload:', JSON.stringify(payload, null, 2));
                 alert('Thank you for submitting your application. We will get back to you soon!');
                 formElement.reset();
+                setConvertedMp3(null);
               }}
             >
-              <div className="flex flex-col gap-2">
-                <label htmlFor="photo" className="text-sm font-medium text-text">ছবি / Photo *</label>
-                <input required type="file" id="photo" name="photo" accept="image/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
-              </div>
+              <div className="flex flex-col gap-6 animate-fadeIn">
+
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="fullName" className="text-sm font-medium text-text">নাম / Name *</label>
+                <label htmlFor="fullName" className="text-sm font-medium text-text">
+                  Name *
+                </label>
                 <input required type="text" id="fullName" name="fullName" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder="Enter your full name" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="dob" className="text-sm font-medium text-text">জন্ম তারিখ / Date of Birth *</label>
+                  <label htmlFor="dob" className="text-sm font-medium text-text">
+                    Date of Birth *
+                  </label>
                   <input required type="date" id="dob" name="dob" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary" />
                 </div>
                 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="phone" className="text-sm font-medium text-text">ফোন / Phone *</label>
+                  <label htmlFor="phone" className="text-sm font-medium text-text">
+                    Phone *
+                  </label>
                   <input required type="tel" id="phone" name="phone" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder="Enter your phone number" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="text-sm font-medium text-text">ই-মেল / E-mail *</label>
+                <label htmlFor="email" className="text-sm font-medium text-text">
+                  E-mail *
+                </label>
                 <input required type="email" id="email" name="email" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder="Enter your email address" />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="address" className="text-sm font-medium text-text">ঠিকানা / Address *</label>
+                <label htmlFor="address" className="text-sm font-medium text-text">
+                  Address *
+                </label>
                 <textarea required id="address" name="address" rows={3} className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400 resize-none" placeholder="Enter your full address"></textarea>
               </div>
 
+              <div className="flex flex-col gap-2">
+                <label htmlFor="pincode" className="text-sm font-medium text-text">
+                  Pincode *
+                </label>
+                <input required type="text" id="pincode" name="pincode" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary placeholder-gray-400" placeholder="Enter your pincode" />
+              </div>
+
               <div className="flex flex-col gap-3 pt-2">
-                <label className="text-sm font-medium text-text">অডিশন স্থান নির্ণয় করুন / Select Audition Location *</label>
+                <label className="text-sm font-medium text-text">
+                  Select Audition Location *
+                </label>
                 <div className="flex flex-col sm:flex-row gap-6 mt-1">
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <div className="relative flex items-center justify-center">
                       <input required type="radio" name="auditionLocation" value="Kolkata" className="peer appearance-none w-5 h-5 border-2 border-border rounded-full checked:border-accent transition-colors" />
                       <div className="w-2.5 h-2.5 rounded-full bg-accent absolute opacity-0 peer-checked:opacity-100 transition-opacity"></div>
                     </div>
-                    <span className="text-primary group-hover:text-accent transition-colors">কলকাতা / Kolkata</span>
+                    <span className="text-primary group-hover:text-accent transition-colors">
+                      Kolkata
+                    </span>
                   </label>
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <div className="relative flex items-center justify-center">
                       <input required type="radio" name="auditionLocation" value="Santiniketan" className="peer appearance-none w-5 h-5 border-2 border-border rounded-full checked:border-accent transition-colors" />
                       <div className="w-2.5 h-2.5 rounded-full bg-accent absolute opacity-0 peer-checked:opacity-100 transition-opacity"></div>
                     </div>
-                    <span className="text-primary group-hover:text-accent transition-colors">শান্তিনিকেতন / Santiniketan</span>
+                    <span className="text-primary group-hover:text-accent transition-colors">
+                      Santiniketan
+                    </span>
                   </label>
                 </div>
               </div>
 
-              <div className="pt-8 border-t border-border mt-4">
-                <button type="submit" className="bg-accent hover:bg-accent/90 !text-white font-medium py-3.5 px-8 rounded transition-colors w-full text-lg shadow-md">
-                  জমা দিন / Submit
-                </button>
+              <div className="pt-6 mt-2">
+                <p className="text-accent font-semibold text-sm mb-4">
+                  Upload Documents
+                </p>
               </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="idProof" className="text-sm font-medium text-text">
+                  ID Proof *
+                </label>
+                <input required type="file" id="idProof" name="idProof" accept="image/*,.pdf" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="passportPhoto" className="text-sm font-medium text-text">
+                  Passport Size Photo *
+                </label>
+                <input required type="file" id="passportPhoto" name="passportPhoto" accept="image/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <AudioUploadField
+                  required
+                  onChange={(file) => setConvertedMp3(file)}
+                />
+              </div>
+
+              <div className="pt-8 border-t border-border mt-4 flex flex-col gap-6">
+                <label className="flex items-start gap-3 cursor-pointer group">
+                  <div className="relative flex items-center justify-center mt-0.5">
+                    <input required type="checkbox" name="tnc" className="peer appearance-none w-5 h-5 border-2 border-border rounded checked:border-accent transition-colors" />
+                    <svg className="w-3.5 h-3.5 text-accent absolute opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <span className="text-text/80 text-sm group-hover:text-primary transition-colors leading-relaxed">
+                    I have read and agree to all the Guidelines & Rules mentioned below.
+                  </span>
+                </label>
+
+                <div className="flex gap-4">
+                  <button type="submit" className="flex-1 bg-accent hover:bg-accent/90 !text-white font-medium py-3.5 px-8 rounded transition-colors text-lg shadow-md">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
             </form>
           </div>
 
@@ -121,22 +284,22 @@ export const ApplicationForm = () => {
             <h2 className="text-2xl font-bold text-primary mb-8 border-b border-border pb-4">Guidelines & Rules</h2>
             
             <div className="flex flex-col gap-4">
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[0]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(0); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Introduction
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
                   </span>
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
-                  <p><strong>Pratima Chandra Foundation</strong> is pleased to organize the 8th edition of <strong>Rabindra Gaane Pratima Chandra Puroshkar</strong> titled <strong>"ARUPRATANER SANDHANE"</strong> in 2025.</p>
+                  <p><strong>Pratima Chandra Foundation</strong> is pleased to organize the 8th edition of <strong>Rabindra Gaane Pratima Chandra Puroshkar</strong> titled <strong>"ARUPRATANER SANDHANE"</strong> in 2026.</p>
                   <p>The objective of the competition is to encourage and promote Rabindra Sangeet in its original form and style.</p>
                   <p className="font-semibold pt-2 text-primary">The terms and condition to participate are as follows :-</p>
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[1]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(1); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   General Rules
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -144,7 +307,7 @@ export const ApplicationForm = () => {
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
-                    <li>The competition is open to participants aged 15 to 40 years as on 01.01.2025.</li>
+                    <li>The competition is open to participants aged 15 to 40 years as on 01.01.2026.</li>
                     <li>There is no Gender restrictions.</li>
                     <li>The Winner, First Runner-up and Second Runner-up of previous <strong>Rabindra Gaane Pratima Chandra Puroshkar</strong> titled <strong>"ARUPRATANER SANDHANE"</strong> or otherwise shall not be permitted to participate again.</li>
                     <li>The Application Form, along with Song Recording, Photo ID Proof and Age Proof copies are non-returnable. However, the Organizers shall not share and/or transmit the same to any third party.</li>
@@ -157,8 +320,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[2]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(2); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Application
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -166,9 +329,9 @@ export const ApplicationForm = () => {
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
-                    <li>The Application Form for the competition shall be available in the Website and on Social Media pages of the Foundation by 1st August 2025.</li>
+                    <li>The Application Form for the competition shall be available in the Website and on Social Media pages of the Foundation by 1st August 2026.</li>
                     <li>No Application Fee is payable by the participant either for the Form or for the application.</li>
-                    <li>In order to participate the participants shall submit the following to our official e-mail arupratan2025@gmail.com.
+                    <li>In order to participate the participants shall submit the following to our official e-mail arupratan2026@gmail.com.
                       <ul className="list-[lower-alpha] pl-5 mt-1 space-y-1">
                         <li>A duly filled out Form clearly mentioning all particulars;</li>
                         <li>A scanned copy of the participant's photo Identification with proof of age;</li>
@@ -181,13 +344,13 @@ export const ApplicationForm = () => {
                     <li>The song submitted may be recorded in a recording device of the participant's choice; however the use of pitch correction and/or "Auto tune" and/or other methods of correcting vocal deficiencies and/or shortcoming, including the use of professional studios are strictly prohibited.</li>
                     <li>The participants may choose between Kolkata and Santiniketan as their location for the next stage of the competition. No modification and/or alteration of the selected location shall be permitted.</li>
                     <li>Incomplete entries and/or entries without the 1 (One) accompanying song of any Genre (Parjaay) and/or violation of any of the abovementioned terms and conditions in the application, shall be rejected forthwith.</li>
-                    <li>The last date for submission shall be 2nd November 2025. However, the Organizers reserve the right to extend the deadline at their sole discretion.</li>
+                    <li>The last date for submission shall be 2nd November 2026. However, the Organizers reserve the right to extend the deadline at their sole discretion.</li>
                   </ol>
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[3]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(3); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Preliminary Selection
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -202,8 +365,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[4]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(4); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Audition Round
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -211,7 +374,7 @@ export const ApplicationForm = () => {
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
-                    <li>The Audition will be held at Kolkata and at Santiniketan in the month of November 2025 at a date, time and venue to be decided and communicated by the Organizers.</li>
+                    <li>The Audition will be held at Kolkata and at Santiniketan in the month of November 2026 at a date, time and venue to be decided and communicated by the Organizers.</li>
                     <li>At the Audition, the participants shall be required to sing 1 (One) Rabindra Sangeet song from any Genre (Parjaay) of the participants choice, live and in the presence of the Audition Judges, to be adjudicated based on the knowledge and experience of the Audition Judges.</li>
                     <li>However, the Audition Judges shall reserve the right to ask questions and/or test the participant's knowledge and understanding of Rabindra Sangeet further, at their sole discretion.</li>
                     <li>A team of Musicians, appointed by the Organizers, shall accompany all the participants in the Audition. No Musicians and/or musical instruments apart from those provided shall be permitted.</li>
@@ -220,8 +383,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[5]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(5); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Briefing Session
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -229,14 +392,14 @@ export const ApplicationForm = () => {
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
-                    <li>A Briefing Session for the Finalists will be held offline at Kolkata in the month of December 2025. The date, time and venue for the same shall be communicated to the Finalists.</li>
+                    <li>A Briefing Session for the Finalists will be held offline at Kolkata in the month of December 2026. The date, time and venue for the same shall be communicated to the Finalists.</li>
                     <li>All Finalists must attend the Briefing Session. Any Finalist who fails to attend the Briefing Session may be disqualified at the discretion of the Organizers.</li>
                   </ol>
                 </div>
               </details>
 
-              <details className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[6]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(6); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Grand Finale
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -244,16 +407,16 @@ export const ApplicationForm = () => {
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
-                    <li>The Grand Finale shall be held at Kolkata in the month of December 2025. The date, time and venue of the Grand Finale shall be communicated to the Finalists.</li>
+                    <li>The winners – 1st, 2nd and 3rd will be selected by the Finale Judges based on their knowledge and experience at the end of the Grand Finale.</li>
+                    <li>The Winner will be awarded a prize money of Rs.40,000/- (Rupees Forty Thousand only), the First Runner-up shall be awarded a prize money of Rs.20,000/- (Rupees Twenty Thousand only) and the Second Runner-up shall be awarded Rs.10,000/- (Rupees Ten Thousand Only). All such prize money shall be awarded by Cheque only.</li>
+                    <li>The Winner, First Runner-up and Second Runner-up shall also be awarded Mementoes and Certificates.</li>
+                    <li>The Winner, First Runner-up and Second Runner-up shall also be given an opportunity for recording of 1 (One) Rabindra Sangeet song, sung by them.</li>
+                    <li>The Grand Finale shall be held at Kolkata in the month of December 2026. The date, time and venue of the Grand Finale shall be communicated to the Finalists.</li>
                     <li>The Grand Finale shall consist of 2 (Two) rounds.</li>
                     <li>The First Round of the Grand Finale, shall require the Finalist to sing 1 (One) Rabindra Sangeet song from any Genre (Parjaay) of the Finalist's Choice.</li>
                     <li>The Second Round of the Grand Finale shall require the finalist to sing 1 (One) Rabindra Sangeet song from any Genre (Parjaay) of the Finale Judges' Choice.</li>
                     <li>In addition to the above, the Finale Judges reserves the right to ask questions and/or test the Finalist's knowledge and understanding of Rabindra Sangeet further, at their sole discretion and at any stage of the Grand Finale.</li>
                     <li>A team of Musicians, appointed by the Organizers, shall accompany the Finalist in the Grand Finale. No Musicians and/or musical instruments apart from those provided shall be permitted.</li>
-                    <li>The winners – 1st, 2nd and 3rd will be selected by the Finale Judges based on their knowledge and experience at the end of the Grand Finale.</li>
-                    <li>The Winner will be awarded a prize money of Rs.40,000/- (Rupees Forty Thousand only), the First Runner-up shall be awarded a prize money of Rs.20,000/- (Rupees Twenty Thousand only) and the Second Runner-up shall be awarded Rs.10,000/- (Rupees Ten Thousand Only). All such prize money shall be awarded by Cheque only.</li>
-                    <li>The Winner, First Runner-up and Second Runner-up shall also be awarded Mementoes and Certificates.</li>
-                    <li>The Winner, First Runner-up and Second Runner-up shall also be given an opportunity for recording of 1 (One) Rabindra Sangeet song, sung by them.</li>
                   </ol>
                 </div>
               </details>
@@ -262,5 +425,6 @@ export const ApplicationForm = () => {
         </div>
       </section>
     </article>
+    </>
   );
 };
