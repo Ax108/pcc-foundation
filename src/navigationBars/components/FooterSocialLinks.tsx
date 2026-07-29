@@ -2,7 +2,7 @@ import {brandIcon} from '@app/utils/icons';
 import {SITE_CONTACT} from '@navigationBars/constants/siteContact';
 
 const socialButtonClass =
-  'inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-lg text-white transition-colors hover:bg-accent hover:text-white';
+  'inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-lg text-white transition-colors hover:bg-gray-300 hover:text-accent';
 
 export const FooterSocialLinks = () => (
   <nav aria-label="Social media">

@@ -94,9 +94,6 @@ summary {
   text-decoration: none;
 }
 
-.footer-site a:hover {
-  color: var(--color-gold);
-}
 
 /* Home hero — white headings over imagery (overrides global h1 color) */
 .hero-slider h1 {
