@@ -1,4 +1,4 @@
-# অরূপরতনের সন্ধানে ২০২৫
+# অরূপরতনের সন্ধানে ২০২৬
 ### — এর প্রয়াস
 **PRATIMA CHANDRA FOUNDATION**
 
@@ -32,11 +32,11 @@
 
 ৪। গান মোবাইল বা অন্য কোনো যন্ত্রে রেকর্ড করা যাবে। Studio রেকর্ডিং গ্রহণযোগ্য নয়।
 
-৫। আবেদনকারীর বয়ঃসীমা ১লা জানুয়ারী, ২০২৫ তারিখে ঃ ১৫ থেকে ৪০ বছর।
+৫। আবেদনকারীর বয়ঃসীমা ১লা জানুয়ারী, ২০২৬ তারিখে ঃ ১৫ থেকে ৪০ বছর।
 
 ৬। বয়সের সচিত্র প্রমাণপত্র আবেদনপত্রের সঙ্গে দাখিল করতে হবে।
 
-৭। গান, আবেদনপত্র এবং উল্লেখিত অন্যান্য প্রমাণপত্র সহ Scan করে E-mail : **arupratan2025@gmail.com** অথবা Whatsapp : **9007409116** পাঠাতে হবে।
+৭। গান, আবেদনপত্র এবং উল্লেখিত অন্যান্য প্রমাণপত্র সহ Scan করে E-mail : **arupratan2026@gmail.com** অথবা Whatsapp : **9007409116** পাঠাতে হবে।
 
 ৮। এই আবেদনপত্র ছাড়া অংশগ্রহণ করা যাবে না। ত্রুটিপূর্ণ বা অসম্পূর্ণ আবেদনপত্র অগ্রাহ্য করা হবে।
 
@@ -50,9 +50,9 @@ By participating in the competition, I declare that I have read the Terms & Cond
 
 ---
 
-**আবেদনপত্র জমা দেবার শেষ তারিখ ঃ ২রা নভেম্বর, ২০২৫**
+**আবেদনপত্র জমা দেবার শেষ তারিখ ঃ ২রা নভেম্বর, ২০২৬**
 
-অডিশন ঃ শান্তিনিকেতন – ১৬ই নভেম্বর, ২০২৫ ● কলকাতা – ২৩শে নভেম্বর, ২০২৫ ● ফাইনাল প্রতিযোগিতা ২১শে ডিসেম্বর, ২০২৫
+অডিশন ঃ শান্তিনিকেতন – ১৬ই নভেম্বর, ২০২৬ ● কলকাতা – ২৩শে নভেম্বর, ২০২৬ ● ফাইনাল প্রতিযোগিতা ২১শে ডিসেম্বর, ২০২৬
 
 **যোগাযোগ ঃ 90074 09116 / 94761 02436 (10 a.m. to 7 p.m.)**
 
@@ -66,7 +66,7 @@ Follow us on Facebook | Instagram | YouTube — /pratimachandrafoundation
 
 ## Introduction
 
-**Pratima Chandra Foundation** is pleased to organize the 8th edition of **Rabindra Gaane Pratima Chandra Puroshkar** titled **"ARUPRATANER SANDHANE"** in 2025.
+**Pratima Chandra Foundation** is pleased to organize the 8th edition of **Rabindra Gaane Pratima Chandra Puroshkar** titled **"ARUPRATANER SANDHANE"** in 2026.
 
 The objective of the competition is to encourage and promote Rabindra Sangeet in its original form and style.
 
@@ -74,7 +74,7 @@ The objective of the competition is to encourage and promote Rabindra Sangeet in
 
 ### General Rules
 
-1) The competition is open to participants aged 15 to 40 years as on 01.01.2025.
+1) The competition is open to participants aged 15 to 40 years as on 01.01.2026.
 2) There is no Gender restrictions.
 3) The Winner, First Runner-up and Second Runner-up of previous **Rabindra Gaane Pratima Chandra Puroshkar** titled **"ARUPRATANER SANDHANE"** or otherwise shall not be permitted to participate again.
 4) The Application Form, along with Song Recording, Photo ID Proof and Age Proof copies are non-returnable. However, the Organizers shall not share and/or transmit the same to any third party.
@@ -86,9 +86,9 @@ The objective of the competition is to encourage and promote Rabindra Sangeet in
 
 ### Application
 
-1) The Application Form for the competition shall be available in the Website and on Social Media pages of the Foundation by 1st August 2025.
+1) The Application Form for the competition shall be available in the Website and on Social Media pages of the Foundation by 1st August 2026.
 2) No Application Fee is payable by the participant either for the Form or for the application.
-3) In order to participate the participants shall submit the following to our official e-mail arupratan2025@gmail.com.
+3) In order to participate the participants shall submit the following to our official e-mail arupratan2026@gmail.com.
    a) A duly filled out Form clearly mentioning all particulars;
    b) A scanned copy of the participant's photo Identification with proof of age;
    c) 1 (One) complete Rabindra Sangeet song sung solo by the participant, in MP3 format.
@@ -98,7 +98,7 @@ The objective of the competition is to encourage and promote Rabindra Sangeet in
 7) The song submitted may be recorded in a recording device of the participant's choice; however the use of pitch correction and/or "Auto tune" and/or other methods of correcting vocal deficiencies and/or shortcoming, including the use of professional studios are strictly prohibited.
 8) The participants may choose between Kolkata and Santiniketan as their location for the next stage of the competition. No modification and/or alteration of the selected location shall be permitted.
 9) Incomplete entries and/or entries without the 1 (One) accompanying song of any Genre (Parjaay) and/or violation of any of the abovementioned terms and conditions in the application, shall be rejected forthwith.
-10) The last date for submission shall be 2nd November 2025. However, the Organizers reserve the right to extend the deadline at their sole discretion.
+10) The last date for submission shall be 2nd November 2026. However, the Organizers reserve the right to extend the deadline at their sole discretion.
 
 ### Preliminary Selection
 
@@ -108,7 +108,7 @@ The objective of the competition is to encourage and promote Rabindra Sangeet in
 
 ### Audition Round
 
-1) The Audition will be held at Kolkata and at Santiniketan in the month of November 2025 at a date, time and venue to be decided and communicated by the Organizers.
+1) The Audition will be held at Kolkata and at Santiniketan in the month of November 2026 at a date, time and venue to be decided and communicated by the Organizers.
 2) At the Audition, the participants shall be required to sing 1 (One) Rabindra Sangeet song from any Genre (Parjaay) of the participants choice, live and in the presence of the Audition Judges, to be adjudicated based on the knowledge and experience of the Audition Judges.
 3) However, the Audition Judges shall reserve the right to ask questions and/or test the participant's knowledge and understanding of Rabindra Sangeet further, at their sole discretion.
 4) A team of Musicians, appointed by the Organizers, shall accompany all the participants in the Audition. No Musicians and/or musical instruments apart from those provided shall be permitted.
@@ -116,12 +116,12 @@ The objective of the competition is to encourage and promote Rabindra Sangeet in
 
 ### Briefing Session
 
-1) A Briefing Session for the Finalists will be held offline at Kolkata in the month of December 2025. The date, time and venue for the same shall be communicated to the Finalists.
+1) A Briefing Session for the Finalists will be held offline at Kolkata in the month of December 2026. The date, time and venue for the same shall be communicated to the Finalists.
 2) All Finalists must attend the Briefing Session. Any Finalist who fails to attend the Briefing Session may be disqualified at the discretion of the Organizers.
 
 ### Grand Finale
 
-1) The Grand Finale shall be held at Kolkata in the month of December 2025. The date, time and venue of the Grand Finale shall be communicated to the Finalists.
+1) The Grand Finale shall be held at Kolkata in the month of December 2026. The date, time and venue of the Grand Finale shall be communicated to the Finalists.
 2) The Grand Finale shall consist of 2 (Two) rounds.
 3) The First Round of the Grand Finale, shall require the Finalist to sing 1 (One) Rabindra Sangeet song from any Genre (Parjaay) of the Finalist's Choice.
 4) The Second Round of the Grand Finale shall require the finalist to sing 1 (One) Rabindra Sangeet song from any Genre (Parjaay) of the Finale Judges' Choice.

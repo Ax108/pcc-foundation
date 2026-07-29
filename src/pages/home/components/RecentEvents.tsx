@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { EVENTS_DATA } from '@events/constants/eventsConstants';
 import {ScrollReveal} from '@app/components/ScrollReveal';
 
@@ -66,19 +67,23 @@ export const RecentEvents = () => {
                 <div 
                   className="flex flex-col bg-white rounded-t-2xl rounded-b-md shadow-sm border border-black/5 overflow-hidden group h-full">
                   <div className="relative w-full aspect-[4/3] overflow-hidden">
-                    <img
-                      src={event.imageSrc}
-                      alt={event.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                    <a href={event.url} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 bg-primary text-white text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full shadow-lg hover:bg-secondary transition-colors">
+                    <Link to={`/events/${event.id}`}>
+                      <img
+                        src={event.imageSrc}
+                        alt={event.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                    </Link>
+                    <Link to={`/events/${event.id}`} className="absolute top-4 right-4 bg-primary text-white text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full shadow-lg hover:bg-secondary transition-colors">
                       Read More
-                    </a>
+                    </Link>
                   </div>
                   <div className="p-6 md:p-8 flex flex-col flex-1">
-                    <h3 className="text-xl font-serif font-bold text-primary mb-3 line-clamp-2">
-                      {event.title}
-                    </h3>
+                    <Link to={`/events/${event.id}`}>
+                      <h3 className="text-xl font-serif font-bold text-primary mb-3 line-clamp-2 hover:text-secondary transition-colors">
+                        {event.title}
+                      </h3>
+                    </Link>
                     <div className="text-sm text-text/70 mb-6 flex-1 line-clamp-3">
                       {event.description}
                     </div>

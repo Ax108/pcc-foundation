@@ -15,6 +15,6 @@ export const ABOUT_READ_MORE = {
 } as const;
 
 export const APPLICATION_POSTER = {
-  alt: 'Aruprataner Sandhane 2025 — Rabindra Sangeet competition application poster',
+  alt: 'Aruprataner Sandhane 2026 — Rabindra Sangeet competition application poster',
   downloadLabel: 'Submit Application Form',
 } as const;

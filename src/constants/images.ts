@@ -17,12 +17,14 @@ export const IMAGES = {
   HERO_SLIDE_3: '/assets/home/slide-3-header4.jpg',
   HERO_SLIDE_4: '/assets/home/slide-4-header-2.jpg',
 
-  /** Home about — 2025 Aruprataner Sandhane application poster (below hero) */
-  HOME_APPLICATION_POSTER: '/assets/home/aruprataner-2025-poster.jpg',
+  /** Home about — 2026 Aruprataner Sandhane application poster (below hero) */
+  HOME_APPLICATION_POSTER: '/assets/home/aruprataner-2026-poster.jpg',
 
   /** PDF linked from about poster — lazy route, not LCP */
+  APPLICATION_FORM_2026_PDF:
+    '/assets/documents/aruprataner-sandhane-2026-form.pdf',
   APPLICATION_FORM_2025_PDF:
-    '/assets/documents/aruprataner-sandhane-2025-form.pdf',
+    '/assets/documents/aruprataner-sandhane-2026-form.pdf',
 
   /** Partner / associates mark */
   ASSOCIATES_LOGO: '/assets/partners/associates-logo.png',
@@ -37,7 +39,7 @@ export const IMAGE_DIMENSIONS = {
   LOGO_HEADER: { width: 320, height: 54 },
   /** Home carousel — WP `header-*` large size 1024×337 */
   HERO_SLIDE: { width: 1024, height: 337 },
-  /** 2025 application poster — WP 768×612 variant */
+  /** 2026 application poster — WP 768×612 variant */
   HOME_APPLICATION_POSTER: { width: 768, height: 612 },
   /** Associates emblem — source PNG (square) */
   ASSOCIATES_LOGO: { width: 150, height: 150 },

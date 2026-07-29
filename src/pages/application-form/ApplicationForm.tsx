@@ -1,122 +1,100 @@
 import {useSEO} from '@app/hooks/useSEO';
 
-import {useState, useEffect, useRef} from 'react';
+import {useState, useRef} from 'react';
 import {ScrollReveal} from '@app/components/ScrollReveal';
 import {IMAGES, IMAGE_DIMENSIONS} from '@src/constants/images';
 import {AudioUploadField} from './components/AudioUploadField';
 
 export const ApplicationForm = () => {
   useSEO({
-    title: 'Application Form - Pratima Chandra Foundation',
-    description: 'Submit your application form for the Pratima Chandra Foundation competition.',
+    title: 'Apply Form - Pratima Chandra Foundation',
+    description: 'Submit your application form for the Pratima Chandra Foundation Rabindra Gaane Pratima Chandra Puroshkar competition.',
   });
 
-  const [showModal, setShowModal] = useState(false);
-  const [openAccordion, setOpenAccordion] = useState<number>(0);
+  const [openAccordions, setOpenAccordions] = useState<Record<number, boolean>>({
+    0: true,
+    1: true,
+    2: true,
+    3: true,
+    4: true,
+    5: true,
+    6: true,
+  });
+
+  const toggleAccordion = (index: number) => {
+    setOpenAccordions((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
   const [convertedMp3, setConvertedMp3] = useState<File | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  useEffect(() => {
-    // Small delay so it feels deliberate
-    const timer = setTimeout(() => setShowModal(true), 600);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <>
-      {/* Download Form Modal */}
-      {showModal && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-md shadow-2xl p-6 md:p-8 max-w-lg w-full relative animate-fadeIn flex flex-col items-center text-center">
-            <button 
-              onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-primary transition-colors cursor-pointer"
-              aria-label="Close modal"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-
-            <div className="overflow-hidden rounded-xl mb-6 w-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-black/5">
-              <img
-                src={IMAGES.HOME_APPLICATION_POSTER}
-                alt="Download Application Form"
-                width={IMAGE_DIMENSIONS.HOME_APPLICATION_POSTER.width}
-                height={IMAGE_DIMENSIONS.HOME_APPLICATION_POSTER.height}
-                loading="lazy"
-                decoding="async"
-                className="h-auto w-full object-cover"
-              />
-            </div>
-            
-            <h3 className="text-2xl font-serif font-bold text-primary mb-2">
-              Join the Foundation
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Would you like to download the application form for offline submission?
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
-              <a 
-                href="/assets/documents/aruprataner-sandhane-2025-form.pdf"
-                download="aruprataner-sandhane-2025-form.pdf"
-                onClick={() => setShowModal(false)}
-                className="bg-accent hover:bg-accent/90 !text-white px-8 py-3.5 rounded-lg font-medium transition-colors shadow-md w-full sm:w-auto text-center"
-              >
-                Download Form
-              </a>
-              <button 
-                onClick={() => setShowModal(false)}
-                className="px-8 py-3.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition-colors cursor-pointer w-full sm:w-auto"
-              >
-                No, thanks
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <article aria-label="Application Form" className="animate-page relative">
-      <header className="relative w-full h-[400px] md:h-[500px] overflow-hidden bg-surface flex items-center pt-16 md:pt-24 border-b border-gold/10">
-        <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-gold/10 rounded-full blur-3xl translate-y-1/4 -translate-x-1/4 pointer-events-none" />
-        
-        <div className="container-site relative z-10 h-full flex flex-col md:flex-row items-center justify-between gap-8 py-8 md:py-12">
+      <article aria-label="Apply Form" className="animate-page relative">
+        <header className="relative w-full overflow-hidden bg-surface py-12 md:py-20 border-b border-gold/10 pt-20 md:pt-28">
+          <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-gold/10 rounded-full blur-3xl translate-y-1/4 -translate-x-1/4 pointer-events-none" />
           
-          <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left order-2 md:order-1">
-            <ScrollReveal animation="fade-in" delay={0.1}>
-              <div className="inline-flex items-center justify-center md:justify-start gap-3 mb-4">
-                <span className="w-8 md:w-12 h-[2px] bg-gold"></span>
-                <p className="text-primary tracking-[0.2em] uppercase text-xs md:text-sm font-bold">Join the Competition</p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal animation="fade-up" delay={0.2}>
-              <h1 className="text-primary text-5xl md:text-6xl lg:text-7xl font-serif font-bold drop-shadow-sm tracking-wide leading-[1.1] mb-6">
-                আবেদনপত্র
-              </h1>
-            </ScrollReveal>
-          </div>
-
-          <div className="hidden md:flex w-full md:w-1/2 h-full items-center justify-center md:justify-end order-1 md:order-2">
-            <ScrollReveal animation="scale-up" delay={0.2}>
-              <div className="relative w-48 sm:w-56 md:w-80 lg:w-[450px] aspect-[16/9]">
-                <div className="absolute inset-0 bg-gold/30 -translate-x-3 -translate-y-3 md:-translate-x-5 md:-translate-y-5 rounded-[3rem] -z-10" />
-                <img
-                  src="/assets/gallery/ARS-2018-Judges-2-1-scaled.jpg"
-                  alt="Foundation Application"
-                  className="w-full h-full object-cover object-center rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-4 md:border-8 border-white"
-                />
-                <div className="absolute -bottom-4 -right-4 md:-bottom-8 md:-right-8 bg-white/95 backdrop-blur-sm p-3 md:p-5 shadow-xl border-r-4 border-primary rounded-l-sm z-20">
-                  <p className="text-primary font-serif font-bold text-sm md:text-lg leading-tight text-right">
-                    Register <br/> Now
+          <div className="container-site relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+            
+            <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left order-2 md:order-1">
+              <ScrollReveal animation="fade-in" delay={0.1}>
+                <div className="inline-flex items-center justify-center md:justify-start gap-3 mb-4">
+                  <span className="w-8 md:w-12 h-[2px] bg-gold"></span>
+                  <p className="text-primary tracking-[0.2em] uppercase text-xs md:text-sm font-bold">
+                    Pratima Chandra Foundation
                   </p>
                 </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+              <ScrollReveal animation="fade-up" delay={0.2}>
+                <h1 className="text-primary text-4xl sm:text-5xl md:text-6xl font-serif font-bold drop-shadow-sm tracking-wide leading-[1.1] mb-3">
+                  Apply Form
+                </h1>
+                <p className="text-accent text-xl font-bold font-serif mb-4">
+                  আবেদনপত্র
+                </p>
+              </ScrollReveal>
+              <ScrollReveal animation="fade-up" delay={0.3}>
+                <p className="text-gray-600 text-base md:text-lg mb-6 leading-relaxed">
+                  Would you like to download the application form for offline submission or apply online below?
+                </p>
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                  <a 
+                    href="/assets/documents/aruprataner-sandhane-2026-form.pdf"
+                    download="aruprataner-sandhane-2026-form.pdf"
+                    className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 !text-white px-7 py-3.5 rounded-lg font-medium transition-all shadow-md text-base hover:shadow-lg"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Form (PDF)
+                  </a>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <div className="w-full md:w-1/2 flex items-center justify-center md:justify-end order-1 md:order-2">
+              <ScrollReveal animation="scale-up" delay={0.2}>
+                <div className="relative max-w-sm sm:max-w-md w-full overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-4 border-white bg-white">
+                  <img
+                    src={IMAGES.HOME_APPLICATION_POSTER}
+                    alt="Aruprataner Sandhane 2026 Application Poster"
+                    width={IMAGE_DIMENSIONS.HOME_APPLICATION_POSTER.width}
+                    height={IMAGE_DIMENSIONS.HOME_APPLICATION_POSTER.height}
+                    loading="eager"
+                    decoding="async"
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
 
       <section className="bg-[#f5f5f5] py-16 md:py-24">
         <div className="container-site">
@@ -125,7 +103,7 @@ export const ApplicationForm = () => {
             <div className="text-center mb-10">
               <ScrollReveal animation="fade-up" delay={0.2}>
                 <h2 className="text-3xl font-bold text-primary mb-4">
-                  অরূপরতনের সন্ধানে ২০২৫
+                  অরূপরতনের সন্ধানে ২০২৬
                 </h2>
               </ScrollReveal>
               <ScrollReveal animation="fade-up" delay={0.3}>
@@ -306,22 +284,22 @@ export const ApplicationForm = () => {
             <h2 className="text-2xl font-bold text-primary mb-8 border-b border-border pb-4">Guidelines & Rules</h2>
             
             <div className="flex flex-col gap-4">
-              <details open={openAccordion === 0} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 0 ? -1 : 0); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[0]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(0); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Introduction
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
                   </span>
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
-                  <p><strong>Pratima Chandra Foundation</strong> is pleased to organize the 8th edition of <strong>Rabindra Gaane Pratima Chandra Puroshkar</strong> titled <strong>"ARUPRATANER SANDHANE"</strong> in 2025.</p>
+                  <p><strong>Pratima Chandra Foundation</strong> is pleased to organize the 8th edition of <strong>Rabindra Gaane Pratima Chandra Puroshkar</strong> titled <strong>"ARUPRATANER SANDHANE"</strong> in 2026.</p>
                   <p>The objective of the competition is to encourage and promote Rabindra Sangeet in its original form and style.</p>
                   <p className="font-semibold pt-2 text-primary">The terms and condition to participate are as follows :-</p>
                 </div>
               </details>
 
-              <details open={openAccordion === 1} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 1 ? -1 : 1); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[1]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(1); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   General Rules
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -329,7 +307,7 @@ export const ApplicationForm = () => {
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
-                    <li>The competition is open to participants aged 15 to 40 years as on 01.01.2025.</li>
+                    <li>The competition is open to participants aged 15 to 40 years as on 01.01.2026.</li>
                     <li>There is no Gender restrictions.</li>
                     <li>The Winner, First Runner-up and Second Runner-up of previous <strong>Rabindra Gaane Pratima Chandra Puroshkar</strong> titled <strong>"ARUPRATANER SANDHANE"</strong> or otherwise shall not be permitted to participate again.</li>
                     <li>The Application Form, along with Song Recording, Photo ID Proof and Age Proof copies are non-returnable. However, the Organizers shall not share and/or transmit the same to any third party.</li>
@@ -342,8 +320,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details open={openAccordion === 2} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 2 ? -1 : 2); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[2]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(2); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Application
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -351,9 +329,9 @@ export const ApplicationForm = () => {
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
-                    <li>The Application Form for the competition shall be available in the Website and on Social Media pages of the Foundation by 1st August 2025.</li>
+                    <li>The Application Form for the competition shall be available in the Website and on Social Media pages of the Foundation by 1st August 2026.</li>
                     <li>No Application Fee is payable by the participant either for the Form or for the application.</li>
-                    <li>In order to participate the participants shall submit the following to our official e-mail arupratan2025@gmail.com.
+                    <li>In order to participate the participants shall submit the following to our official e-mail arupratan2026@gmail.com.
                       <ul className="list-[lower-alpha] pl-5 mt-1 space-y-1">
                         <li>A duly filled out Form clearly mentioning all particulars;</li>
                         <li>A scanned copy of the participant's photo Identification with proof of age;</li>
@@ -366,13 +344,13 @@ export const ApplicationForm = () => {
                     <li>The song submitted may be recorded in a recording device of the participant's choice; however the use of pitch correction and/or "Auto tune" and/or other methods of correcting vocal deficiencies and/or shortcoming, including the use of professional studios are strictly prohibited.</li>
                     <li>The participants may choose between Kolkata and Santiniketan as their location for the next stage of the competition. No modification and/or alteration of the selected location shall be permitted.</li>
                     <li>Incomplete entries and/or entries without the 1 (One) accompanying song of any Genre (Parjaay) and/or violation of any of the abovementioned terms and conditions in the application, shall be rejected forthwith.</li>
-                    <li>The last date for submission shall be 2nd November 2025. However, the Organizers reserve the right to extend the deadline at their sole discretion.</li>
+                    <li>The last date for submission shall be 2nd November 2026. However, the Organizers reserve the right to extend the deadline at their sole discretion.</li>
                   </ol>
                 </div>
               </details>
 
-              <details open={openAccordion === 3} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 3 ? -1 : 3); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[3]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(3); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Preliminary Selection
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -387,8 +365,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details open={openAccordion === 4} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 4 ? -1 : 4); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[4]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(4); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Audition Round
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -396,7 +374,7 @@ export const ApplicationForm = () => {
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
-                    <li>The Audition will be held at Kolkata and at Santiniketan in the month of November 2025 at a date, time and venue to be decided and communicated by the Organizers.</li>
+                    <li>The Audition will be held at Kolkata and at Santiniketan in the month of November 2026 at a date, time and venue to be decided and communicated by the Organizers.</li>
                     <li>At the Audition, the participants shall be required to sing 1 (One) Rabindra Sangeet song from any Genre (Parjaay) of the participants choice, live and in the presence of the Audition Judges, to be adjudicated based on the knowledge and experience of the Audition Judges.</li>
                     <li>However, the Audition Judges shall reserve the right to ask questions and/or test the participant's knowledge and understanding of Rabindra Sangeet further, at their sole discretion.</li>
                     <li>A team of Musicians, appointed by the Organizers, shall accompany all the participants in the Audition. No Musicians and/or musical instruments apart from those provided shall be permitted.</li>
@@ -405,8 +383,8 @@ export const ApplicationForm = () => {
                 </div>
               </details>
 
-              <details open={openAccordion === 5} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 5 ? -1 : 5); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[5]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(5); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Briefing Session
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -414,14 +392,14 @@ export const ApplicationForm = () => {
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
-                    <li>A Briefing Session for the Finalists will be held offline at Kolkata in the month of December 2025. The date, time and venue for the same shall be communicated to the Finalists.</li>
+                    <li>A Briefing Session for the Finalists will be held offline at Kolkata in the month of December 2026. The date, time and venue for the same shall be communicated to the Finalists.</li>
                     <li>All Finalists must attend the Briefing Session. Any Finalist who fails to attend the Briefing Session may be disqualified at the discretion of the Organizers.</li>
                   </ol>
                 </div>
               </details>
 
-              <details open={openAccordion === 6} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
-                <summary onClick={(e) => { e.preventDefault(); setOpenAccordion(openAccordion === 6 ? -1 : 6); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
+              <details open={!!openAccordions[6]} className="group border border-border rounded-lg bg-[#f9f9f9] open:bg-white transition-colors duration-200">
+                <summary onClick={(e) => { e.preventDefault(); toggleAccordion(6); }} className="font-semibold text-lg text-primary cursor-pointer list-none flex justify-between items-center p-5">
                   Grand Finale
                   <span className="transition-transform duration-300 group-open:-rotate-180 text-accent">
                     <svg fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9" /></svg>
@@ -433,7 +411,7 @@ export const ApplicationForm = () => {
                     <li>The Winner will be awarded a prize money of Rs.40,000/- (Rupees Forty Thousand only), the First Runner-up shall be awarded a prize money of Rs.20,000/- (Rupees Twenty Thousand only) and the Second Runner-up shall be awarded Rs.10,000/- (Rupees Ten Thousand Only). All such prize money shall be awarded by Cheque only.</li>
                     <li>The Winner, First Runner-up and Second Runner-up shall also be awarded Mementoes and Certificates.</li>
                     <li>The Winner, First Runner-up and Second Runner-up shall also be given an opportunity for recording of 1 (One) Rabindra Sangeet song, sung by them.</li>
-                    <li>The Grand Finale shall be held at Kolkata in the month of December 2025. The date, time and venue of the Grand Finale shall be communicated to the Finalists.</li>
+                    <li>The Grand Finale shall be held at Kolkata in the month of December 2026. The date, time and venue of the Grand Finale shall be communicated to the Finalists.</li>
                     <li>The Grand Finale shall consist of 2 (Two) rounds.</li>
                     <li>The First Round of the Grand Finale, shall require the Finalist to sing 1 (One) Rabindra Sangeet song from any Genre (Parjaay) of the Finalist's Choice.</li>
                     <li>The Second Round of the Grand Finale shall require the finalist to sing 1 (One) Rabindra Sangeet song from any Genre (Parjaay) of the Finale Judges' Choice.</li>

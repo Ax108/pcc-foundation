@@ -2,6 +2,7 @@ import {useSEO} from '@app/hooks/useSEO';
 
 import {EVENTS_DATA} from './constants/eventsConstants';
 import {ScrollReveal} from '@app/components/ScrollReveal';
+import {Link} from 'react-router-dom';
 
 export const Events = () => {
   useSEO({
@@ -102,14 +103,12 @@ export const Events = () => {
                     ))}
                   </div>
                   <div className="mt-auto relative z-10">
-                    <a
-                      href={featuredEvent.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      to={`/events/${featuredEvent.id}`}
                       className="inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-bold hover:bg-secondary transition-all duration-300 uppercase tracking-widest text-xs"
                     >
                       View Details
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -152,15 +151,13 @@ export const Events = () => {
                           <p key={i}>{line}</p>
                         ))}
                       </div>
-                      <a
-                        href={event.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        to={`/events/${event.id}`}
                         className="inline-flex items-center gap-2 text-primary font-bold tracking-[0.15em] uppercase text-sm hover:text-gold transition-colors mt-auto group/btn"
                       >
                         Read More
                         <span className="text-lg leading-none transform transition-transform group-hover/btn:translate-x-2" aria-hidden="true">→</span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </ScrollReveal>

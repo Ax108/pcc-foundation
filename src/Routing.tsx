@@ -16,6 +16,9 @@ const Gallery = lazy(() =>
 const Events = lazy(() =>
   import('@events/Events').then(module => ({default: module.Events})),
 );
+const EventDetails = lazy(() =>
+  import('@events/EventDetails').then(module => ({default: module.EventDetails})),
+);
 const ContactUs = lazy(() =>
   import('@contact/ContactUs').then(module => ({default: module.ContactUs})),
 );
@@ -41,6 +44,7 @@ const Routing = () => (
           <Route path="/our-inspiration" element={<OurInspiration />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/events/:eventId" element={<EventDetails />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/application-form" element={<ApplicationForm />} />
         </Routes>
