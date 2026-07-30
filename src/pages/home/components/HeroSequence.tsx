@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { HERO_SLIDES } from '@home/constants/heroSlides';
 import { Link } from 'react-router-dom';
 import {ScrollReveal} from '@app/components/ScrollReveal';
+import {assetUrl} from '@src/constants/assetBase';
 
 const BACKGROUND_IMAGES = [
-  '/assets/events/PCMA-Collage.jpg',
-  '/assets/events/featured-image-1-1024x499.jpg',
-  '/assets/events/collage-2.png',
+  assetUrl('/assets/events/PCMA-Collage.jpg'),
+  assetUrl('/assets/events/featured-image-1-1024x499.jpg'),
+  assetUrl('/assets/events/collage-2.png'),
 ];
 
 export const HeroSequence = () => {

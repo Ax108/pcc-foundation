@@ -4,6 +4,7 @@ import {GALLERY_IMAGES} from '@gallery/constants/galleryImages';
 
 import {Lightbox} from '@app/components/Lightbox';
 import {ScrollReveal} from '@app/components/ScrollReveal';
+import {assetUrl} from '@src/constants/assetBase';
 
 export const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -55,7 +56,7 @@ export const Gallery = () => {
                 
                 {/* Image */}
                 <img
-                  src="/assets/gallery/DSC_3113-scaled.jpg"
+                  src={assetUrl("/assets/gallery/DSC_3113-scaled.jpg")}
                   alt="Foundation Gallery"
                   className="w-full h-full object-cover object-center rounded-tr-[5rem] rounded-bl-[5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-4 md:border-8 border-white"
                 />

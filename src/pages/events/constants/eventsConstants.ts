@@ -1,3 +1,5 @@
+import {assetUrl} from '@src/constants/assetBase';
+
 export type EventItem = {
   id: string;
   title: string;
@@ -11,7 +13,7 @@ export const EVENTS_DATA: EventItem[] = [
   {
     id: "event-0",
     title: "রবীন্দ্র গানে প্রতিমা চন্দ্র পুরস্কার – ২০২৩ অরূপরতনের সন্ধানে",
-    imageSrc: "/assets/events/featured-image-1-1024x499.jpg",
+    imageSrc: assetUrl("/assets/events/featured-image-1-1024x499.jpg"),
     url: "https://pratimachandrafoundation.org/event/%e0%a6%b0%e0%a6%ac%e0%a7%80%e0%a6%a8%e0%a7%8d%e0%a6%a6%e0%a7%8d%e0%a6%b0-%e0%a6%97%e0%a6%be%e0%a6%a8%e0%a7%87-%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a6%bf%e0%a6%ae%e0%a6%be-%e0%a6%9a%e0%a6%a8-6/",
     description: "পরিচালনায় – প্রতিমা চন্দ্র ফাউন্ডেশন\nউপদেষ্টা – শ্রী প্রতীপ রায়\nস্থান ও সময়– আই সি সি আর অডিটরিয়াম, হো চি মিন সরণী, কলকাতা সন্ধ্যা ৫:৩০টা থেকে\nপুরস্কার প্রদানের স্থান : আই সি সি আর অডিটরিয়াম, কলকাতা\nতারিখ : ৩রা ডিসেম্বর, ২০২৩",
     year: 2023,
@@ -19,7 +21,7 @@ export const EVENTS_DATA: EventItem[] = [
   {
     id: "event-1",
     title: "রবীন্দ্র গানে প্রতিমা চন্দ্র পুরস্কার – ২০২২ অরূপরতনের সন্ধানে",
-    imageSrc: "/assets/events/Header2022-1024x499.jpg",
+    imageSrc: assetUrl("/assets/events/Header2022-1024x499.jpg"),
     url: "https://pratimachandrafoundation.org/event/%e0%a6%b0%e0%a6%ac%e0%a7%80%e0%a6%a8%e0%a7%8d%e0%a6%a6%e0%a7%8d%e0%a6%b0-%e0%a6%97%e0%a6%be%e0%a6%a8%e0%a7%87-%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a6%bf%e0%a6%ae%e0%a6%be-%e0%a6%9a%e0%a6%a8-5/",
     description: "পরিচালনায় – প্রতিমা চন্দ্র ফাউন্ডেশন\nসহযোগিতায় – শ্রী চন্দন রায়চৌধুরী (সঙ্গীত পরিচালক)\nস্থান – আই সি সি আর অডিটরিয়াম, হো চি মিন সরণী, কলকাতা সন্ধ্যা ৫:৩০টা থেকে\nপুরস্কার প্রদানের স্থান : আই সি সি আর অডিটরিয়াম, কলকাতা\nতারিখ : ১৭ই এপ্রিল, ২০২২",
     year: 2022,
@@ -27,7 +29,7 @@ export const EVENTS_DATA: EventItem[] = [
   {
     id: "event-2",
     title: "রবীন্দ্র গানে প্রতিমা চন্দ্র পুরস্কার – ২০১৯ অরূপরতনের সন্ধানে",
-    imageSrc: "/assets/events/Header-1024x499.jpg",
+    imageSrc: assetUrl("/assets/events/Header-1024x499.jpg"),
     url: "https://pratimachandrafoundation.org/event/%e0%a6%b0%e0%a6%ac%e0%a7%80%e0%a6%a8%e0%a7%8d%e0%a6%a6%e0%a7%8d%e0%a6%b0-%e0%a6%97%e0%a6%be%e0%a6%a8%e0%a7%87-%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a6%bf%e0%a6%ae%e0%a6%be-%e0%a6%9a%e0%a6%a8-4/",
     description: "পরিচালনায় – প্রতিমা চন্দ্র ফাউন্ডেশন\nসহযোগিতায় – ডাকঘর\nস্থান – আই সি সি আর অডিটরিয়াম, হো চি মিন সরণী, কলকাতা সন্ধ্যা ৫:৩০টা থেকে\nপুরস্কার প্রদানের স্থান : আই সি সি আর অডিটরিয়াম, কলকাতা\nতারিখ : ৭ই ডিসেম্বর, ২০১৯",
     year: 2019,
@@ -35,7 +37,7 @@ export const EVENTS_DATA: EventItem[] = [
   {
     id: "event-8",
     title: "রবীন্দ্র গানে প্রতিমা চন্দ্র পুরস্কার – ২০১৮ অরূপরতনের সন্ধানে",
-    imageSrc: "/assets/events/p-2w.jpg",
+    imageSrc: assetUrl("/assets/events/p-2w.jpg"),
     url: "https://pratimachandrafoundation.org/event/%e0%a6%b0%e0%a6%ac%e0%a7%80%e0%a6%a8%e0%a7%8d%e0%a6%a6%e0%a7%8d%e0%a6%b0-%e0%a6%97%e0%a6%be%e0%a6%a8%e0%a7%87-%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a6%bf%e0%a6%ae%e0%a6%be-%e0%a6%9a%e0%a6%a8/",
     description: "পরিচালনায় – প্রতিমা চন্দ্র ফাউন্ডেশন\nসহযোগিতায় – ডাকঘর\nস্থান – আই সি সি আর অডিটরিয়াম, হো চি মিন সরণী, কলকাতা সন্ধ্যা ৫:৩০টা থেকে\nপুরস্কার প্রদানের স্থান : আই সি সি আর অডিটরিয়াম, কলকাতা\nতারিখ : ৩রা ডিসেম্বর, ২০১৮",
     year: 2018,
@@ -43,7 +45,7 @@ export const EVENTS_DATA: EventItem[] = [
   {
     id: "event-7",
     title: "প্রতিমা চন্দ্র মেমোরিয়াল অ্যাওয়ার্ড  – ২০১৮",
-    imageSrc: "/assets/events/post-2.jpg",
+    imageSrc: assetUrl("/assets/events/post-2.jpg"),
     url: "https://pratimachandrafoundation.org/event/%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a6%bf%e0%a6%ae%e0%a6%be-%e0%a6%9a%e0%a6%a8%e0%a7%8d%e0%a6%a6%e0%a7%8d%e0%a6%b0-%e0%a6%ae%e0%a7%87%e0%a6%ae%e0%a7%8b%e0%a6%b0%e0%a6%bf%e0%a6%af%e0%a6%bc%e0%a6%be/",
     description: "পরিচালনায় – প্রতিমা চন্দ্র ফাউন্ডেশন\nসহযোগিতায় – ডাকঘর\nস্থান – আই সি সি আর অডিটরিয়াম, হো চি মিন সরণী, কলকাতা, ১১.০০ টা থেকে সন্ধ্যা ৫:০০ টা\nপুরস্কার প্রদানের স্থান : নজরুল মঞ্চ, রবীন্দ্র সরোবর, কলকাতা\nতারিখ : ১১ই নভেম্বর থেকে ১২ই নভেম্বর, ২০১৮",
     year: 2018,
@@ -51,7 +53,7 @@ export const EVENTS_DATA: EventItem[] = [
   {
     id: "event-6",
     title: "রবীন্দ্র গানে প্রতিমা চন্দ্র পুরস্কার – ২০১৭  অরূপরতনের সন্ধানে",
-    imageSrc: "/assets/events/ARS-collage.jpg",
+    imageSrc: assetUrl("/assets/events/ARS-collage.jpg"),
     url: "https://pratimachandrafoundation.org/event/%e0%a6%b0%e0%a6%ac%e0%a7%80%e0%a6%a8%e0%a7%8d%e0%a6%a6%e0%a7%8d%e0%a6%b0-%e0%a6%97%e0%a6%be%e0%a6%a8%e0%a7%87-%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a6%bf%e0%a6%ae%e0%a6%be-%e0%a6%9a%e0%a6%a8-2/",
     description: "পরিচালনায় – প্রতিমা চন্দ্র ফাউন্ডেশন\nসহযোগিতায় – ডাকঘর\nস্থান – জি.ডি. বিড়লা সভাঘর, কলকাতা, বেলা ৫:০০টা থেকে সন্ধ্যা ৯.০০ টা\nপুরস্কার প্রদানের স্থান : জি.ডি. বিড়লা সভাঘর, কলকাতা\nতারিখ : ৩রা ডিসেম্বর, ২০১৭",
     year: 2017,
@@ -59,7 +61,7 @@ export const EVENTS_DATA: EventItem[] = [
   {
     id: "event-5",
     title: "প্রতিমা চন্দ্র মেমোরিয়াল অ্যাওয়ার্ড – ২০১৭",
-    imageSrc: "/assets/events/PCMA-Collage.jpg",
+    imageSrc: assetUrl("/assets/events/PCMA-Collage.jpg"),
     url: "https://pratimachandrafoundation.org/event/%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a6%bf%e0%a6%ae%e0%a6%be-%e0%a6%9a%e0%a6%a8%e0%a7%8d%e0%a6%a6%e0%a7%8d%e0%a6%b0-%e0%a6%ae%e0%a7%87%e0%a6%ae%e0%a7%8b%e0%a6%b0%e0%a6%bf%e0%a6%af%e0%a6%bc-2/",
     description: "পরিচালনায় – প্রতিমা চন্দ্র ফাউন্ডেশন\nসহযোগিতায় – ডোভার লেন মিউজিক কনফারেন্স এবং দ্য ডোভার লেন মিউজিক একাডেমি।\nস্থান – সেমিনার হল, সায়েন্স সিটি, কলকাতা - বেলা ১১.০০ টা থেকে সন্ধ্যা ৬.০০ টা\nপুরস্কার প্রদানের স্থান : নজরুল মঞ্চ, রবীন্দ্র সরোবর, কলকাতা\nতারিখ : ৩রা নভেম্বর থেকে ৫ই নভেম্বর, ২০১৭",
     year: 2017,
@@ -67,7 +69,7 @@ export const EVENTS_DATA: EventItem[] = [
   {
     id: "event-4",
     title: "রবীন্দ্র গানে প্রতিমা চন্দ্র পুরষ্কার  ২০১৬  অরূপরতনের সন্ধানে",
-    imageSrc: "/assets/events/Header2016-1024x499.jpg",
+    imageSrc: assetUrl("/assets/events/Header2016-1024x499.jpg"),
     url: "https://pratimachandrafoundation.org/event/%e0%a6%b0%e0%a6%ac%e0%a7%80%e0%a6%a8%e0%a7%8d%e0%a6%a6%e0%a7%8d%e0%a6%b0-%e0%a6%97%e0%a6%be%e0%a6%a8%e0%a7%87-%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a6%bf%e0%a6%ae%e0%a6%be-%e0%a6%9a%e0%a6%a8-3/",
     description: "পরিচালনায় – প্রতিমা চন্দ্র ফাউন্ডেশন\nসহযোগিতায় – ডাকঘর\nস্থান – আই সি সি আর অডিটরিয়াম, হো চি মিন সরণী, কলকাতা বেলা ৫:৩০টা থেকে সন্ধ্যা ৯.০০ টা\nপুরস্কার প্রদানের স্থান : আই সি সি আর অডিটরিয়াম, কলকাতা\nতারিখ : ১১ই জানুয়ারী, ২০১৭",
     year: 2016,
@@ -75,7 +77,7 @@ export const EVENTS_DATA: EventItem[] = [
   {
     id: "event-3",
     title: "প্রতিমা চন্দ্র মেমোরিয়াল অ্যাওয়ার্ড – ২০১৬",
-    imageSrc: "/assets/events/collage-2.png",
+    imageSrc: assetUrl("/assets/events/collage-2.png"),
     url: "https://pratimachandrafoundation.org/event/%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a4%e0%a6%bf%e0%a6%ae%e0%a6%be-%e0%a6%9a%e0%a6%a8%e0%a7%8d%e0%a6%a6%e0%a7%8d%e0%a6%b0-%e0%a6%ae%e0%a7%87%e0%a6%ae%e0%a7%8b%e0%a6%b0%e0%a6%bf%e0%a6%af%e0%a6%bc-3/",
     description: "পরিচালনায় – প্রতিমা চন্দ্র ফাউন্ডেশন\nসহযোগিতায় – ডোভার লেন মিউজিক কনফারেন্স এবং দ্য ডোভার লেন মিউজিক একাডেমি।\nস্থান – সেমিনার হল, সায়েন্স সিটি, কলকাতা - বেলা ১২.০০ টা থেকে সন্ধ্যা ۸.০০ টা\nপুরস্কার প্রদানের স্থান : সেমিনার হল, সায়েন্স সিটি, কলকাতা\nতারিখ : ৩রা নভেম্বর - ৫ই নভেম্বর, ২০১৬",
     year: 2016,

@@ -3,6 +3,7 @@ import {useSEO} from '@app/hooks/useSEO';
 import {EVENTS_DATA} from './constants/eventsConstants';
 import {ScrollReveal} from '@app/components/ScrollReveal';
 import {Link} from 'react-router-dom';
+import {assetUrl} from '@src/constants/assetBase';
 
 export const Events = () => {
   useSEO({
@@ -49,7 +50,7 @@ export const Events = () => {
                 
                 {/* Image */}
                 <img
-                  src="/assets/gallery/PCMA-2016-Event-scaled.jpg"
+                  src={assetUrl("/assets/gallery/PCMA-2016-Event-scaled.jpg")}
                   alt="Foundation Event"
                   className="w-full h-full object-cover object-center rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-4 md:border-8 border-white"
                 />

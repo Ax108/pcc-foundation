@@ -24,7 +24,7 @@ git fetch origin master
 git checkout origin/master -- data/pratima_chandra_foundation
 ```
 
-Copy selected files from `data/.../assets/images/` into `public/assets/` as pages are built. See [docs/MigrationPlan.md §2.4](./docs/MigrationPlan.md#24-image-assets-dataassetsimages).
+Media lives in the sibling **[Ax108/pcc-data](https://github.com/Ax108/pcc-data)** repo, hosted at **https://ax108.github.io/pcc-data/assets/**. The app defaults to that base (`VITE_ASSET_BASE_URL`); leave it empty only if you want local Vite to serve `../pcc-data/assets` instead. See `.env.example`.
 
 ---
 
@@ -72,11 +72,40 @@ Home section order (locked): Hero → About → Partners → Gallery teaser → 
 
 ```bash
 git checkout react-app-master
-bun install
-bun run dev
+npm install
+npm run dev
 ```
 
 Dev server: [http://localhost:5173](http://localhost:5173)
+
+---
+
+## Deploy (Netlify)
+
+Config lives in [`netlify.toml`](./netlify.toml). Media is loaded from `https://ax108.github.io/pcc-data/assets/` via `VITE_ASSET_BASE_URL`.
+
+| Setting | Value |
+| ------- | ----- |
+| Base directory | repo root (on `react-app-master`) |
+| Build command | `npm run build` |
+| Publish directory | `dist` |
+| Node | `22` (see `.nvmrc`) |
+
+**Connect the site**
+
+1. Netlify → Add new site → Import from Git → `Ax108/pcc-foundation`
+2. Set production branch to **`react-app-master`**
+3. Confirm build/publish from `netlify.toml` (no UI overrides needed)
+4. Optional: set `VITE_ASSET_BASE_URL` in Site settings → Environment variables if you change the CDN
+
+SPA routes (`/gallery`, `/events/:id`, …) are covered by the `/* → /index.html` rewrite.
+
+**Local production check**
+
+```bash
+npm run build
+npm run preview
+```
 
 ---
 

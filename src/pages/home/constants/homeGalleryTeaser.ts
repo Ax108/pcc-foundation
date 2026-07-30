@@ -1,3 +1,5 @@
+import {assetUrl} from '@src/constants/assetBase';
+
 /** Home gallery teaser — order from live WP Elementor widget `9718027` (container `f916234`) */
 
 export type HomeGalleryTeaserItem = {
@@ -24,55 +26,55 @@ const TEASER_SIZE = {width: 768, height: 512} as const;
 export const HOME_GALLERY_TEASER: HomeGalleryTeaserItem[] = [
   {
     id: 'pcma-2018-rakhi-1',
-    imageSrc: '/assets/gallery/home/teaser-01.jpg',
+    imageSrc: assetUrl('/assets/gallery/home/teaser-01.jpg'),
     alt: 'PCMA 2018 — second prize recipient Rakhi Chatterjee at the awards ceremony',
     ...TEASER_SIZE,
   },
   {
     id: 'pcma-2018-angira-1',
-    imageSrc: '/assets/gallery/home/teaser-02.jpg',
+    imageSrc: assetUrl('/assets/gallery/home/teaser-02.jpg'),
     alt: 'PCMA 2018 — first prize recipient Angira Kotal on stage',
     ...TEASER_SIZE,
   },
   {
     id: 'pcma-2018-event-2',
-    imageSrc: '/assets/gallery/home/teaser-03.jpg',
+    imageSrc: assetUrl('/assets/gallery/home/teaser-03.jpg'),
     alt: 'PCMA 2018 memorial award event — performers on stage',
     ...TEASER_SIZE,
   },
   {
     id: 'pcma-2018-judges-2',
-    imageSrc: '/assets/gallery/home/teaser-04.jpg',
+    imageSrc: assetUrl('/assets/gallery/home/teaser-04.jpg'),
     alt: 'PCMA 2018 — judges panel at the competition',
     ...TEASER_SIZE,
   },
   {
     id: 'pcma-2018-laxmipriya-2',
-    imageSrc: '/assets/gallery/home/teaser-05.jpg',
+    imageSrc: assetUrl('/assets/gallery/home/teaser-05.jpg'),
     alt: 'PCMA 2018 — third prize recipient Laxmipriya Nayak',
     ...TEASER_SIZE,
   },
   {
     id: 'pcma-2018-rakhi-2',
-    imageSrc: '/assets/gallery/home/teaser-06.jpg',
+    imageSrc: assetUrl('/assets/gallery/home/teaser-06.jpg'),
     alt: 'PCMA 2018 — Rakhi Chatterjee receiving her award',
     ...TEASER_SIZE,
   },
   {
     id: 'ars-2018-bhumika-3',
-    imageSrc: '/assets/gallery/home/teaser-07.jpg',
+    imageSrc: assetUrl('/assets/gallery/home/teaser-07.jpg'),
     alt: 'ARS 2018 — first prize recipient Bhumika Ganguly',
     ...TEASER_SIZE,
   },
   {
     id: 'ars-2018-supriyo-3',
-    imageSrc: '/assets/gallery/home/teaser-08.jpg',
+    imageSrc: assetUrl('/assets/gallery/home/teaser-08.jpg'),
     alt: 'ARS 2018 — third prize recipient Supriyo Koley',
     ...TEASER_SIZE,
   },
   {
     id: 'ars-2018-event-3',
-    imageSrc: '/assets/gallery/ARS-2018-Event-3.jpg',
+    imageSrc: assetUrl('/assets/gallery/ARS-2018-Event-3.jpg'),
     alt: 'Foundation event performance',
     ...TEASER_SIZE,
   },

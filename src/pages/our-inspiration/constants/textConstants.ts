@@ -1,3 +1,5 @@
+import {assetUrl} from '@src/constants/assetBase';
+
 export const OUR_INSPIRATION_CONTENT = {
   about: {
     heading: { normal: 'About', gold: 'the Foundation' },
@@ -54,18 +56,18 @@ export const OUR_INSPIRATION_CONTENT = {
       image: {
         id: 'Smt. Pratima Chandra at her earlier age',
         name: 'Smt. Pratima Chandra at her earlier age',
-        imageSrc: '/assets/our-inspiration/pratima-chandra-earlier-1024x737.jpg',
+        imageSrc: assetUrl('/assets/our-inspiration/pratima-chandra-earlier-1024x737.jpg'),
       },
     },
     gurus: [
-      { id: 'Sri N. C. Baral', name: 'Sri N. C. Baral', imageSrc: '/assets/our-inspiration/Baneekanthha-Nirmal-Chandra-Baral.jpg' },
+      { id: 'Sri N. C. Baral', name: 'Sri N. C. Baral', imageSrc: assetUrl('/assets/our-inspiration/Baneekanthha-Nirmal-Chandra-Baral.jpg') },
       {
         id: 'Sri Siddheswar Mukhopadhyay',
         name: 'Sri Siddheswar Mukhopadhyay',
-        imageSrc: '/assets/our-inspiration/Siddheswar-Mukhopadhyay.jpg',
+        imageSrc: assetUrl('/assets/our-inspiration/Siddheswar-Mukhopadhyay.jpg'),
       },
-      { id: 'Sri Akhil Bandhu Ghosh', name: 'Sri Akhil Bandhu Ghosh', imageSrc: '/assets/our-inspiration/Akhil-Bandhu-Ghosh.jpg' },
-      { id: 'Sri Dhiren Mitra', name: 'Sri Dhiren Mitra', imageSrc: '/assets/our-inspiration/Dhiren-Mitra.jpg' },
+      { id: 'Sri Akhil Bandhu Ghosh', name: 'Sri Akhil Bandhu Ghosh', imageSrc: assetUrl('/assets/our-inspiration/Akhil-Bandhu-Ghosh.jpg') },
+      { id: 'Sri Dhiren Mitra', name: 'Sri Dhiren Mitra', imageSrc: assetUrl('/assets/our-inspiration/Dhiren-Mitra.jpg') },
     ],
     section2: {
       paragraphs: [
@@ -78,7 +80,7 @@ export const OUR_INSPIRATION_CONTENT = {
           text: ' and titles, she received WBMC award for Bhajan, Kirtan and Rabindra Sangeet and ISMC awards for Rabindra Sangeet and Old Style (Puratoni) Bengali songs. Her versatility as an artist could be seen in diverse genres of music like Thumri.',
         },
       ],
-      image: { id: 'Awards Collage', name: 'Awards Collage', imageSrc: '/assets/our-inspiration/collage-768x485.png' },
+      image: { id: 'Awards Collage', name: 'Awards Collage', imageSrc: assetUrl('/assets/our-inspiration/collage-768x485.png') },
     },
     section3: {
       paragraphs: [
@@ -94,7 +96,7 @@ export const OUR_INSPIRATION_CONTENT = {
       image: {
         id: 'Pratima Chandra Later Age',
         name: 'Pratima Chandra Later Age',
-        imageSrc: '/assets/our-inspiration/pratima-chandra-768x960.jpg',
+        imageSrc: assetUrl('/assets/our-inspiration/pratima-chandra-768x960.jpg'),
       },
     },
   },

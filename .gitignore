@@ -43,6 +43,5 @@ coverage/
 *.key
 *.cert
 
-package-lock.json
 graphify-out
 pcc-foundation.code-workspace

@@ -1,4 +1,5 @@
 import {EVENTS_DATA} from './eventsConstants';
+import {assetUrl} from '@src/constants/assetBase';
 
 export type EventBlock =
   | {type: 'text'; content: string}
@@ -23,27 +24,27 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_3064-300x199.jpg',
+        src: assetUrl('/assets/events/2023/DSC_3064-300x199.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_0010-300x196.jpg',
+        src: assetUrl('/assets/events/2023/DSC_0010-300x196.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_0009-300x196.jpg',
+        src: assetUrl('/assets/events/2023/DSC_0009-300x196.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_0011-300x196.jpg',
+        src: assetUrl('/assets/events/2023/DSC_0011-300x196.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_0008-300x196.jpg',
+        src: assetUrl('/assets/events/2023/DSC_0008-300x196.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_0007-300x298.jpg',
+        src: assetUrl('/assets/events/2023/DSC_0007-300x298.jpg'),
       },
       {
         type: 'text',
@@ -52,11 +53,11 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_0013-300x203.jpg',
+        src: assetUrl('/assets/events/2023/DSC_0013-300x203.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_0012-300x196.jpg',
+        src: assetUrl('/assets/events/2023/DSC_0012-300x196.jpg'),
       },
       {
         type: 'text',
@@ -65,23 +66,23 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_3120-300x199.jpg',
+        src: assetUrl('/assets/events/2023/DSC_3120-300x199.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_3160-300x199.jpg',
+        src: assetUrl('/assets/events/2023/DSC_3160-300x199.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_3158-300x199.jpg',
+        src: assetUrl('/assets/events/2023/DSC_3158-300x199.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_3131-300x199.jpg',
+        src: assetUrl('/assets/events/2023/DSC_3131-300x199.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/DSC_9783-300x200.jpg',
+        src: assetUrl('/assets/events/2023/DSC_9783-300x200.jpg'),
       },
       {
         type: 'text',
@@ -104,7 +105,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০২৩/featured-image-1.jpg',
+        src: assetUrl('/assets/events/2023/featured-image-1.jpg'),
       },
     ],
     get baseData() {
@@ -122,15 +123,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_1118-300x199.jpg',
+        src: assetUrl('/assets/events/2022/DSC_1118-300x199.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_1084-300x199.jpg',
+        src: assetUrl('/assets/events/2022/DSC_1084-300x199.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_1100-300x199.jpg',
+        src: assetUrl('/assets/events/2022/DSC_1100-300x199.jpg'),
       },
       {
         type: 'text',
@@ -139,15 +140,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_1235-300x199.jpg',
+        src: assetUrl('/assets/events/2022/DSC_1235-300x199.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_1111-300x199.jpg',
+        src: assetUrl('/assets/events/2022/DSC_1111-300x199.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_1236-300x199.jpg',
+        src: assetUrl('/assets/events/2022/DSC_1236-300x199.jpg'),
       },
       {
         type: 'text',
@@ -156,15 +157,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_4444-300x200.jpg',
+        src: assetUrl('/assets/events/2022/DSC_4444-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_4412-300x200.jpg',
+        src: assetUrl('/assets/events/2022/DSC_4412-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_4415-300x200.jpg',
+        src: assetUrl('/assets/events/2022/DSC_4415-300x200.jpg'),
       },
       {
         type: 'text',
@@ -173,15 +174,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_1345-300x199.jpg',
+        src: assetUrl('/assets/events/2022/DSC_1345-300x199.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_1332-300x199.jpg',
+        src: assetUrl('/assets/events/2022/DSC_1332-300x199.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/DSC_1335-300x199.jpg',
+        src: assetUrl('/assets/events/2022/DSC_1335-300x199.jpg'),
       },
       {
         type: 'text',
@@ -204,7 +205,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০২২/Header2022.jpg',
+        src: assetUrl('/assets/events/2022/Header2022.jpg'),
       },
     ],
     get baseData() {
@@ -222,15 +223,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৯/ARS-2019-Event-9-300x200.jpg',
+        src: assetUrl('/assets/events/2019/ARS-2019-Event-9-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৯/ARS-2019-Event-2-300x200.jpg',
+        src: assetUrl('/assets/events/2019/ARS-2019-Event-2-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৯/ARS-2019-Event-3-300x200.jpg',
+        src: assetUrl('/assets/events/2019/ARS-2019-Event-3-300x200.jpg'),
       },
       {
         type: 'text',
@@ -239,15 +240,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৯/ARS-2019-1st-Sumeli-Chakraborty-3-300x200.jpg',
+        src: assetUrl('/assets/events/2019/ARS-2019-1st-Sumeli-Chakraborty-3-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৯/ARS-2019-2nd-Reema-Dasgupta-3-300x200.jpg',
+        src: assetUrl('/assets/events/2019/ARS-2019-2nd-Reema-Dasgupta-3-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৯/ARS-2019-3rd-Rodosee-Ghosh-3-300x200.jpg',
+        src: assetUrl('/assets/events/2019/ARS-2019-3rd-Rodosee-Ghosh-3-300x200.jpg'),
       },
       {
         type: 'text',
@@ -256,15 +257,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৯/ARS-2019-Judges-3-300x200.jpg',
+        src: assetUrl('/assets/events/2019/ARS-2019-Judges-3-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৯/ARS-2019-Judges-1-300x200.jpg',
+        src: assetUrl('/assets/events/2019/ARS-2019-Judges-1-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৯/ARS-2019-Judges-2-300x200.jpg',
+        src: assetUrl('/assets/events/2019/ARS-2019-Judges-2-300x200.jpg'),
       },
       {
         type: 'text',
@@ -339,7 +340,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৯/Header.jpg',
+        src: assetUrl('/assets/events/2019/Header.jpg'),
       },
     ],
     get baseData() {
@@ -357,7 +358,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/event_desc5-300x164.jpg',
+        src: assetUrl('/assets/events/2016/event_desc5-300x164.jpg'),
       },
       {
         type: 'text',
@@ -371,7 +372,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/event_desc5-300x164.jpg',
+        src: assetUrl('/assets/events/2016/event_desc5-300x164.jpg'),
       },
       {
         type: 'text',
@@ -379,19 +380,19 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/PCMA-2016-1st-Atri-Kotal-300x218.jpg',
+        src: assetUrl('/assets/events/2016/PCMA-2016-1st-Atri-Kotal-300x218.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/PCMA-2016-2nd-Nilanjana-De-300x231.jpg',
+        src: assetUrl('/assets/events/2016/PCMA-2016-2nd-Nilanjana-De-300x231.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/PCMA-2016-3rd-Sohini-Singha-Majumdar-300x233.jpg',
+        src: assetUrl('/assets/events/2016/PCMA-2016-3rd-Sohini-Singha-Majumdar-300x233.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/PCMA-2016-Event-300x208.jpg',
+        src: assetUrl('/assets/events/2016/PCMA-2016-Event-300x208.jpg'),
       },
       {
         type: 'text',
@@ -513,7 +514,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/collage-2.png',
+        src: assetUrl('/assets/events/2016/collage-2.png'),
       },
     ],
     get baseData() {
@@ -531,7 +532,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/DSC_4530-300x157.jpg',
+        src: assetUrl('/assets/events/2016/DSC_4530-300x157.jpg'),
       },
       {
         type: 'text',
@@ -540,15 +541,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/DSC_4566-300x200.jpg',
+        src: assetUrl('/assets/events/2016/DSC_4566-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/DSC_4548-300x200.jpg',
+        src: assetUrl('/assets/events/2016/DSC_4548-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/DSC_4556-300x200.jpg',
+        src: assetUrl('/assets/events/2016/DSC_4556-300x200.jpg'),
       },
       {
         type: 'text',
@@ -557,15 +558,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/DSC_4334-300x200.jpg',
+        src: assetUrl('/assets/events/2016/DSC_4334-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/DSC_4501-300x200.jpg',
+        src: assetUrl('/assets/events/2016/DSC_4501-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/DSC_4439-300x200.jpg',
+        src: assetUrl('/assets/events/2016/DSC_4439-300x200.jpg'),
       },
       {
         type: 'text',
@@ -652,7 +653,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৬/Header2016.jpg',
+        src: assetUrl('/assets/events/2016/Header2016.jpg'),
       },
     ],
     get baseData() {
@@ -670,15 +671,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/PCMA-2017-Event-1-300x200.jpg',
+        src: assetUrl('/assets/events/2017/PCMA-2017-Event-1-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/PCMA-2017-Judges-1-1-300x200.jpg',
+        src: assetUrl('/assets/events/2017/PCMA-2017-Judges-1-1-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/PCMA-2017-Judges-2-1-300x200.jpg',
+        src: assetUrl('/assets/events/2017/PCMA-2017-Judges-2-1-300x200.jpg'),
       },
       {
         type: 'text',
@@ -687,15 +688,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/PCMA-2017-3rd-Soumi-Majumdar-4-300x200.jpg',
+        src: assetUrl('/assets/events/2017/PCMA-2017-3rd-Soumi-Majumdar-4-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/PCMA-2017-1st-Tanvi-Goswami-5-300x200.jpg',
+        src: assetUrl('/assets/events/2017/PCMA-2017-1st-Tanvi-Goswami-5-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/PCMA-2017-2nd-Sanjukta-Das-5-300x200.jpg',
+        src: assetUrl('/assets/events/2017/PCMA-2017-2nd-Sanjukta-Das-5-300x200.jpg'),
       },
       {
         type: 'text',
@@ -819,7 +820,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/PCMA-Collage.jpg',
+        src: assetUrl('/assets/events/2017/PCMA-Collage.jpg'),
       },
     ],
     get baseData() {
@@ -861,11 +862,11 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/ARS-2017-Judges-4-300x200.jpg',
+        src: assetUrl('/assets/events/2017/ARS-2017-Judges-4-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/ARS-2017-Judges-3-300x200.jpg',
+        src: assetUrl('/assets/events/2017/ARS-2017-Judges-3-300x200.jpg'),
       },
       {
         type: 'text',
@@ -878,15 +879,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/ARS-2017-Judges-5-300x200.jpg',
+        src: assetUrl('/assets/events/2017/ARS-2017-Judges-5-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/ARS-2017-Judges-1-1-300x200.jpg',
+        src: assetUrl('/assets/events/2017/ARS-2017-Judges-1-1-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/ARS-2017-Judges-2-300x200.jpg',
+        src: assetUrl('/assets/events/2017/ARS-2017-Judges-2-300x200.jpg'),
       },
       {
         type: 'text',
@@ -975,7 +976,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৭/ARS-collage.jpg',
+        src: assetUrl('/assets/events/2017/ARS-collage.jpg'),
       },
     ],
     get baseData() {
@@ -993,11 +994,11 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/PCMA-2018-2nd-Rakhi-Chatterjee-1-1-300x200.jpg',
+        src: assetUrl('/assets/events/2018/PCMA-2018-2nd-Rakhi-Chatterjee-1-1-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/PCMA-2018-Event-2-1-300x200.jpg',
+        src: assetUrl('/assets/events/2018/PCMA-2018-Event-2-1-300x200.jpg'),
       },
       {
         type: 'text',
@@ -1011,11 +1012,11 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/PCMA-2018-3rd-Laxmipriya-Nayak-1-300x200.jpg',
+        src: assetUrl('/assets/events/2018/PCMA-2018-3rd-Laxmipriya-Nayak-1-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/PCMA-2018-1st-Angira-Kotal-1-1-300x200.jpg',
+        src: assetUrl('/assets/events/2018/PCMA-2018-1st-Angira-Kotal-1-1-300x200.jpg'),
       },
       {
         type: 'text',
@@ -1028,15 +1029,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/PCMA-2018-Event-1-300x200.jpg',
+        src: assetUrl('/assets/events/2018/PCMA-2018-Event-1-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/PCMA-2018-Judges-1-1-300x200.jpg',
+        src: assetUrl('/assets/events/2018/PCMA-2018-Judges-1-1-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/PCMA-2018-Judges-2-1-300x200.jpg',
+        src: assetUrl('/assets/events/2018/PCMA-2018-Judges-2-1-300x200.jpg'),
       },
       {
         type: 'text',
@@ -1129,7 +1130,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/post-2.jpg',
+        src: assetUrl('/assets/events/2018/post-2.jpg'),
       },
     ],
     get baseData() {
@@ -1171,15 +1172,15 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/ARS-2018-3rd-Supriyo-Koley-4-300x200.jpg',
+        src: assetUrl('/assets/events/2018/ARS-2018-3rd-Supriyo-Koley-4-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/ARS-2018-2nd-Koyali-Sarkar-4-300x200.jpg',
+        src: assetUrl('/assets/events/2018/ARS-2018-2nd-Koyali-Sarkar-4-300x200.jpg'),
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/ARS-2018-1st-Bhumika-Ganguly-4-300x200.jpg',
+        src: assetUrl('/assets/events/2018/ARS-2018-1st-Bhumika-Ganguly-4-300x200.jpg'),
       },
       {
         type: 'text',
@@ -1263,7 +1264,7 @@ export const EVENT_DETAILS: Record<string, EventDetail> = {
       },
       {
         type: 'image',
-        src: '/assets/events/২০১৮/p-2w.jpg',
+        src: assetUrl('/assets/events/2018/p-2w.jpg'),
       },
     ],
     get baseData() {

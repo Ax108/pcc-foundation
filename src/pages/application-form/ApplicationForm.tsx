@@ -63,7 +63,7 @@ export const ApplicationForm = () => {
                 </p>
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
                   <a 
-                    href="/assets/documents/aruprataner-sandhane-2026-form.pdf"
+                    href={IMAGES.APPLICATION_FORM_2026_PDF}
                     download="aruprataner-sandhane-2026-form.pdf"
                     className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 !text-white px-7 py-3.5 rounded-lg font-medium transition-all shadow-md text-base hover:shadow-lg"
                   >
