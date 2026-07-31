@@ -62,10 +62,6 @@ function servePccDataAssets(assetBaseUrl: string): Plugin {
       const base = assetBaseUrl.replace(/\/$/, '');
       if (!base) return html;
       return html
-        .replace(
-          'href="/assets/home/slide-1-header-1.jpg"',
-          `href="${base}/home/slide-1-header-1.jpg"`,
-        )
         .replaceAll(
           'https://pratimachandrafoundation.org/assets/logo/logo-full.jpg',
           `${base}/logo/logo-full.png`,
