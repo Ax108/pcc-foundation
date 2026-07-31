@@ -45,3 +45,6 @@ coverage/
 
 graphify-out
 pcc-foundation.code-workspace
+
+# Local Netlify folder
+.netlify
