@@ -5,6 +5,14 @@ import {ScrollReveal} from '@app/components/ScrollReveal';
 import {IMAGES, IMAGE_DIMENSIONS} from '@src/constants/images';
 import {AudioUploadField} from './components/AudioUploadField';
 
+const MAX_SUBMISSION_FILE_BYTES = 4 * 1024 * 1024;
+
+function getSubmitMessageClassName(status: 'idle' | 'submitting' | 'success' | 'error') {
+  if (status === 'error') return 'text-sm text-red-700';
+  if (status === 'success') return 'text-sm text-green-700';
+  return 'text-sm text-text/60';
+}
+
 export const ApplicationForm = () => {
   useSEO({
     title: 'Apply Form - Pratima Chandra Foundation',
@@ -29,7 +37,87 @@ export const ApplicationForm = () => {
   };
 
   const [convertedMp3, setConvertedMp3] = useState<File | null>(null);
+  const [audioInputKey, setAudioInputKey] = useState(0);
+  const [submitState, setSubmitState] = useState<{
+    status: 'idle' | 'submitting' | 'success' | 'error';
+    message: string;
+  }>({status: 'idle', message: ''});
   const formRef = useRef<HTMLFormElement>(null);
+  const submitMessageClassName = getSubmitMessageClassName(submitState.status);
+
+  const handleSubmit = async (
+    e: React.SyntheticEvent<HTMLFormElement, SubmitEvent>,
+  ) => {
+    e.preventDefault();
+
+    if (!convertedMp3) {
+      setSubmitState({
+        status: 'error',
+        message: 'Please upload and convert your song recording before submitting.',
+      });
+      return;
+    }
+
+    const formElement = e.currentTarget;
+    const formData = new FormData(formElement);
+    formData.set('songFile', convertedMp3, convertedMp3.name);
+
+    const attachmentBytes = ['idProof', 'passportPhoto', 'songFile'].reduce(
+      (total, fieldName) => {
+        const file = formData.get(fieldName);
+        return total + (file instanceof File ? file.size : 0);
+      },
+      0,
+    );
+    if (attachmentBytes > MAX_SUBMISSION_FILE_BYTES) {
+      setSubmitState({
+        status: 'error',
+        message: 'The ID proof, photo, and converted song must be 4 MB or less combined.',
+      });
+      return;
+    }
+
+    setSubmitState({
+      status: 'submitting',
+      message: 'Submitting your application…',
+    });
+
+    try {
+      const response = await fetch(
+        '/.netlify/functions/send-application-email',
+        {
+          method: 'POST',
+          body: formData,
+        },
+      );
+      const result = (await response.json().catch(() => ({}))) as {
+        success?: boolean;
+        message?: string;
+      };
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'We could not submit your application.');
+      }
+
+      setSubmitState({
+        status: 'success',
+        message:
+          result.message ||
+          'Thank you. Your application has been submitted successfully.',
+      });
+      formElement.reset();
+      setConvertedMp3(null);
+      setAudioInputKey((key) => key + 1);
+    } catch (error) {
+      setSubmitState({
+        status: 'error',
+        message:
+          error instanceof Error
+            ? error.message
+            : 'We could not submit your application right now.',
+      });
+    }
+  };
 
   return (
     <>
@@ -119,43 +207,7 @@ export const ApplicationForm = () => {
             <form 
               ref={formRef}
               className="flex flex-col gap-6 relative"
-              onSubmit={(e) => {
-                e.preventDefault();
-                
-                if (!convertedMp3) {
-                  alert('Please upload and convert your song recording before submitting.');
-                  return;
-                }
-
-                const formElement = e.target as HTMLFormElement;
-                const formData = new FormData(formElement);
-                
-                // Inject the converted MP3 blob
-                formData.set('songFile', convertedMp3, convertedMp3.name);
-
-                const idProofFile = formData.get('idProof');
-                const passportPhotoFile = formData.get('passportPhoto');
-                const idProofName = idProofFile instanceof File ? idProofFile.name : '';
-                const passportPhotoName = passportPhotoFile instanceof File ? passportPhotoFile.name : '';
-                
-                const payload = {
-                  fullName: formData.get('fullName'),
-                  dob: formData.get('dob'),
-                  phone: formData.get('phone'),
-                  email: formData.get('email'),
-                  address: formData.get('address'),
-                  pincode: formData.get('pincode'),
-                  auditionLocation: formData.get('auditionLocation'),
-                  idProof: idProofName,
-                  passportPhoto: passportPhotoName,
-                  songFile: convertedMp3.name,
-                };
-
-                console.log('Application Form Payload:', JSON.stringify(payload, null, 2));
-                alert('Thank you for submitting your application. We will get back to you soon!');
-                formElement.reset();
-                setConvertedMp3(null);
-              }}
+              onSubmit={handleSubmit}
             >
               <div className="flex flex-col gap-6 animate-fadeIn">
 
@@ -252,6 +304,7 @@ export const ApplicationForm = () => {
 
               <div className="flex flex-col gap-2">
                 <AudioUploadField
+                  key={audioInputKey}
                   required
                   onChange={(file) => setConvertedMp3(file)}
                 />
@@ -271,10 +324,19 @@ export const ApplicationForm = () => {
                 </label>
 
                 <div className="flex gap-4">
-                  <button type="submit" className="flex-1 bg-accent hover:bg-accent/90 !text-white font-medium py-3.5 px-8 rounded transition-colors text-lg shadow-md">
-                    Submit
+                  <button
+                    type="submit"
+                    disabled={submitState.status === 'submitting'}
+                    className="flex-1 bg-accent hover:bg-accent/90 !text-white font-medium py-3.5 px-8 rounded transition-colors text-lg shadow-md disabled:cursor-wait disabled:opacity-60"
+                  >
+                    {submitState.status === 'submitting' ? 'Submitting…' : 'Submit'}
                   </button>
                 </div>
+                {submitState.message && (
+                  <output className={submitMessageClassName}>
+                    {submitState.message}
+                  </output>
+                )}
               </div>
             </div>
             </form>

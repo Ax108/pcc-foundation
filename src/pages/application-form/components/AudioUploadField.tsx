@@ -72,7 +72,7 @@ export const AudioUploadField = ({onChange, required}: AudioUploadFieldProps) =>
             <span className="text-xs text-text/40 text-center leading-relaxed">
               MP3 · WAV · OGG · FLAC · AAC · M4A · WEBM · OPUS · AIFF
               <br />
-              Maximum 20 MB
+              Source maximum 20 MB · submitted files maximum 4 MB combined
             </span>
           </label>
 

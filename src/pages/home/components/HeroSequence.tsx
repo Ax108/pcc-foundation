@@ -105,7 +105,7 @@ export const HeroSequence = () => {
                   <img
                     src={heroImage}
                     alt="Foundation Hero"
-                    className="w-full h-full object-cover object-center"
+                    className="h-full w-full object-cover object-[80%_50%]"
                   />
                   <div className="absolute inset-0 bg-black/10" />
                 </div>
