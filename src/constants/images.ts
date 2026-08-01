@@ -4,8 +4,9 @@ import {assetUrl} from '@src/constants/assetBase';
 // Keep preload URLs in index.html in sync with HERO_SLIDE_1.
 
 export const IMAGES = {
-  /** Header / navbar — 1024×173 source; rendered up to 320×54 on lg */
-  LOGO_HEADER: assetUrl('/assets/logo/logo-header.png'),
+  // #genai — Split header mark lets the emblem and wordmark scale independently.
+  LOGO_MARK: assetUrl('/assets/logo/site-logo.png'),
+  LOGO_WORDMARK: assetUrl('/assets/logo/site-text.png'),
 
   /** OG / Twitter / schema — full logo, no resize yet */
   LOGO_FULL: assetUrl('/assets/logo/logo-full.png'),
@@ -38,7 +39,8 @@ export const IMAGES = {
 
 /** Display dimensions for CLS — match rendered CSS size × retina where noted */
 export const IMAGE_DIMENSIONS = {
-  LOGO_HEADER: { width: 320, height: 54 },
+  LOGO_MARK: {width: 183, height: 267},
+  LOGO_WORDMARK: {width: 1070, height: 89},
   /** Home carousel — WP `header-*` large size 1024×337 */
   HERO_SLIDE: { width: 1024, height: 337 },
   /** 2026 application poster — WP 768×612 variant */
