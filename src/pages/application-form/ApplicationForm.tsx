@@ -519,7 +519,7 @@ export const ApplicationForm = () => {
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
                     <li>The Preliminary Selection shall be done by the Preliminary Judges by verifying the Applications and by judging the recorded songs submitted by the applicants.</li>
-                    <li>Upto 100 (Hundred) best submissions, in the opinion of the Preliminary Judges shall be shortlisted for the next round of Auditions.</li>
+                    <li>Upto 100 (Hundred) best submissions for Kolkata and upto 50 (Fifty) best submissions for Santiniketan, in the opinion of the Preliminary Judges shall be shortlisted for the next round of Auditions.</li>
                     <li>The shortlisted candidates shall be communicated about their selection, along with the date, time and venue for the physical Auditions.</li>
                   </ol>
                 </div>
