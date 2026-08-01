@@ -3,11 +3,17 @@ import {useSEO} from '@app/hooks/useSEO';
 import {useState, useRef} from 'react';
 import {ScrollReveal} from '@app/components/ScrollReveal';
 import {IMAGES, IMAGE_DIMENSIONS} from '@src/constants/images';
+import {compressImage} from '@app/utils/compressImage';
 import {AudioUploadField} from './components/AudioUploadField';
 
-// #genai — per-file upload ceilings; there is no combined-size cap.
-const MAX_SONG_BYTES = 10 * 1024 * 1024;
-const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+// #genai — Netlify buffers the whole request and rejects it past 6 MB once
+// base64-encoded, so the combined upload is the binding constraint here.
+// Photos are compressed before submit to leave most of the budget for audio.
+const MAX_TOTAL_UPLOAD_BYTES = 4 * 1024 * 1024;
+const MAX_SONG_BYTES = 3 * 1024 * 1024;
+const MAX_IMAGE_BYTES = 512 * 1024;
+
+const IMAGE_FIELDS = ['idProof', 'passportPhoto'] as const;
 
 const FILE_LIMITS = [
   {fieldName: 'idProof', label: 'ID proof', maxBytes: MAX_IMAGE_BYTES},
@@ -16,7 +22,8 @@ const FILE_LIMITS = [
 ] as const;
 
 function formatMb(bytes: number) {
-  return `${Math.round(bytes / 1024 / 1024)} MB`;
+  const mb = bytes / 1024 / 1024;
+  return `${Number.isInteger(mb) ? mb : mb.toFixed(1)} MB`;
 }
 
 function getSubmitMessageClassName(status: 'idle' | 'submitting' | 'success' | 'error') {
@@ -77,14 +84,37 @@ export const ApplicationForm = () => {
     const formData = new FormData(formElement);
     formData.set('songFile', convertedMp3, convertedMp3.name);
 
-    const oversized = FILE_LIMITS.find(({fieldName, maxBytes}) => {
+    setSubmitState({status: 'submitting', message: 'Preparing your files…'});
+
+    for (const fieldName of IMAGE_FIELDS) {
       const file = formData.get(fieldName);
-      return file instanceof File && file.size > maxBytes;
-    });
-    if (oversized) {
+      if (!(file instanceof File) || file.size === 0) continue;
+      const compressed = await compressImage(file, MAX_IMAGE_BYTES);
+      formData.set(fieldName, compressed, compressed.name);
+    }
+
+    for (const {fieldName, label, maxBytes} of FILE_LIMITS) {
+      const file = formData.get(fieldName);
+      if (!(file instanceof File) || file.size <= maxBytes) continue;
+      const hint =
+        file.type === 'application/pdf'
+          ? ' PDFs cannot be compressed automatically — please upload a photo instead.'
+          : '';
       setSubmitState({
         status: 'error',
-        message: `${oversized.label} must be ${formatMb(oversized.maxBytes)} or less.`,
+        message: `${label} is ${formatMb(file.size)}, over the ${formatMb(maxBytes)} limit.${hint}`,
+      });
+      return;
+    }
+
+    const totalBytes = FILE_LIMITS.reduce((sum, {fieldName}) => {
+      const file = formData.get(fieldName);
+      return file instanceof File ? sum + file.size : sum;
+    }, 0);
+    if (totalBytes > MAX_TOTAL_UPLOAD_BYTES) {
+      setSubmitState({
+        status: 'error',
+        message: `Your three files add up to ${formatMb(totalBytes)}, which is over the ${formatMb(MAX_TOTAL_UPLOAD_BYTES)} upload limit. Please use smaller photos or a shorter recording.`,
       });
       return;
     }
@@ -102,6 +132,15 @@ export const ApplicationForm = () => {
           body: formData,
         },
       );
+
+      // The upload is rejected at the edge before it reaches the function, so
+      // the response has no JSON body to explain itself.
+      if (response.status === 413) {
+        throw new Error(
+          `Your uploads are too large to submit. Please keep all three files together under ${formatMb(MAX_TOTAL_UPLOAD_BYTES)}.`,
+        );
+      }
+
       const result = (await response.json().catch(() => ({}))) as {
         success?: boolean;
         message?: string;
@@ -302,14 +341,20 @@ export const ApplicationForm = () => {
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="idProof" className="text-sm font-medium text-text">
-                  ID Proof * <span className="font-normal text-text/50">(max 5 MB)</span>
+                  ID Proof *{' '}
+                  <span className="font-normal text-text/50">
+                    (photos are compressed automatically)
+                  </span>
                 </label>
                 <input required type="file" id="idProof" name="idProof" accept="image/*,.pdf" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
               </div>
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="passportPhoto" className="text-sm font-medium text-text">
-                  Passport Size Photo * <span className="font-normal text-text/50">(max 5 MB)</span>
+                  Passport Size Photo *{' '}
+                  <span className="font-normal text-text/50">
+                    (photos are compressed automatically)
+                  </span>
                 </label>
                 <input required type="file" id="passportPhoto" name="passportPhoto" accept="image/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
               </div>

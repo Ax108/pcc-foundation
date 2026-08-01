@@ -9,9 +9,11 @@ const SMTP_USER = 'contact@astrax.dev';
 const SMTP_FROM_EMAIL = 'noreply@astrax.dev';
 const SMTP_FROM_NAME = 'AstraX Mailer';
 const DEFAULT_RECIPIENT_EMAIL = 'arindamc.ax@gmail.com';
-// #genai — per-file upload ceilings; there is no combined-size cap.
-const MAX_SONG_BYTES = 10 * 1024 * 1024;
-const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+// #genai — Netlify buffers the whole request and rejects it past 6 MB once
+// base64-encoded, so the combined upload is the binding constraint here.
+const MAX_TOTAL_UPLOAD_BYTES = 4 * 1024 * 1024;
+const MAX_SONG_BYTES = 3 * 1024 * 1024;
+const MAX_IMAGE_BYTES = 512 * 1024;
 const FILE_LIMITS = {
   idProof: {label: 'ID proof', maxBytes: MAX_IMAGE_BYTES},
   passportPhoto: {label: 'Passport size photo', maxBytes: MAX_IMAGE_BYTES},
@@ -99,6 +101,15 @@ function parseMultipart(event) {
     parser.on('finish', () => {
       if (oversizedMessage) {
         reject(new Error(oversizedMessage));
+        return;
+      }
+      const totalBytes = files.reduce((sum, file) => sum + file.content.length, 0);
+      if (totalBytes > MAX_TOTAL_UPLOAD_BYTES) {
+        reject(
+          new Error(
+            `Your uploads must add up to ${Math.round(MAX_TOTAL_UPLOAD_BYTES / 1024 / 1024)} MB or less.`,
+          ),
+        );
         return;
       }
       resolve({fields, files});
