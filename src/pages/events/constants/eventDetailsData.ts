@@ -13,6 +13,124 @@ export type EventDetail = {
 };
 
 export const EVENT_DETAILS: Record<string, EventDetail> = {
+  'event-2025': {
+    id: 'event-2025',
+    title: 'রবীন্দ্র গানে প্রতিমা চন্দ্র পুরস্কার – ২০২৫ অরূপরতনের সন্ধানে',
+    blocks: [
+      {
+        type: 'text',
+        content: 'The Grand Finale of the 8th edition of Rabindra Gaane Pratima Chandra Puroshkar titled “Aruprataner Sandhane” was held on Sunday, 21st December 2025 at Rotary Sadan Auditorium, Kolkata. The competition is an initiative of Pratima Chandra Foundation. This year 181 Rabindra Sangeet enthusiasts from different parts of West Bengal, as well as from Tripura, applied to participate in the competition. Out of them, 157 participants were auditioned at Kolkata and at Santiniketan. The Audition Judges at Kolkata were Sri Debashish Raychaudhuri, Sri Alak Roychoudhury and Smt. Samita Mukherjee. The Audition Judges at Santiniketan were Smt. Bulbul Basu, Smt. Manini Mukhopadhyay and Sri Prasanta Kumar Ghosh. The Audition Judges selected 10 participants for the Grand Finale. These finalists performed live in front of the Finale Judges and the audiences, through two rounds of competition.',
+      },
+      { type: 'image', src: assetUrl('/assets/events/2025/Event 1.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/Event 2.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/Event 3.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/Event 4.JPG') },
+      {
+        type: 'text',
+        content: 'Sri Pratip Kumar Ray was the Chief Adviser and Sri Debangshu Mukherjee was the Deputy Adviser of Aruprataner Sandhane 2025 and have mentored and arranged the competition this year.',
+      },
+      {
+        type: 'text',
+        content: 'Eminent Rabindra Sangeet Artiste Smt. Pramita Mallick, along with eminent Singers Smt. Indrani Sen and Sri Agnibha Bandyopadhyay, judged the Grand Finale.',
+      },
+      { type: 'image', src: assetUrl('/assets/events/2025/Judges 1.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/Judges 2.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/Judges 3.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/Judges 4.JPG') },
+      {
+        type: 'text',
+        content: '21st December: The contestants –',
+      },
+      {
+        type: 'text',
+        content: 'Riddhi Chakraborty || Debdarshan Banerjee || Tanmoy Mondal || Sriranjani Majumder || Riddhiman Datta || Gourav Bhattacharjee || Udita Saha || Chitradip Sen || Shaon Bhattacharya || Rashmoni Goswami',
+      },
+      { type: 'image', src: assetUrl('/assets/events/2025/Event 5.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/Event 6.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/Event 7.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/Event 8.JPG') },
+      {
+        type: 'text',
+        content: 'Congratulations!! In the competition Shaon Bhattacharya of Habra, North 24 Parganas won the First Prize; Gourav Bhattacharjee of Birati, Kolkata won the Second Prize; and Rashmoni Goswami of Mohurakandi, Murshidabad won the Third Prize.',
+      },
+      {
+        type: 'text',
+        content: 'The Winner was awarded a prize money of Rs.40,000/-, the First Runner-up was awarded Rs.20,000/- and the Second Runner-up was awarded Rs.10,000/-. Trophies, Medals and Certificates were also awarded to them. Sri U. K. Chandra, Managing Director of P. C. Chandra Jewellers, graced the occasion and gave away the winners’ trophies.',
+      },
+      {
+        type: 'text',
+        content: 'In addition to the above, the Winner, the First Runner-up and the Second Runner-up were also given opportunity for recording of one Rabindra Sangeet song, sung by them.',
+      },
+      { type: 'image', src: assetUrl('/assets/events/2025/Winner 1.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/1st Runner-up 1.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/2nd Runner-up 1.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/Winner 2.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/1st Runner-up 2.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2025/2nd Runner-up 2.JPG') },
+    ],
+    get baseData() {
+      return EVENTS_DATA.find(ev => ev.id === 'event-2025');
+    },
+  },
+  'event-2024': {
+    id: 'event-2024',
+    title: 'রবীন্দ্র গানে প্রতিমা চন্দ্র পুরস্কার – ২০২৪ অরূপরতনের সন্ধানে',
+    blocks: [
+      {
+        type: 'text',
+        content: 'The Grand Finale of the 7th edition of Rabindra Gaane Pratima Chandra Puroshkar titled “Aruprataner Sandhane” was held on Sunday, 15th December 2024 at ICCR Auditorium, Kolkata. The competition is an initiative of Pratima Chandra Foundation. This year 171 Rabindra Sangeet enthusiasts from different parts of West Bengal, as well as from Assam, Jharkhand and Tripura, applied to participate in the competition. Out of them, 141 participants were auditioned at Kolkata and at Santiniketan. The Audition Judges at Kolkata were Sri Debashish Raychaudhuri, Smt. Ranjini Mukhopadhyay and Sri Chandan Roy Choudhury. The Audition Judges at Santiniketan were Smt. Bulbul Basu, Smt. Manini Mukhopadhyay and Sri Prasanta Kumar Ghosh. The Audition Judges selected 10 participants for the Grand Finale. These finalists performed live in front of the Finale Judges and the audiences, through two rounds of competition.',
+      },
+      { type: 'image', src: assetUrl('/assets/events/2024/Event 1.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/Event 2.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/Event 3.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/Event 4.JPG') },
+      {
+        type: 'text',
+        content: 'Sri Pratip Kumar Ray was the Adviser of Aruprataner Sandhane 2024 and has mentored and arranged the competition this year.',
+      },
+      {
+        type: 'text',
+        content: 'Eminent Rabindra Sangeet Artiste Smt. Pramita Mallick, along with eminent Singers Smt. Indrani Sen and Sri Subrata Sengupta, judged the Grand Finale.',
+      },
+      { type: 'image', src: assetUrl('/assets/events/2024/Judges 1.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/Judges 2.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/Judges 3.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/Judges 4.JPG') },
+      {
+        type: 'text',
+        content: '15th December: The contestants –',
+      },
+      {
+        type: 'text',
+        content: 'Antara Pan || Dipanjan Paul || Bidisha Banerjee || Jyotirmoy Sen || Palashi Ghosh || Sayan Mitra || Shabnam Meghali || Sruty Banerjee || Ujan Chakraborty || Sreyashri Mondal',
+      },
+      { type: 'image', src: assetUrl('/assets/events/2024/Event 5.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/Event 6.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/Event 7.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/Event 8.JPG') },
+      {
+        type: 'text',
+        content: 'Congratulations!! In the competition Palashi Ghosh of Santiniketan, Birbhum won the First Prize; Shabnam Meghali of Nagaon, Assam won the Second Prize; and Bidisha Banerjee of Kandi, Murshidabad won the Third Prize.',
+      },
+      {
+        type: 'text',
+        content: 'The Winner was awarded a prize money of Rs.40,000/-, the First Runner-up was awarded Rs.20,000/- and the Second Runner-up was awarded Rs.10,000/-. Trophies, Medals and Certificates were also awarded to them. Sri U. K. Chandra, Managing Director of P. C. Chandra Jewellers, graced the occasion and gave away the winners’ trophies.',
+      },
+      {
+        type: 'text',
+        content: 'In addition to the above, the Winner, the First Runner-up and the Second Runner-up were also given opportunity for recording of one Rabindra Sangeet song, sung by them.',
+      },
+      { type: 'image', src: assetUrl('/assets/events/2024/Winner 1.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/1st Runner-up 1.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/2nd Runner-up 1.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/Winner 2.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/1st Runner-up 2.JPG') },
+      { type: 'image', src: assetUrl('/assets/events/2024/2nd Runner-up 2.JPG') },
+    ],
+    get baseData() {
+      return EVENTS_DATA.find(ev => ev.id === 'event-2024');
+    },
+  },
   'event-0': {
     id: 'event-0',
     title: 'রবীন্দ্র গানে প্রতিমা চন্দ্র পুরস্কার – ২০২৩ অরূপরতনের সন্ধানে',

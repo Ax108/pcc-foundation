@@ -20,6 +20,12 @@ export function assetUrl(path: string): string {
   if (rel.startsWith('assets/')) {
     rel = rel.slice('assets/'.length);
   }
+
+  // Fallback: If it's a 2024 or 2025 event image, we keep it in the repo (local)
+  if (rel.startsWith('events/2024/') || rel.startsWith('events/2025/')) {
+    return `/assets/${rel}`;
+  }
+
   if (!ASSET_BASE_URL) {
     return `/assets/${rel}`;
   }
