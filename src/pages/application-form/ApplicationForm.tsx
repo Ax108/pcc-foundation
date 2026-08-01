@@ -415,7 +415,9 @@ export const ApplicationForm = () => {
                     </svg>
                   </div>
                   <span className="text-text/80 text-sm group-hover:text-primary transition-colors leading-relaxed">
-                    I have read and agree to all the Guidelines & Rules mentioned below.
+                    By participating in the competition, I declare that I have
+                    read the Terms &amp; Conditions of the competition and I
+                    shall abide by the said Terms &amp; Conditions.
                   </span>
                 </label>
 
@@ -450,7 +452,7 @@ export const ApplicationForm = () => {
                   </span>
                 </summary>
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
-                  <p><strong>Pratima Chandra Foundation</strong> is pleased to organize the 8th edition of <strong>Rabindra Gaane Pratima Chandra Puroshkar</strong> titled <strong>"ARUPRATANER SANDHANE"</strong> in 2026.</p>
+                  <p><strong>Pratima Chandra Foundation</strong> is pleased to organize the 9th edition of <strong>Rabindra Gaane Pratima Chandra Puroshkar</strong> titled <strong>"ARUPRATANER SANDHANE"</strong> in 2026.</p>
                   <p>The objective of the competition is to encourage and promote Rabindra Sangeet in its original form and style.</p>
                   <p className="font-semibold pt-2 text-primary">The terms and condition to participate are as follows :-</p>
                 </div>
@@ -502,7 +504,7 @@ export const ApplicationForm = () => {
                     <li>The song submitted may be recorded in a recording device of the participant's choice; however the use of pitch correction and/or "Auto tune" and/or other methods of correcting vocal deficiencies and/or shortcoming, including the use of professional studios are strictly prohibited.</li>
                     <li>The participants may choose between Kolkata and Santiniketan as their location for the next stage of the competition. No modification and/or alteration of the selected location shall be permitted.</li>
                     <li>Incomplete entries and/or entries without the 1 (One) accompanying song of any Genre (Parjaay) and/or violation of any of the abovementioned terms and conditions in the application, shall be rejected forthwith.</li>
-                    <li>The last date for submission shall be 2nd November 2026. However, the Organizers reserve the right to extend the deadline at their sole discretion.</li>
+                    <li>The last date for submission shall be 7th November 2026. However, the Organizers reserve the right to extend the deadline at their sole discretion.</li>
                   </ol>
                 </div>
               </details>
@@ -517,7 +519,7 @@ export const ApplicationForm = () => {
                 <div className="px-5 pb-5 pt-2 text-text/90 space-y-3 leading-relaxed border-t border-border mt-1">
                   <ol className="list-decimal pl-5 space-y-2">
                     <li>The Preliminary Selection shall be done by the Preliminary Judges by verifying the Applications and by judging the recorded songs submitted by the applicants.</li>
-                    <li>Upto 70 (Seventy) best submissions for Kolkata and upto 50 (Fifty) best submissions for Santiniketan, in the opinion of the Preliminary Judges shall be shortlisted for the next round of Auditions.</li>
+                    <li>Upto 100 (Hundred) best submissions, in the opinion of the Preliminary Judges shall be shortlisted for the next round of Auditions.</li>
                     <li>The shortlisted candidates shall be communicated about their selection, along with the date, time and venue for the physical Auditions.</li>
                   </ol>
                 </div>

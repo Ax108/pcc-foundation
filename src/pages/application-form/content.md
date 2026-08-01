@@ -66,7 +66,7 @@ Follow us on Facebook | Instagram | YouTube — /pratimachandrafoundation
 
 ## Introduction
 
-**Pratima Chandra Foundation** is pleased to organize the 8th edition of **Rabindra Gaane Pratima Chandra Puroshkar** titled **"ARUPRATANER SANDHANE"** in 2026.
+**Pratima Chandra Foundation** is pleased to organize the 9th edition of **Rabindra Gaane Pratima Chandra Puroshkar** titled **"ARUPRATANER SANDHANE"** in 2026.
 
 The objective of the competition is to encourage and promote Rabindra Sangeet in its original form and style.
 
@@ -98,12 +98,12 @@ The objective of the competition is to encourage and promote Rabindra Sangeet in
 7) The song submitted may be recorded in a recording device of the participant's choice; however the use of pitch correction and/or "Auto tune" and/or other methods of correcting vocal deficiencies and/or shortcoming, including the use of professional studios are strictly prohibited.
 8) The participants may choose between Kolkata and Santiniketan as their location for the next stage of the competition. No modification and/or alteration of the selected location shall be permitted.
 9) Incomplete entries and/or entries without the 1 (One) accompanying song of any Genre (Parjaay) and/or violation of any of the abovementioned terms and conditions in the application, shall be rejected forthwith.
-10) The last date for submission shall be 2nd November 2026. However, the Organizers reserve the right to extend the deadline at their sole discretion.
+10) The last date for submission shall be 7th November 2026. However, the Organizers reserve the right to extend the deadline at their sole discretion.
 
 ### Preliminary Selection
 
 1) The Preliminary Selection shall be done by the Preliminary Judges by verifying the Applications and by judging the recorded songs submitted by the applicants.
-2) Upto 70 (Seventy) best submissions for Kolkata and upto 50 (Fifty) best submissions for Santiniketan, in the opinion of the Preliminary Judges shall be shortlisted for the next round of Auditions.
+2) Upto 100 (Hundred) best submissions, in the opinion of the Preliminary Judges shall be shortlisted for the next round of Auditions.
 3) The shortlisted candidates shall be communicated about their selection, along with the date, time and venue for the physical Auditions.
 
 ### Audition Round
