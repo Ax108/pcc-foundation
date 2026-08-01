@@ -20,7 +20,7 @@ export const IMAGES = {
   HERO_SLIDE_4: assetUrl('/assets/home/slide-4-header-2.jpg'),
 
   /** Home about — 2026 Aruprataner Sandhane application poster (below hero) */
-  HOME_APPLICATION_POSTER: assetUrl('/assets/home/aruprataner-2026-poster.png'),
+  HOME_APPLICATION_POSTER: assetUrl('/assets/home/aruprataner-2026-poster.jpg'),
 
   /** PDF linked from about poster — lazy route, not LCP */
   APPLICATION_FORM_2026_PDF:
