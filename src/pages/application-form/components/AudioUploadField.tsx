@@ -1,4 +1,4 @@
-import {useRef, useId} from 'react';
+import {useRef, useId, useState} from 'react';
 import {useAudioToMp3} from '@app/hooks/useAudioToMp3';
 
 /** All audio types the Web Audio API can decode across major browsers */
@@ -14,6 +14,9 @@ interface AudioUploadFieldProps {
 export const AudioUploadField = ({onChange, required}: AudioUploadFieldProps) => {
   const inputId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
+  // Nested children fire dragleave, so track depth instead of a bare boolean.
+  const dragDepth = useRef(0);
+  const [isDragActive, setIsDragActive] = useState(false);
   const {convert, progress, status, mp3File, mp3ObjectUrl, error, reset} =
     useAudioToMp3();
 
@@ -23,9 +26,56 @@ export const AudioUploadField = ({onChange, required}: AudioUploadFieldProps) =>
     convert(file);
   };
 
+  /** Mirror the dropped file into the input so `required` validation still passes. */
+  const acceptDroppedFile = (file: File) => {
+    const input = inputRef.current;
+    if (input) {
+      try {
+        const transfer = new DataTransfer();
+        transfer.items.add(file);
+        input.files = transfer.files;
+      } catch {
+        // DataTransfer is unavailable; conversion below still drives the UI.
+      }
+    }
+    convert(file);
+  };
+
+  const endDrag = () => {
+    dragDepth.current = 0;
+    setIsDragActive(false);
+  };
+
+  const handleDragEnter = (e: React.DragEvent<HTMLElement>) => {
+    if (!e.dataTransfer.types.includes('Files')) return;
+    e.preventDefault();
+    dragDepth.current += 1;
+    setIsDragActive(true);
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLElement>) => {
+    if (!e.dataTransfer.types.includes('Files')) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+  };
+
+  const handleDragLeave = (e: React.DragEvent<HTMLElement>) => {
+    e.preventDefault();
+    dragDepth.current = Math.max(0, dragDepth.current - 1);
+    if (dragDepth.current === 0) setIsDragActive(false);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLElement>) => {
+    e.preventDefault();
+    endDrag();
+    const file = e.dataTransfer.files?.[0];
+    if (file) acceptDroppedFile(file);
+  };
+
   const handleReset = () => {
     reset();
     onChange(null);
+    endDrag();
     if (inputRef.current) inputRef.current.value = '';
   };
 
@@ -45,14 +95,26 @@ export const AudioUploadField = ({onChange, required}: AudioUploadFieldProps) =>
 
       {/* Drop zone / file picker */}
       {status === 'idle' && (
-        <div className="relative">
+        <div
+          className="relative"
+          onDragEnter={handleDragEnter}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+        >
           <label
             htmlFor={inputId}
-            className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-border rounded-lg p-6 cursor-pointer hover:border-accent/60 hover:bg-accent/5 transition-all group"
+            className={`flex flex-col items-center justify-center gap-2 border-2 border-dashed rounded-lg p-6 cursor-pointer transition-all group ${
+              isDragActive
+                ? 'border-accent bg-accent/10'
+                : 'border-border hover:border-accent/60 hover:bg-accent/5'
+            }`}
           >
             {/* Upload icon */}
             <svg
-              className="w-8 h-8 text-border group-hover:text-accent/60 transition-colors"
+              className={`w-8 h-8 transition-colors ${
+                isDragActive ? 'text-accent' : 'text-border group-hover:text-accent/60'
+              }`}
               fill="none"
               stroke="currentColor"
               strokeWidth={1.5}
@@ -65,8 +127,12 @@ export const AudioUploadField = ({onChange, required}: AudioUploadFieldProps) =>
               />
             </svg>
 
-            <span className="text-sm font-medium text-text/70 group-hover:text-accent transition-colors">
-              Click to upload or drag &amp; drop
+            <span
+              className={`text-sm font-medium transition-colors ${
+                isDragActive ? 'text-accent' : 'text-text/70 group-hover:text-accent'
+              }`}
+            >
+              {isDragActive ? 'Drop your recording here' : 'Click to upload or drag & drop'}
             </span>
 
             <span className="text-xs text-text/40 text-center leading-relaxed">
