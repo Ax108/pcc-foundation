@@ -4,14 +4,28 @@ import {useState, useRef} from 'react';
 import {ScrollReveal} from '@app/components/ScrollReveal';
 import {IMAGES, IMAGE_DIMENSIONS} from '@src/constants/images';
 import {compressImage} from '@app/utils/compressImage';
+import {MAX_SONG_OUTPUT_BYTES} from '@app/hooks/useAudioToMp3';
 import {AudioUploadField} from './components/AudioUploadField';
 
 // #genai — Netlify buffers the whole request and rejects it past 6 MB once
 // base64-encoded, so the combined upload is the binding constraint here.
-// Photos are compressed before submit to leave most of the budget for audio.
+// Photos are compressed before submit; songs are compressed at upload time.
 const MAX_TOTAL_UPLOAD_BYTES = 4 * 1024 * 1024;
-const MAX_SONG_BYTES = 3 * 1024 * 1024;
+const MAX_SONG_BYTES = MAX_SONG_OUTPUT_BYTES;
 const MAX_IMAGE_BYTES = 512 * 1024;
+const MIN_APPLICANT_AGE = 14;
+
+/** Latest allowed DOB so the applicant is at least `minAge` years old today. */
+function maxDateOfBirth(minAge: number): string {
+  const date = new Date();
+  date.setFullYear(date.getFullYear() - minAge);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+const MAX_DOB = maxDateOfBirth(MIN_APPLICANT_AGE);
 
 const IMAGE_FIELDS = ['idProof', 'passportPhoto'] as const;
 
@@ -81,6 +95,15 @@ export const ApplicationForm = () => {
     }
 
     const formElement = e.currentTarget;
+    const dobValue = new FormData(formElement).get('dob');
+    if (typeof dobValue === 'string' && dobValue > MAX_DOB) {
+      setSubmitState({
+        status: 'error',
+        message: `Applicants must be at least ${MIN_APPLICANT_AGE} years old.`,
+      });
+      return;
+    }
+
     const formData = new FormData(formElement);
     formData.set('songFile', convertedMp3, convertedMp3.name);
 
@@ -279,9 +302,19 @@ export const ApplicationForm = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="dob" className="text-sm font-medium text-text">
-                    Date of Birth *
+                    Date of Birth *{' '}
+                    <span className="font-normal text-text/50">
+                      (must be {MIN_APPLICANT_AGE}+ years old)
+                    </span>
                   </label>
-                  <input required type="date" id="dob" name="dob" className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary" />
+                  <input
+                    required
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    max={MAX_DOB}
+                    className="border border-border rounded px-4 py-3 focus:outline-none focus:border-accent text-primary"
+                  />
                 </div>
                 
                 <div className="flex flex-col gap-2">

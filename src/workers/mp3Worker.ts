@@ -1,10 +1,13 @@
 import lamejs from '@breezystack/lamejs';
 
+// #genai — Encodes PCM to MP3 at a caller-chosen bitrate so the UI can retry
+// at lower rates until the result fits the upload budget.
+
 interface WorkerInput {
-  arrayBuffer: ArrayBuffer;
   sampleRate: number;
   numberOfChannels: number;
   channelData: Float32Array[];
+  bitRate: number;
 }
 
 interface ProgressMessage {
@@ -15,6 +18,7 @@ interface ProgressMessage {
 interface DoneMessage {
   type: 'done';
   mp3Blob: Blob;
+  bitRate: number;
 }
 
 interface ErrorMessage {
@@ -36,10 +40,9 @@ function floatTo16Bit(float32Array: Float32Array): Int16Array {
 
 self.onmessage = (e: MessageEvent<WorkerInput>) => {
   try {
-    const { sampleRate, numberOfChannels, channelData } = e.data;
+    const {sampleRate, numberOfChannels, channelData, bitRate} = e.data;
 
     const channels = Math.min(numberOfChannels, 2) as 1 | 2;
-    const bitRate = 128; // medium quality
     const blockSize = 1152; // optimal MPEG frame size for lamejs
 
     const encoder = new lamejs.Mp3Encoder(channels, sampleRate, bitRate);
@@ -71,7 +74,7 @@ self.onmessage = (e: MessageEvent<WorkerInput>) => {
       // Post progress every 5% to avoid message flooding
       if (percent !== lastReportedPercent && percent % 5 === 0) {
         lastReportedPercent = percent;
-        const msg: ProgressMessage = { type: 'progress', percent };
+        const msg: ProgressMessage = {type: 'progress', percent};
         self.postMessage(msg);
       }
     }
@@ -79,9 +82,11 @@ self.onmessage = (e: MessageEvent<WorkerInput>) => {
     const flushed = encoder.flush();
     if (flushed.length > 0) mp3Chunks.push(flushed as unknown as Uint8Array);
 
-    const mp3Blob = new Blob(mp3Chunks as unknown as BlobPart[], { type: 'audio/mpeg' });
+    const mp3Blob = new Blob(mp3Chunks as unknown as BlobPart[], {
+      type: 'audio/mpeg',
+    });
 
-    const doneMsg: DoneMessage = { type: 'done', mp3Blob };
+    const doneMsg: DoneMessage = {type: 'done', mp3Blob, bitRate};
     self.postMessage(doneMsg);
   } catch (err) {
     const errMsg: ErrorMessage = {
@@ -92,4 +97,4 @@ self.onmessage = (e: MessageEvent<WorkerInput>) => {
   }
 };
 
-export type { WorkerMessage, WorkerInput };
+export type {WorkerMessage, WorkerInput};
