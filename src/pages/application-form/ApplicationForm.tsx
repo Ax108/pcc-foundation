@@ -27,8 +27,11 @@ function getSubmitMessageClassName(status: 'idle' | 'submitting' | 'success' | '
 
 export const ApplicationForm = () => {
   useSEO({
-    title: 'Apply Form - Pratima Chandra Foundation',
-    description: 'Submit your application form for the Pratima Chandra Foundation Rabindra Gaane Pratima Chandra Puroshkar competition.',
+    title: 'Apply — Pratima Chandra Foundation',
+    description:
+      'Apply for Rabindra Gaane Pratima Chandra Puroshkar (Aruprataner Sandhane) — a Rabindra Sangeet competition by Pratima Chandra Foundation.',
+    keywords:
+      'Pratima Chandra Foundation, application form, Aruprataner Sandhane, Rabindra Sangeet competition',
   });
 
   const [openAccordions, setOpenAccordions] = useState<Record<number, boolean>>({

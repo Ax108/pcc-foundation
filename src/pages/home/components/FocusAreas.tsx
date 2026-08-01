@@ -37,7 +37,9 @@ export const FocusAreas = () => {
           </ScrollReveal>
           <ScrollReveal animation="fade-up" delay={0.3}>
             <p className="text-text/70 text-lg leading-relaxed">
-              We are dedicated to preserving the rich legacy of Indian performing arts through direct support, recognition, and global platforms.
+              Dedicated to the promotion, preservation, and development of
+              performing arts and traditional Indian music through direct
+              support, recognition, and platforms for artists.
             </p>
           </ScrollReveal>
         </div>

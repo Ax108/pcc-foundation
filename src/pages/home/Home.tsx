@@ -7,16 +7,19 @@ import {RecentEvents} from '@home/components/RecentEvents';
 import {FocusAreas} from '@home/components/FocusAreas';
 import {ImpactMade} from '@home/components/ImpactMade';
 import {UpcomingEvents} from '@home/components/UpcomingEvents';
-
-const HOME_DESCRIPTION =
-  'Pratima Chandra Foundation is an independent research, training and support institution for the promotion and development of performing arts and traditional Indian music.';
+import {
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_TITLE_HOME,
+} from '@src/constants/site';
 
 export const Home = () => {
+  // #genai — home SEO uses shared site tagline / keywords
   useSEO({
-    description: HOME_DESCRIPTION,
-    ogDescription: HOME_DESCRIPTION,
-    keywords:
-      'Pratima Chandra Foundation, Indian music, performing arts, Kolkata, memorial award, Rabindra Sangeet',
+    title: SITE_TITLE_HOME,
+    description: SITE_DESCRIPTION,
+    ogDescription: SITE_DESCRIPTION,
+    keywords: SITE_KEYWORDS,
   });
 
   return (

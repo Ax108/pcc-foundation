@@ -63,8 +63,12 @@ function servePccDataAssets(assetBaseUrl: string): Plugin {
       if (!base) return html;
       return html
         .replaceAll(
-          'https://pratimachandrafoundation.org/assets/logo/logo-full.jpg',
+          'https://ax108.github.io/pcc-data/assets/logo/logo-full.png',
           `${base}/logo/logo-full.png`,
+        )
+        .replaceAll(
+          'https://ax108.github.io/pcc-data/assets/home/slide-1-header-1.jpg',
+          `${base}/home/slide-1-header-1.jpg`,
         )
         .replace(
           '<!-- Preconnect / prefetch -->',

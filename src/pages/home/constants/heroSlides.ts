@@ -1,4 +1,5 @@
 import {IMAGES} from '@src/constants/images';
+import {SITE_NAME, SITE_TAGLINE} from '@src/constants/site';
 
 export type HeroSlide = {
   id: string;
@@ -8,10 +9,9 @@ export type HeroSlide = {
   imageAlt: string;
 };
 
-/** Shared overlay copy on every slide — matches live site carousel */
-const HERO_TITLE = 'Pratima Chandra Foundation';
-const HERO_SUBTITLE =
-  'Pratima Chandra Foundation is an independent research, training and support institution for the promotion and development of performing arts and traditional Indian music.';
+/** Shared overlay copy on every slide */
+const HERO_TITLE = SITE_NAME;
+const HERO_SUBTITLE = SITE_TAGLINE;
 
 /**
  * Order matches live Elementor carousel (newest CPT first):

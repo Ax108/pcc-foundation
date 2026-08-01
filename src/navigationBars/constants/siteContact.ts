@@ -1,13 +1,15 @@
+import {SITE_DESCRIPTION} from '@src/constants/site';
+
 export type SocialLink = {
   label: string;
   href: string;
   icon: 'facebook' | 'instagram' | 'youtube';
 };
 
-/** Footer + contact copy from scrape ([MigrationPlan §2.8]) */
+/** Footer + contact copy */
 export const SITE_CONTACT = {
-  about:
-    'Pratima Chandra Foundation is an independent research, training and support Organization for promotion and development of performing arts and traditional Indian music.',
+  // #genai — footer about blurb matches site SEO description
+  about: SITE_DESCRIPTION,
   address: 'P-35, CIT Road, Kolkata - 700 014',
   phone: '033-22498193',
   phoneHref: 'tel:+913322498193',

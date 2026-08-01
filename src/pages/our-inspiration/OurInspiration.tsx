@@ -16,8 +16,11 @@ const MentorCard = ({name, imageSrc}: {name: string; imageSrc: string}) => (
 
 export const OurInspiration = () => {
   useSEO({
-    title: 'Our Inspiration - Pratima Chandra Foundation',
-    description: 'Learn about the life and legacy of Smt. Pratima Chandra.',
+    title: 'Our Inspiration — Pratima Chandra Foundation',
+    description:
+      'Learn about Smt. Pratima Chandra and how Pratima Chandra Foundation promotes, preserves, and develops performing arts and traditional Indian music.',
+    keywords:
+      'Pratima Chandra Foundation, Pratima Chandra, our inspiration, traditional Indian music, performing arts',
   });
 
   const {about, programs, life} = OUR_INSPIRATION_CONTENT;

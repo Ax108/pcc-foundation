@@ -5,8 +5,11 @@ import {assetUrl} from '@src/constants/assetBase';
 
 export const ContactUs = () => {
   useSEO({
-    title: 'Contact Us - Pratima Chandra Foundation',
-    description: 'Get in touch with the Pratima Chandra Foundation.',
+    title: 'Contact Us — Pratima Chandra Foundation',
+    description:
+      'Contact Pratima Chandra Foundation in Kolkata for inquiries about programs, awards, and performing arts initiatives.',
+    keywords:
+      'Pratima Chandra Foundation, contact, Kolkata, performing arts',
   });
 
   return (

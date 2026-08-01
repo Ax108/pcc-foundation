@@ -16,9 +16,11 @@ export const Gallery = () => {
   };
 
   useSEO({
-    title: 'Gallery - Pratima Chandra Foundation',
+    title: 'Gallery — Pratima Chandra Foundation',
     description:
-      'Explore the gallery of events, awards, and performances hosted by the Pratima Chandra Foundation.',
+      'Browse photos from Pratima Chandra Foundation events, awards, and performances celebrating traditional Indian music and performing arts.',
+    keywords:
+      'Pratima Chandra Foundation, gallery, photos, events, traditional Indian music',
   });
 
   return (

@@ -6,7 +6,8 @@ export const OUR_INSPIRATION_CONTENT = {
     paragraphs: [
       {
         bold: 'Pratima Chandra Foundation',
-        text: ' is an independent research, training and support Organization for promotion and development of performing arts and traditional Indian music. The Foundation is focused on the issues, challenges and opportunities of the true form and involvement of Indian performing arts and traditional music. The Foundation believes in understanding contemporary Indian creative efforts in its global context through a civilizational point of view in a society on the forward move.',
+        // #genai — opening paragraph aligned with site tagline (promotion, preservation, development)
+        text: ' is dedicated to the promotion, preservation, and development of performing arts and traditional Indian music. The Foundation is focused on the issues, challenges and opportunities of the true form and involvement of Indian performing arts and traditional music. The Foundation believes in understanding contemporary Indian creative efforts in its global context through a civilizational point of view in a society on the forward move.',
       },
       {
         bold: 'Based on',

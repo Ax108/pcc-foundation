@@ -7,8 +7,11 @@ import {assetUrl} from '@src/constants/assetBase';
 
 export const Events = () => {
   useSEO({
-    title: 'Events - Pratima Chandra Foundation',
-    description: 'Explore our latest events and awards ceremonies.',
+    title: 'Events — Pratima Chandra Foundation',
+    description:
+      'Explore awards ceremonies, music competitions, and cultural events hosted by Pratima Chandra Foundation in Kolkata and beyond.',
+    keywords:
+      'Pratima Chandra Foundation, events, awards, Rabindra Sangeet, Kolkata',
   });
 
   const featuredEvent = EVENTS_DATA[0];

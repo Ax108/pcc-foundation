@@ -30,7 +30,8 @@ export const HeroSequence = () => {
           <img
             key={src}
             src={src}
-            alt="Foundation Hero Background"
+            alt=""
+            aria-hidden="true"
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
               index === currentBgIndex ? 'opacity-50' : 'opacity-0'
             }`}
@@ -55,7 +56,7 @@ export const HeroSequence = () => {
               <div className="inline-flex items-center gap-3 mb-6">
                 <span className="w-12 h-[2px] bg-gold"></span>
                 <span className="text-white tracking-[0.2em] uppercase text-sm font-bold">
-                  Preserving Traditional Arts
+                  Promotion · Preservation · Development
                 </span>
               </div>
             </ScrollReveal>
@@ -69,8 +70,10 @@ export const HeroSequence = () => {
             </ScrollReveal>
 
             <ScrollReveal animation="fade-up" delay={0.3}>
+              {/* #genai — hero tagline aligned with site SEO description */}
               <p className="text-white/90 text-lg md:text-xl max-w-lg mb-10 leading-relaxed font-light drop-shadow-md">
-                An independent research, training and support institution for the promotion and development of performing arts and traditional Indian music.
+                A foundation dedicated to the promotion, preservation, and
+                development of performing arts and traditional Indian music.
               </p>
             </ScrollReveal>
 
@@ -104,7 +107,7 @@ export const HeroSequence = () => {
                 <div className="w-full h-full rounded-t-full overflow-hidden border-8 border-white/10 shadow-2xl relative bg-black/50 backdrop-blur-sm">
                   <img
                     src={heroImage}
-                    alt="Foundation Hero"
+                    alt="Pratima Chandra Foundation — performing arts and traditional Indian music"
                     className="h-full w-full object-cover object-[80%_50%]"
                   />
                   <div className="absolute inset-0 bg-black/10" />

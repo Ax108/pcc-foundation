@@ -1,6 +1,13 @@
 import {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import {IMAGES} from '@src/constants/images';
+import {
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_TITLE_HOME,
+  SITE_URL,
+} from '@src/constants/site';
 
 export interface SEOData {
   title: string;
@@ -13,57 +20,57 @@ export interface SEOData {
   canonicalUrl?: string;
 }
 
-const SITE_URL = 'https://pratimachandrafoundation.org';
-
-const DEFAULT_DESCRIPTION =
-  'Pratima Chandra Foundation is an independent research, training and support institution for the promotion and development of performing arts and traditional Indian music.';
-
-const DEFAULT_KEYWORDS =
-  'Pratima Chandra Foundation, Indian music, performing arts, Kolkata, memorial award, Rabindra Sangeet, Pratima Chandra Memorial Award';
-
-const OG_IMAGE = `${SITE_URL}${IMAGES.LOGO_FULL}`;
-const OG_IMAGE_ALT = 'Pratima Chandra Foundation logo';
+const OG_IMAGE = IMAGES.LOGO_FULL.startsWith('http')
+  ? IMAGES.LOGO_FULL
+  : `${SITE_URL}${IMAGES.LOGO_FULL}`;
+const OG_IMAGE_ALT = `${SITE_NAME} logo`;
 
 /** Defaults — mirrored in index.html; useSEO overrides per route */
 const defaultSEO: SEOData = {
-  title: 'Pratima Chandra Foundation',
-  description: DEFAULT_DESCRIPTION,
-  keywords: DEFAULT_KEYWORDS,
+  title: SITE_TITLE_HOME,
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
   ogImage: OG_IMAGE,
   ogImageAlt: OG_IMAGE_ALT,
 };
 
-/** Per-route SEO */
+/** Per-route SEO fallbacks when a page does not pass customSEO */
 const seoPages: Record<string, SEOData> = {
   '/': {
-    title: 'Pratima Chandra Foundation',
-    description: DEFAULT_DESCRIPTION,
-    keywords: DEFAULT_KEYWORDS,
+    title: SITE_TITLE_HOME,
+    description: SITE_DESCRIPTION,
+    keywords: SITE_KEYWORDS,
     canonicalUrl: `${SITE_URL}/`,
   },
   '/our-inspiration': {
-    title: 'Our Inspiration — Pratima Chandra Foundation',
-    description: '',
-    keywords: '',
+    title: `Our Inspiration — ${SITE_NAME}`,
+    description: `Learn about Smt. Pratima Chandra and how ${SITE_NAME} promotes, preserves, and develops performing arts and traditional Indian music.`,
+    keywords: `${SITE_KEYWORDS}, Pratima Chandra, our inspiration`,
     canonicalUrl: `${SITE_URL}/our-inspiration`,
   },
   '/gallery': {
-    title: 'Gallery — Pratima Chandra Foundation',
-    description: '',
-    keywords: '',
+    title: `Gallery — ${SITE_NAME}`,
+    description: `Browse photos from ${SITE_NAME} events, awards, and performances celebrating traditional Indian music and performing arts.`,
+    keywords: `${SITE_KEYWORDS}, gallery, photos, events`,
     canonicalUrl: `${SITE_URL}/gallery`,
   },
   '/events': {
-    title: 'Events — Pratima Chandra Foundation',
-    description: '',
-    keywords: '',
+    title: `Events — ${SITE_NAME}`,
+    description: `Explore awards ceremonies, music competitions, and cultural events hosted by ${SITE_NAME} in Kolkata and beyond.`,
+    keywords: `${SITE_KEYWORDS}, events, awards ceremony`,
     canonicalUrl: `${SITE_URL}/events`,
   },
   '/contact-us': {
-    title: 'Contact Us — Pratima Chandra Foundation',
-    description: '',
-    keywords: '',
+    title: `Contact Us — ${SITE_NAME}`,
+    description: `Contact ${SITE_NAME} in Kolkata for inquiries about programs, awards, and performing arts initiatives.`,
+    keywords: `${SITE_KEYWORDS}, contact, Kolkata`,
     canonicalUrl: `${SITE_URL}/contact-us`,
+  },
+  '/application-form': {
+    title: `Apply — ${SITE_NAME}`,
+    description: `Apply for Rabindra Gaane Pratima Chandra Puroshkar (Aruprataner Sandhane) — a Rabindra Sangeet competition by ${SITE_NAME}.`,
+    keywords: `${SITE_KEYWORDS}, application form, competition`,
+    canonicalUrl: `${SITE_URL}/application-form`,
   },
 };
 
@@ -91,7 +98,7 @@ export const useSEO = (customSEO?: Partial<SEOData>) => {
     updateMetaTag('og:image:alt', ogImageAlt, 'property');
     updateMetaTag('og:url', canonical, 'property');
     updateMetaTag('og:type', 'website', 'property');
-    updateMetaTag('og:site_name', 'Pratima Chandra Foundation', 'property');
+    updateMetaTag('og:site_name', SITE_NAME, 'property');
     updateMetaTag('og:locale', 'en_IN', 'property');
     updateMetaTag('twitter:card', 'summary_large_image', 'name');
     updateMetaTag('twitter:url', canonical, 'name');
@@ -99,7 +106,11 @@ export const useSEO = (customSEO?: Partial<SEOData>) => {
     updateMetaTag('twitter:description', ogDescription, 'name');
     updateMetaTag('twitter:image', ogImage, 'name');
     updateMetaTag('twitter:image:alt', ogImageAlt, 'name');
-    updateMetaTag('robots', 'index, follow', 'name');
+    updateMetaTag(
+      'robots',
+      'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+      'name',
+    );
 
     updateCanonicalLink(canonical);
   }, [location.pathname, customSEO]);

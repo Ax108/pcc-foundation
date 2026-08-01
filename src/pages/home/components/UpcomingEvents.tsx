@@ -16,8 +16,9 @@ export const UpcomingEvents = () => {
               <ScrollReveal animation="fade-up" delay={0.2}>
                 <div className="flex flex-col items-center">
                   <span className="text-sm tracking-[0.2em] uppercase font-semibold text-white/80 mb-2">Upcoming Event</span>
-                  <span className="text-6xl font-serif font-bold leading-none mb-1">24</span>
-                  <span className="text-2xl font-light tracking-wide mb-4">August 2026</span>
+                  {/* #genai — event date updated to 20 December 2026 */}
+                  <span className="text-6xl font-serif font-bold leading-none mb-1">20</span>
+                  <span className="text-2xl font-light tracking-wide mb-4">December 2026</span>
                   <span className="w-12 h-[1px] bg-white/30" />
                   <span className="mt-4 text-sm font-medium opacity-90">Kolkata, India</span>
                 </div>

@@ -25,17 +25,21 @@
     <meta name="format-detection" content="telephone=no" />
 
     <!-- Primary meta tags (updated per route by useSEO hook) -->
-    <title>Pratima Chandra Foundation</title>
-    <meta name="title" content="Pratima Chandra Foundation" />
+    <!-- #genai — default crawlable SEO; keep in sync with src/constants/site.ts -->
+    <title>Pratima Chandra Foundation | Performing Arts &amp; Traditional Indian Music</title>
+    <meta
+      name="title"
+      content="Pratima Chandra Foundation | Performing Arts &amp; Traditional Indian Music"
+    />
     <meta
       name="description"
-      content="Pratima Chandra Foundation is an independent research, training and support institution for the promotion and development of performing arts and traditional Indian music."
+      content="Pratima Chandra Foundation — A foundation dedicated to the promotion, preservation, and development of performing arts and traditional Indian music."
     />
     <meta
       name="keywords"
-      content="Pratima Chandra Foundation, Indian music, performing arts, Kolkata, memorial award, Rabindra Sangeet, Pratima Chandra Memorial Award"
+      content="Pratima Chandra Foundation, performing arts, traditional Indian music, music preservation, Rabindra Sangeet, Kolkata, West Bengal, Pratima Chandra Memorial Award, Aruprataner Sandhane, Indian classical music"
     />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="language" content="English" />
     <meta name="author" content="Pratima Chandra Foundation" />
 
@@ -48,14 +52,17 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://pratimachandrafoundation.org/" />
-    <meta property="og:title" content="Pratima Chandra Foundation" />
+    <meta
+      property="og:title"
+      content="Pratima Chandra Foundation | Performing Arts &amp; Traditional Indian Music"
+    />
     <meta
       property="og:description"
-      content="Pratima Chandra Foundation is an independent research, training and support institution for the promotion and development of performing arts and traditional Indian music."
+      content="Pratima Chandra Foundation — A foundation dedicated to the promotion, preservation, and development of performing arts and traditional Indian music."
     />
     <meta
       property="og:image"
-      content="https://pratimachandrafoundation.org/assets/logo/logo-full.jpg"
+      content="https://ax108.github.io/pcc-data/assets/logo/logo-full.png"
     />
     <meta property="og:image:alt" content="Pratima Chandra Foundation logo" />
     <meta property="og:site_name" content="Pratima Chandra Foundation" />
@@ -64,19 +71,73 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://pratimachandrafoundation.org/" />
-    <meta name="twitter:title" content="Pratima Chandra Foundation" />
+    <meta
+      name="twitter:title"
+      content="Pratima Chandra Foundation | Performing Arts &amp; Traditional Indian Music"
+    />
     <meta
       name="twitter:description"
-      content="Pratima Chandra Foundation is an independent research, training and support institution for the promotion and development of performing arts and traditional Indian music."
+      content="Pratima Chandra Foundation — A foundation dedicated to the promotion, preservation, and development of performing arts and traditional Indian music."
     />
     <meta
       name="twitter:image"
-      content="https://pratimachandrafoundation.org/assets/logo/logo-full.jpg"
+      content="https://ax108.github.io/pcc-data/assets/logo/logo-full.png"
     />
     <meta name="twitter:image:alt" content="Pratima Chandra Foundation logo" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://pratimachandrafoundation.org/" />
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "NGO",
+            "@id": "https://pratimachandrafoundation.org/#organization",
+            "name": "Pratima Chandra Foundation",
+            "url": "https://pratimachandrafoundation.org/",
+            "logo": "https://ax108.github.io/pcc-data/assets/logo/logo-full.png",
+            "image": "https://ax108.github.io/pcc-data/assets/logo/logo-full.png",
+            "description": "A foundation dedicated to the promotion, preservation, and development of performing arts and traditional Indian music.",
+            "email": "pratimachandrafoundation@gmail.com",
+            "telephone": "+91-33-2249-8193",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "P-35, CIT Road",
+              "addressLocality": "Kolkata",
+              "postalCode": "700014",
+              "addressRegion": "West Bengal",
+              "addressCountry": "IN"
+            },
+            "sameAs": [
+              "https://www.facebook.com/PratimaChandraFoundation",
+              "https://www.instagram.com/pratimachandrafoundation/",
+              "https://www.youtube.com/@pratimachandrafoundation6716"
+            ],
+            "areaServed": "IN",
+            "knowsAbout": [
+              "performing arts",
+              "traditional Indian music",
+              "Rabindra Sangeet",
+              "music preservation"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://pratimachandrafoundation.org/#website",
+            "url": "https://pratimachandrafoundation.org/",
+            "name": "Pratima Chandra Foundation",
+            "description": "Pratima Chandra Foundation — A foundation dedicated to the promotion, preservation, and development of performing arts and traditional Indian music.",
+            "publisher": {
+              "@id": "https://pratimachandrafoundation.org/#organization"
+            },
+            "inLanguage": "en-IN"
+          }
+        ]
+      }
+    </script>
 
     <!-- Preconnect / prefetch -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -91,7 +152,7 @@
     <link
       rel="preload"
       as="image"
-      href="/assets/home/hero-winner-4.jpg"
+      href="https://ax108.github.io/pcc-data/assets/home/slide-1-header-1.jpg"
       fetchpriority="high"
     />
 
