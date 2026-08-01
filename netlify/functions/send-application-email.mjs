@@ -174,6 +174,21 @@ export async function handler(event) {
     });
   }
 
+  // #genai — ID proof and passport photo must be images; reject PDFs and other types.
+  const imageFields = ['idProof', 'passportPhoto'];
+  const nonImage = files.find(
+    (file) =>
+      imageFields.includes(file.fieldName) &&
+      !String(file.contentType || '').startsWith('image/'),
+  );
+  if (nonImage) {
+    const label = FILE_LIMITS[nonImage.fieldName]?.label ?? nonImage.fieldName;
+    return jsonResponse(400, {
+      success: false,
+      message: `${label} must be an image (JPG, PNG, WEBP, etc.). PDFs are not accepted.`,
+    });
+  }
+
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
     port: SMTP_PORT,

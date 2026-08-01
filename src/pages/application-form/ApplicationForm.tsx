@@ -89,6 +89,16 @@ export const ApplicationForm = () => {
     for (const fieldName of IMAGE_FIELDS) {
       const file = formData.get(fieldName);
       if (!(file instanceof File) || file.size === 0) continue;
+      if (!file.type.startsWith('image/')) {
+        const label =
+          FILE_LIMITS.find((entry) => entry.fieldName === fieldName)?.label ??
+          fieldName;
+        setSubmitState({
+          status: 'error',
+          message: `${label} must be an image (JPG, PNG, WEBP, etc.). PDFs are not accepted.`,
+        });
+        return;
+      }
       const compressed = await compressImage(file, MAX_IMAGE_BYTES);
       formData.set(fieldName, compressed, compressed.name);
     }
@@ -96,13 +106,9 @@ export const ApplicationForm = () => {
     for (const {fieldName, label, maxBytes} of FILE_LIMITS) {
       const file = formData.get(fieldName);
       if (!(file instanceof File) || file.size <= maxBytes) continue;
-      const hint =
-        file.type === 'application/pdf'
-          ? ' PDFs cannot be compressed automatically — please upload a photo instead.'
-          : '';
       setSubmitState({
         status: 'error',
-        message: `${label} is ${formatMb(file.size)}, over the ${formatMb(maxBytes)} limit.${hint}`,
+        message: `${label} is ${formatMb(file.size)}, over the ${formatMb(maxBytes)} limit.`,
       });
       return;
     }
@@ -346,7 +352,7 @@ export const ApplicationForm = () => {
                     (photos are compressed automatically)
                   </span>
                 </label>
-                <input required type="file" id="idProof" name="idProof" accept="image/*,.pdf" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
+                <input required type="file" id="idProof" name="idProof" accept="image/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
               </div>
 
               <div className="flex flex-col gap-2">
