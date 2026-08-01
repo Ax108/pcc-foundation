@@ -5,7 +5,19 @@ import {ScrollReveal} from '@app/components/ScrollReveal';
 import {IMAGES, IMAGE_DIMENSIONS} from '@src/constants/images';
 import {AudioUploadField} from './components/AudioUploadField';
 
-const MAX_SUBMISSION_FILE_BYTES = 4 * 1024 * 1024;
+// #genai — per-file upload ceilings; there is no combined-size cap.
+const MAX_SONG_BYTES = 10 * 1024 * 1024;
+const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+
+const FILE_LIMITS = [
+  {fieldName: 'idProof', label: 'ID proof', maxBytes: MAX_IMAGE_BYTES},
+  {fieldName: 'passportPhoto', label: 'Passport size photo', maxBytes: MAX_IMAGE_BYTES},
+  {fieldName: 'songFile', label: 'Converted song', maxBytes: MAX_SONG_BYTES},
+] as const;
+
+function formatMb(bytes: number) {
+  return `${Math.round(bytes / 1024 / 1024)} MB`;
+}
 
 function getSubmitMessageClassName(status: 'idle' | 'submitting' | 'success' | 'error') {
   if (status === 'error') return 'text-sm text-red-700';
@@ -62,17 +74,14 @@ export const ApplicationForm = () => {
     const formData = new FormData(formElement);
     formData.set('songFile', convertedMp3, convertedMp3.name);
 
-    const attachmentBytes = ['idProof', 'passportPhoto', 'songFile'].reduce(
-      (total, fieldName) => {
-        const file = formData.get(fieldName);
-        return total + (file instanceof File ? file.size : 0);
-      },
-      0,
-    );
-    if (attachmentBytes > MAX_SUBMISSION_FILE_BYTES) {
+    const oversized = FILE_LIMITS.find(({fieldName, maxBytes}) => {
+      const file = formData.get(fieldName);
+      return file instanceof File && file.size > maxBytes;
+    });
+    if (oversized) {
       setSubmitState({
         status: 'error',
-        message: 'The ID proof, photo, and converted song must be 4 MB or less combined.',
+        message: `${oversized.label} must be ${formatMb(oversized.maxBytes)} or less.`,
       });
       return;
     }
@@ -290,14 +299,14 @@ export const ApplicationForm = () => {
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="idProof" className="text-sm font-medium text-text">
-                  ID Proof *
+                  ID Proof * <span className="font-normal text-text/50">(max 5 MB)</span>
                 </label>
                 <input required type="file" id="idProof" name="idProof" accept="image/*,.pdf" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
               </div>
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="passportPhoto" className="text-sm font-medium text-text">
-                  Passport Size Photo *
+                  Passport Size Photo * <span className="font-normal text-text/50">(max 5 MB)</span>
                 </label>
                 <input required type="file" id="passportPhoto" name="passportPhoto" accept="image/*" className="border border-border rounded px-3 py-2 focus:outline-none focus:border-accent text-primary bg-white file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20 transition-all cursor-pointer" />
               </div>

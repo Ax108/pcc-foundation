@@ -9,7 +9,17 @@ const SMTP_USER = 'contact@astrax.dev';
 const SMTP_FROM_EMAIL = 'noreply@astrax.dev';
 const SMTP_FROM_NAME = 'AstraX Mailer';
 const DEFAULT_RECIPIENT_EMAIL = 'arindamc.ax@gmail.com';
-const MAX_ATTACHMENT_BYTES = 4 * 1024 * 1024;
+// #genai — per-file upload ceilings; there is no combined-size cap.
+const MAX_SONG_BYTES = 10 * 1024 * 1024;
+const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+const FILE_LIMITS = {
+  idProof: {label: 'ID proof', maxBytes: MAX_IMAGE_BYTES},
+  passportPhoto: {label: 'Passport size photo', maxBytes: MAX_IMAGE_BYTES},
+  songFile: {label: 'Song recording', maxBytes: MAX_SONG_BYTES},
+};
+const MAX_FILE_BYTES = Math.max(
+  ...Object.values(FILE_LIMITS).map(({maxBytes}) => maxBytes),
+);
 const requiredEnvVars = ['SMTP_PASS'];
 
 const jsonResponse = (statusCode, body) => ({
@@ -41,14 +51,13 @@ function parseMultipart(event) {
 
     const fields = {};
     const files = [];
-    let totalAttachmentBytes = 0;
-    let sizeLimitExceeded = false;
+    let oversizedMessage = '';
     const parser = busboy({
       headers: {'content-type': contentType},
       limits: {
         fields: 20,
         files: 3,
-        fileSize: MAX_ATTACHMENT_BYTES,
+        fileSize: MAX_FILE_BYTES,
       },
     });
 
@@ -59,18 +68,21 @@ function parseMultipart(event) {
     parser.on('file', (fieldName, stream, info) => {
       const chunks = [];
       let fileBytes = 0;
+      const limit = FILE_LIMITS[fieldName];
+
+      const flagOversized = () => {
+        if (!limit || oversizedMessage) return;
+        oversizedMessage = `${limit.label} must be ${Math.round(limit.maxBytes / 1024 / 1024)} MB or less.`;
+      };
 
       stream.on('data', (chunk) => {
         fileBytes += chunk.length;
-        totalAttachmentBytes += chunk.length;
-        if (totalAttachmentBytes > MAX_ATTACHMENT_BYTES) {
-          sizeLimitExceeded = true;
+        if (limit && fileBytes > limit.maxBytes) {
+          flagOversized();
         }
         chunks.push(chunk);
       });
-      stream.on('limit', () => {
-        sizeLimitExceeded = true;
-      });
+      stream.on('limit', flagOversized);
       stream.on('end', () => {
         if (info.filename && fileBytes > 0) {
           files.push({
@@ -85,8 +97,8 @@ function parseMultipart(event) {
 
     parser.on('error', reject);
     parser.on('finish', () => {
-      if (sizeLimitExceeded) {
-        reject(new Error('The combined attachments must be 4 MB or less.'));
+      if (oversizedMessage) {
+        reject(new Error(oversizedMessage));
         return;
       }
       resolve({fields, files});
