@@ -1,10 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import {ScrollReveal} from '@app/components/ScrollReveal';
+import {Mic, type LucideIcon} from 'lucide-react';
 
-const IMPACT_STATS = [
+type ImpactStat = {
+  id: number;
+  number?: number;
+  suffix?: string;
+  label: string;
+  icon?: LucideIcon;
+};
+
+// #genai — Impact cards may display either a count or a representative icon.
+const IMPACT_STATS: ImpactStat[] = [
   { id: 1, number: 100, suffix: '+', label: 'Artists Supported' },
   { id: 2, number: 50,  suffix: '+', label: 'Events Hosted' },
-  { id: 3, number: 200, suffix: '+', label: 'Scholarships Awarded' },
+  { id: 3, icon: Mic, label: 'Recording Opportunity' },
   { id: 4, number: 9,   suffix: '+', label: 'Years of Legacy' },
 ];
 
@@ -28,9 +38,10 @@ function useCountUp(target: number, duration = 1200, start = false) {
   return count;
 }
 
-function StatCard({ stat, started, delay }: { stat: typeof IMPACT_STATS[0]; started: boolean; delay: number }) {
+function StatCard({ stat, started, delay }: { stat: ImpactStat; started: boolean; delay: number }) {
   const [go, setGo] = useState(false);
-  const count = useCountUp(stat.number, 1400, go);
+  const count = useCountUp(stat.number ?? 0, 1400, go);
+  const Icon = stat.icon;
 
   useEffect(() => {
     if (!started) return;
@@ -42,7 +53,7 @@ function StatCard({ stat, started, delay }: { stat: typeof IMPACT_STATS[0]; star
     <ScrollReveal animation="fade-up" delay={delay / 1000}>
       <div className="flex flex-col items-center justify-center p-6">
         <span className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-2 drop-shadow-md tabular-nums">
-          {count}{stat.suffix}
+          {Icon ? <Icon aria-hidden="true" className="size-9 md:size-10 lg:size-11" /> : <>{count}{stat.suffix}</>}
         </span>
         <span className="text-sm md:text-base tracking-[0.1em] uppercase font-semibold text-white/90">
           {stat.label}
